@@ -1,1 +1,128 @@
+name: Generate notes manifest
 
+# Whenever you add/change files inside notes/, this rebuilds tree.json
+# automatically — including WHO uploaded each file (GitHub profile info),
+# so the app can show a Contributors section.
+# You never have to edit anything by hand — just upload PDFs and commit.
+
+on:
+  push:
+    paths:
+      - "notes/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history so each file gets its real date + author
+
+      - name: Generate tree.json
+        run: |
+          python3 - <<'PY'
+          import os, json, subprocess, datetime, urllib.request
+
+          repo = os.environ.get("GITHUB_REPOSITORY", "")
+          token = os.environ.get("GITHUB_TOKEN", "")
+
+          def git(*args):
+            return subprocess.run(["git"] + list(args),
+                                  capture_output=True, text=True).stdout.strip()
+
+          # ---- 1) list every file under notes/ ----
+          all_files = []
+          for dirpath, dirnames, filenames in os.walk("notes"):
+              dirnames.sort()
+              for fn in sorted(filenames):
+                  all_files.append(os.path.join(dirpath, fn).replace("\\", "/"))
+
+          # ---- 2) find the commit that ADDED each file (authorship) ----
+          add_sha = {}
+          log = subprocess.run(
+              ["git", "log", "--format=%H", "--diff-filter=A", "--name-only", "--", "notes/"],
+              capture_output=True, text=True
+          ).stdout
+          cur = None
+          for line in log.splitlines():
+              line = line.strip()
+              if not line:
+                  continue
+              if len(line) == 40:
+                  cur = line
+              elif cur and line.startswith("notes/"):
+                  if line not in add_sha:      # first seen = most recent add
+                      add_sha[line] = cur
+
+          # ---- 3) map commit -> GitHub user (login + avatar) ----
+          meta = {}
+          for sha in set(add_sha.values()):
+              info = {"login": None, "avatar": None, "name": None}
+              if repo and token:
+                  try:
+                      req = urllib.request.Request(
+                          "https://api.github.com/repos/%s/commits/%s" % (repo, sha),
+                          headers={
+                              "Authorization": "Bearer " + token,
+                              "Accept": "application/vnd.github+json",
+                              "User-Agent": "notes-sathi-tree",
+                          }
+                      )
+                      with urllib.request.urlopen(req) as r:
+                          d = json.load(r)
+                      gh_user = d.get("author") or {}
+                      info["login"] = gh_user.get("login")
+                      info["avatar"] = gh_user.get("avatar_url")
+                      info["name"] = (d.get("commit", {}).get("author", {}) or {}).get("name")
+                  except Exception:
+                      pass
+              meta[sha] = info
+
+          # ---- 4) build the manifest ----
+          files = []
+          for p in all_files:
+              sha = add_sha.get(p)
+              m = meta.get(sha) if sha else None
+              # fallback: plain git author name when the commit has no GitHub account
+              gname = None
+              if not (m and (m.get("login") or m.get("name"))):
+                  gname = git("log", "-n", "1", "--format=%an", "--", p) or None
+              entry = {
+                  "path": p,
+                  "size": os.path.getsize(p),
+                  "date": git("log", "-n", "1", "--format=%aI", "--", p) or None,
+              }
+              login = (m and m.get("login")) or None
+              name = (m and m.get("name")) or gname
+              avatar = (m and m.get("avatar")) or None
+              if login or name:
+                  entry["author"] = {"login": login, "name": name, "avatar": avatar}
+              files.append(entry)
+
+          files.sort(key=lambda f: f["path"])
+          out = {
+              "generatedAt": datetime.datetime.utcnow().isoformat() + "Z",
+              "files": files
+          }
+          with open("tree.json", "w") as fh:
+              json.dump(out, fh, indent=1)
+          print("tree.json:", len(files), "files")
+          PY
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit tree.json if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tree.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: regenerate notes manifest [skip ci]"
+            git push origin HEAD:${{ github.ref_name }}
+          else
+            echo "tree.json already up to date"
+          fi
