@@ -4,8 +4,6 @@
   "teacherName": "Prof. Vinay Soni",
   "collegeName": "Satpuda College of Engineering and Polytechnic",
   "subjectEmojis": {
-    "Physics": "🧲",
-    "Mathematics": "📐",
-    "Computer-Science": "💻"
+    "Scripting Language": "💻"
   }
 }
