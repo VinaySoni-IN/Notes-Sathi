@@ -1,75 +1,35 @@
 {
- "generatedAt": "2026-09-29T18:24:26Z",
+ "generatedAt": "2026-09-29T19:26:37.339168Z",
  "files": [
   {
-   "path": "notes/Computer-Science/DBMS-Unit-2-SQL.pdf",
-   "date": "2026-09-29T13:24:26Z",
+   "path": "notes/Scripting Language/Python-1.pdf",
+   "size": 2,
+   "date": "2026-09-30T00:48:20+05:30",
    "author": {
-    "login": "rahul-ta",
-    "name": "Rahul Verma",
+    "login": null,
+    "name": "Vinay Sanjay Soni",
     "avatar": null
-   },
-   "size": 1208
+   }
   },
   {
-   "path": "notes/Computer-Science/DBMS-Unit-3.pdf",
-   "date": "2026-09-09T18:24:26Z",
+   "path": "notes/Scripting Language/python-1.hi.pdf",
+   "size": 2,
+   "date": "2026-09-30T00:49:10+05:30",
    "author": {
-    "login": "VinaySoni-IN",
-    "name": "Vinay Soni",
+    "login": null,
+    "name": "Vinay Sanjay Soni",
     "avatar": null
-   },
-   "size": 1155
+   }
   },
   {
-   "path": "notes/Mathematics/Chapter-4-Integration.hi.pdf",
-   "date": "2026-09-24T19:24:26Z",
+   "path": "notes/config.json",
+   "size": 297,
+   "date": "2026-09-30T00:56:27+05:30",
    "author": {
     "login": "VinaySoni-IN",
-    "name": "Vinay Soni",
-    "avatar": null
-   },
-   "size": 1163
-  },
-  {
-   "path": "notes/Mathematics/Chapter-4-Integration.pdf",
-   "date": "2026-09-24T18:24:26Z",
-   "author": {
-    "login": "VinaySoni-IN",
-    "name": "Vinay Soni",
-    "avatar": null
-   },
-   "size": 1162
-  },
-  {
-   "path": "notes/Physics/Unit-1-Motion.hi.pdf",
-   "date": "2026-09-29T16:24:26Z",
-   "author": {
-    "login": "VinaySoni-IN",
-    "name": "Vinay Soni",
-    "avatar": null
-   },
-   "size": 1343
-  },
-  {
-   "path": "notes/Physics/Unit-1-Motion.pdf",
-   "date": "2026-09-29T15:24:26Z",
-   "author": {
-    "login": "VinaySoni-IN",
-    "name": "Vinay Soni",
-    "avatar": null
-   },
-   "size": 1395
-  },
-  {
-   "path": "notes/Physics/Unit-2-Gravitation.pdf",
-   "date": "2026-09-28T12:24:26Z",
-   "author": {
-    "login": "VinaySoni-IN",
-    "name": "Vinay Soni",
-    "avatar": null
-   },
-   "size": 1145
+    "name": "Vinay Sanjay Soni",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
   }
  ]
 }
