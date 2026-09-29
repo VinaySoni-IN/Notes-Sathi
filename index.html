@@ -955,6 +955,11 @@
     return /iP(hone|ad|od)/.test(navigator.userAgent) ||
       (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   }
+  /* Chrome/Firefox on Android cannot render PDFs inside iframes (blank frame) —
+     iOS Safari likewise. On those browsers we show an open/download card instead. */
+  function needsPdfFallback(){
+    return isIOS() || /Android|Mobile|Phone/i.test(navigator.userAgent);
+  }
   function loadMap(key){
     try{
       var v = JSON.parse(localStorage.getItem(key));
@@ -1849,11 +1854,14 @@
     var f = pickFile(p, viewerLang, viewerExt);
     var inner = "";
     if(f.ext === "pdf"){
-      if(isIOS()){
+      if(needsPdfFallback()){
         inner = '<div class="pdf-fallback"><div class="big">📄</div>' +
           '<div class="t">' + esc(f.name) + "</div>" +
-          '<div class="s">Your browser opens PDFs in a separate tab.<br>Size: ' + fmtSize(f.size) + " · " + (viewerLang === "hi" ? "हिंदी" : "English") + "</div>" +
-          '<button class="btn btn-primary" id="fbOpenBtn">Open PDF</button></div>';
+          '<div class="s">Your phone opens PDFs in a separate tab.<br>Size: ' + fmtSize(f.size) + " · " + (viewerLang === "hi" ? "हिंदी" : "English") + "</div>" +
+          '<div class="modal-actions" style="margin-top:16px;">' +
+          '<button class="btn btn-ghost" id="fbDlBtn">' + svgDl() + " Download</button>" +
+          '<button class="btn btn-primary" id="fbOpenBtn">Open PDF</button>' +
+          "</div></div>";
       } else {
         inner = '<iframe class="pdf-frame" id="pdfFrame" src="' + esc(f.url) + '#view=FitH" title="' + esc(p.title) + '"></iframe>' +
           '<div class="viewer-note">Slow connection? Use ⬇ to download and read offline.</div>';
@@ -1869,6 +1877,8 @@
     viewerBody.innerHTML = bar + inner;
     var fb = document.getElementById("fbOpenBtn");
     if(fb) fb.addEventListener("click", function(){ openFileExternal(f); });
+    var fbDl = document.getElementById("fbDlBtn");
+    if(fbDl) fbDl.addEventListener("click", function(){ downloadFile(f); });
   }
 
   document.getElementById("viewerSaveBtn").addEventListener("click", function(){
