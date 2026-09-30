@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="pdf.min.js"></script>
 <style>
   /* ============ TOKENS ============ */
   :root{
@@ -537,6 +538,55 @@
   .file-pill.active{ border-color:var(--brand); color:var(--brand); background:var(--brand-soft); }
   .viewer-note{ font-size:11.5px; color:var(--ink-faint); text-align:center; margin-top:10px; }
 
+  /* ============ EMBEDDED PDF VIEWER (PDF.js) ============ */
+  .pdf-toolbar{
+    position:sticky; top:0; z-index:6;
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    background:var(--card-glass);
+    -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+    border:1px solid var(--line); border-radius:13px;
+    padding:6px 8px; margin-bottom:10px; box-shadow:var(--shadow-sm);
+  }
+  .pt-group{ display:flex; align-items:center; gap:2px; background:var(--card-2); border-radius:9px; padding:2px; }
+  .pt-btn{
+    border:none; background:transparent; color:var(--ink);
+    font-family:var(--font); font-size:14px; font-weight:800;
+    min-width:31px; height:31px; border-radius:8px; cursor:pointer;
+    display:inline-flex; align-items:center; justify-content:center;
+    transition:.13s ease;
+  }
+  .pt-btn:active{ background:var(--brand-soft); color:var(--brand); }
+  .pt-btn[disabled]{ opacity:.35; pointer-events:none; }
+  .pt-btn svg{ width:15px; height:15px; }
+  .pt-label{
+    font-size:11.5px; font-weight:800; color:var(--ink-soft);
+    min-width:46px; text-align:center; font-variant-numeric:tabular-nums;
+  }
+  .pt-spacer{ flex:1; }
+  .pt-act{ color:var(--brand); background:var(--brand-soft); }
+  .pt-act:active{ background:var(--brand); color:#fff; }
+  .pdf-stage{
+    position:relative; background:var(--card);
+    border:1px solid var(--line); border-radius:13px;
+    overflow:hidden; box-shadow:var(--shadow); min-height:320px;
+  }
+  .pdf-canvas{ display:block; width:100%; }
+  .pdf-loading{
+    position:absolute; inset:0; z-index:3;
+    display:flex; flex-direction:column; gap:12px; align-items:center; justify-content:center;
+    background:var(--card); font-size:13px; font-weight:700; color:var(--ink-soft);
+  }
+  .spinner{
+    width:28px; height:28px; border-radius:50%;
+    border:3px solid var(--line); border-top-color:var(--brand);
+    animation:spin .8s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .pdf-errorbox{ padding:46px 18px; text-align:center; }
+  .pdf-errorbox .big{ font-size:44px; margin-bottom:10px; }
+  .pdf-errorbox .t{ font-weight:800; font-size:15.5px; margin-bottom:4px; }
+  .pdf-errorbox .s{ font-size:12.5px; color:var(--ink-soft); margin-bottom:16px; line-height:1.6; }
+
   /* ============ BUTTONS ============ */
   .btn{
     border:none; cursor:pointer; font-family:var(--font); font-weight:700; font-size:13.5px;
@@ -951,15 +1001,7 @@
       setTimeout(function(){ t.remove(); }, 300);
     }, ms || 2600);
   }
-  function isIOS(){
-    return /iP(hone|ad|od)/.test(navigator.userAgent) ||
-      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  }
-  /* Chrome/Firefox on Android cannot render PDFs inside iframes (blank frame) —
-     iOS Safari likewise. On those browsers we show an open/download card instead. */
-  function needsPdfFallback(){
-    return isIOS() || /Android|Mobile|Phone/i.test(navigator.userAgent);
-  }
+
   function loadMap(key){
     try{
       var v = JSON.parse(localStorage.getItem(key));
@@ -1811,13 +1853,166 @@
   function closeViewer(){
     viewerOverlay.classList.remove("open");
     viewerPost = null;
+    destroyPdf();
     viewerBody.innerHTML = "";
   }
   document.getElementById("viewerBackBtn").addEventListener("click", closeViewer);
 
+  /* ---------- embedded PDF viewer (PDF.js, works on every device) ---------- */
+  var pdfState = { doc:null, page:1, zoom:1, task:null, file:null };
+  var pdfResizeTimer = null;
+
+  function svgExt(){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>'; }
+
+  function buildPdfViewerHtml(f){
+    return '<div class="pdf-toolbar">' +
+      '<div class="pt-group">' +
+      '<button class="pt-btn" id="pdfPrev" aria-label="Previous page" title="Previous page">\u25C0</button>' +
+      '<span class="pt-label" id="pdfPageLabel">\u2013 / \u2013</span>' +
+      '<button class="pt-btn" id="pdfNext" aria-label="Next page" title="Next page">\u25B6</button>' +
+      "</div>" +
+      '<div class="pt-group">' +
+      '<button class="pt-btn" id="pdfZoomOut" aria-label="Zoom out" title="Zoom out">\u2212</button>' +
+      '<span class="pt-label" id="pdfZoomLabel">100%</span>' +
+      '<button class="pt-btn" id="pdfZoomIn" aria-label="Zoom in" title="Zoom in">+</button>' +
+      '<button class="pt-btn" id="pdfFit" aria-label="Fit width" title="Fit width">\u292E</button>' +
+      "</div>" +
+      '<span class="pt-spacer"></span>' +
+      '<button class="pt-btn pt-act" id="pdfDlBtn" title="Download" aria-label="Download">' + svgDl() + "</button>" +
+      '<button class="pt-btn pt-act" id="pdfExtBtn" title="Open in new tab" aria-label="Open in new tab">' + svgExt() + "</button>" +
+      "</div>" +
+      '<div class="pdf-stage" id="pdfStage">' +
+      '<div class="pdf-loading" id="pdfLoading"><span class="spinner"></span>Opening PDF\u2026</div>' +
+      '<canvas class="pdf-canvas" id="pdfCanvas"></canvas>' +
+      '<div class="pdf-errorbox" id="pdfErrorBox" style="display:none;">' +
+      '<div class="big">\uD83D\uDCC4</div>' +
+      '<div class="t" id="pdfErrorTitle">Could not open this PDF here</div>' +
+      '<div class="s" id="pdfErrorMsg"></div>' +
+      '<div class="modal-actions" style="max-width:320px;margin:0 auto;">' +
+      '<button class="btn btn-ghost" id="pdfErrDl">' + svgDl() + " Download</button>" +
+      '<button class="btn btn-primary" id="pdfErrOpen">' + svgExt() + " Open in new tab</button>" +
+      "</div></div></div>";
+  }
+
+  function destroyPdf(){
+    if(pdfState.task){ try{ pdfState.task.cancel(); }catch(e){} pdfState.task = null; }
+    if(pdfState.doc){ try{ pdfState.doc.destroy(); }catch(e){} }
+    pdfState.doc = null; pdfState.page = 1; pdfState.zoom = 1;
+  }
+
+  function setPdfLoading(on){
+    var el = document.getElementById("pdfLoading");
+    if(el) el.style.display = on ? "flex" : "none";
+  }
+  function showPdfError(msg){
+    setPdfLoading(false);
+    var box = document.getElementById("pdfErrorBox");
+    var stage = document.getElementById("pdfStage");
+    if(stage && !box){
+      /* built before the error box existed (shouldn't happen) — ignore */
+    }
+    if(box){
+      box.style.display = "block";
+      document.getElementById("pdfErrorMsg").textContent = msg || "";
+      var canvas = document.getElementById("pdfCanvas");
+      if(canvas) canvas.style.display = "none";
+    }
+  }
+
+  function updatePdfPageLabel(){
+    var doc = pdfState.doc;
+    var l = document.getElementById("pdfPageLabel");
+    if(l) l.textContent = doc ? (pdfState.page + " / " + doc.numPages) : "\u2013 / \u2013";
+    var z = document.getElementById("pdfZoomLabel");
+    if(z) z.textContent = Math.round(pdfState.zoom * 100) + "%";
+    var prev = document.getElementById("pdfPrev");
+    var next = document.getElementById("pdfNext");
+    if(prev){
+      if(pdfState.page <= 1) prev.setAttribute("disabled", "disabled");
+      else prev.removeAttribute("disabled");
+    }
+    if(next){
+      if(doc && pdfState.page >= doc.numPages) next.setAttribute("disabled", "disabled");
+      else next.removeAttribute("disabled");
+    }
+  }
+
+  function renderPdfPage(){
+    var doc = pdfState.doc;
+    var canvas = document.getElementById("pdfCanvas");
+    var stage = document.getElementById("pdfStage");
+    if(!doc || !canvas || !stage) return;
+    if(pdfState.task){ try{ pdfState.task.cancel(); }catch(e){} pdfState.task = null; }
+    doc.getPage(pdfState.page).then(function(page){
+      if(!document.getElementById("pdfCanvas")) return; /* viewer was closed */
+      var containerW = stage.clientWidth || 600;
+      var base = page.getViewport({ scale:1 });
+      var fitScale = base.width > 0 ? containerW / base.width : 1;
+      var vp = page.getViewport({ scale:fitScale * pdfState.zoom });
+      canvas.width = Math.max(1, Math.floor(vp.width));
+      canvas.height = Math.max(1, Math.floor(vp.height));
+      canvas.style.display = "block";
+      var ctx = canvas.getContext("2d");
+      if(!ctx){ showPdfError("This device does not support canvas rendering."); return; }
+      pdfState.task = page.render({ canvasContext:ctx, viewport:vp });
+      pdfState.task.promise.then(function(){ pdfState.task = null; }).catch(function(){ pdfState.task = null; });
+    }).catch(function(){});
+  }
+
+  function initPdfViewer(f){
+    if(typeof window.pdfjsLib === "undefined" || !window.pdfjsLib){
+      showPdfError("The PDF viewer library did not load (offline first visit?). Use the buttons below.");
+      return;
+    }
+    try{ window.pdfjsLib.GlobalWorkerOptions.workerSrc = "pdf.worker.min.js"; }catch(e){}
+    destroyPdf();
+    pdfState.file = f; pdfState.page = 1; pdfState.zoom = 1;
+    setPdfLoading(true);
+    document.getElementById("pdfErrorBox").style.display = "none";
+    updatePdfPageLabel();
+    window.pdfjsLib.getDocument({ url:f.url, cMapUrl:"cmaps/", cMapPacked:true, standardFontDataUrl:"standard_fonts/" }).promise.then(function(doc){
+      if(!document.getElementById("pdfCanvas")){ try{ doc.destroy(); }catch(e){} return; }
+      pdfState.doc = doc;
+      setPdfLoading(false);
+      updatePdfPageLabel();
+      renderPdfPage();
+    }).catch(function(){
+      setPdfLoading(false);
+      showPdfError("This PDF could not be opened inside the app.");
+    });
+  }
+
+  function wirePdfToolbar(f){
+    function on(id, fn){ var el = document.getElementById(id); if(el) el.addEventListener("click", fn); }
+    on("pdfPrev", function(){ if(pdfState.doc && pdfState.page > 1){ pdfState.page--; updatePdfPageLabel(); renderPdfPage(); } });
+    on("pdfNext", function(){ if(pdfState.doc && pdfState.page < pdfState.doc.numPages){ pdfState.page++; updatePdfPageLabel(); renderPdfPage(); } });
+    on("pdfZoomIn", function(){ pdfState.zoom = Math.min(3, pdfState.zoom + 0.25); updatePdfPageLabel(); renderPdfPage(); });
+    on("pdfZoomOut", function(){ pdfState.zoom = Math.max(0.5, pdfState.zoom - 0.25); updatePdfPageLabel(); renderPdfPage(); });
+    on("pdfFit", function(){ pdfState.zoom = 1; updatePdfPageLabel(); renderPdfPage(); });
+    on("pdfDlBtn", function(){ downloadFile(f); });
+    on("pdfExtBtn", function(){ openFileExternal(f); });
+    on("pdfErrDl", function(){ downloadFile(f); });
+    on("pdfErrOpen", function(){ openFileExternal(f); });
+    var canvas = document.getElementById("pdfCanvas");
+    if(canvas) canvas.addEventListener("click", function(e){
+      if(!pdfState.doc) return;
+      var rect = canvas.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width;
+      if(x < 0.28 && pdfState.page > 1){ pdfState.page--; updatePdfPageLabel(); renderPdfPage(); }
+      else if(x > 0.72 && pdfState.page < pdfState.doc.numPages){ pdfState.page++; updatePdfPageLabel(); renderPdfPage(); }
+    });
+  }
+
+  window.addEventListener("resize", function(){
+    if(!pdfState.doc || !document.getElementById("pdfCanvas")) return;
+    if(pdfResizeTimer) clearTimeout(pdfResizeTimer);
+    pdfResizeTimer = setTimeout(renderPdfPage, 250);
+  });
+
   function renderViewer(){
     var p = viewerPost;
     if(!p) return;
+    destroyPdf();
     document.getElementById("viewerTitle").textContent = p.title;
 
     var seg = document.getElementById("viewerLangSeg");
@@ -1854,18 +2049,8 @@
     var f = pickFile(p, viewerLang, viewerExt);
     var inner = "";
     if(f.ext === "pdf"){
-      if(needsPdfFallback()){
-        inner = '<div class="pdf-fallback"><div class="big">📄</div>' +
-          '<div class="t">' + esc(f.name) + "</div>" +
-          '<div class="s">Your phone opens PDFs in a separate tab.<br>Size: ' + fmtSize(f.size) + " · " + (viewerLang === "hi" ? "हिंदी" : "English") + "</div>" +
-          '<div class="modal-actions" style="margin-top:16px;">' +
-          '<button class="btn btn-ghost" id="fbDlBtn">' + svgDl() + " Download</button>" +
-          '<button class="btn btn-primary" id="fbOpenBtn">Open PDF</button>' +
-          "</div></div>";
-      } else {
-        inner = '<iframe class="pdf-frame" id="pdfFrame" src="' + esc(f.url) + '#view=FitH" title="' + esc(p.title) + '"></iframe>' +
-          '<div class="viewer-note">Slow connection? Use ⬇ to download and read offline.</div>';
-      }
+      inner = buildPdfViewerHtml(f) +
+        '<div class="viewer-note">Tip: tap the left / right edges of the page to turn pages.</div>';
     } else if(VIEWABLE.indexOf(f.ext) > -1 && f.ext !== "pdf"){
       inner = '<img class="img-frame" src="' + esc(f.url) + '" alt="' + esc(p.title) + '">';
     } else {
@@ -1875,10 +2060,7 @@
         '<button class="btn btn-primary" id="fbOpenBtn">Download file</button></div>';
     }
     viewerBody.innerHTML = bar + inner;
-    var fb = document.getElementById("fbOpenBtn");
-    if(fb) fb.addEventListener("click", function(){ openFileExternal(f); });
-    var fbDl = document.getElementById("fbDlBtn");
-    if(fbDl) fbDl.addEventListener("click", function(){ downloadFile(f); });
+    if(f.ext === "pdf"){ wirePdfToolbar(f); initPdfViewer(f); }
   }
 
   document.getElementById("viewerSaveBtn").addEventListener("click", function(){
