@@ -453,7 +453,6 @@
   }
   [data-theme="dark"] .profile-role{ color:#A5B4FC; }
   .profile-college{ font-size:12.5px; color:var(--ink-soft); margin-top:7px; }
-  .profile-stats{ display:flex; justify-content:center; gap:22px; margin-top:14px; padding-top:13px; border-top:1px solid var(--line-soft); }
   .ps .n{ font-size:17px; font-weight:800; }
   .ps .l{ font-size:10.5px; color:var(--ink-faint); font-weight:700; }
   .status-row{
@@ -905,7 +904,7 @@
   var seenPosts = {};            // id -> ms
   var savedPosts = {};           // id -> 1
   var contribExpanded = {};      // authorKey -> true (expanded note list)
-  var repoStats = null;         // live GitHub repo data (stars/forks/pushed_at)
+  var repoStats = null;         // live GitHub repo data (pushed_at powers the Updated chip)
 
   /* ================================================================
      UTILS
@@ -1455,25 +1454,7 @@
     document.getElementById("mchipSubjects").textContent = subjects.length + " subjects";
     document.getElementById("mchipNotes").textContent = posts.length + " notes";
 
-    /* live repo chips: ⭐ stars · 🍴 forks (removed when offline) */
-    var statsRow = document.querySelector("#masthead .mast-stats");
-    var oldS = document.getElementById("mchipStars"); if(oldS) oldS.remove();
-    var oldF = document.getElementById("mchipForks"); if(oldF) oldF.remove();
     var upd = document.getElementById("mchipUpdated");
-    if(repoStats){
-      if(repoStats.stargazers_count != null){
-        var s = document.createElement("span");
-        s.className = "mchip"; s.id = "mchipStars";
-        s.textContent = "⭐ " + repoStats.stargazers_count;
-        statsRow.insertBefore(s, upd);
-      }
-      if(repoStats.forks_count != null){
-        var fEl = document.createElement("span");
-        fEl.className = "mchip"; fEl.id = "mchipForks";
-        fEl.textContent = "🍴 " + repoStats.forks_count;
-        statsRow.insertBefore(fEl, upd);
-      }
-    }
 
     /* updated chip: repo push time is the source of truth; else newest note */
     if(repoStats && repoStats.pushed_at){
@@ -1701,30 +1682,19 @@
 
   function renderAbout(){
     var card = document.getElementById("profileCard");
-    var name, handle, bio, avatar, link, stats;
+    var name, handle, bio, avatar, link;
     if(gitProfile && (gitProfile.name || gitProfile.login)){
       name = gitProfile.name || gitProfile.login;
       handle = gitProfile.login ? "@" + gitProfile.login : "";
       bio = gitProfile.bio || "";
       avatar = gitProfile.avatar_url || "";
       link = gitProfile.html_url || ("https://github.com/" + CONFIG.owner);
-      stats = [
-        { l:"Followers", n:(gitProfile.followers != null ? gitProfile.followers : "—") },
-        { l:"Repos", n:(gitProfile.public_repos != null ? gitProfile.public_repos : "—") },
-        { l:"Notes", n:posts.length },
-        { l:"Files", n:allFiles().length }
-      ];
     } else {
       name = siteConfig.teacherName || siteConfig.blogTitle || "Notes Sathi";
       handle = CONFIG.owner ? "@" + CONFIG.owner : "";
       bio = siteConfig.tagline;
       avatar = "";
       link = CONFIG.owner ? "https://github.com/" + CONFIG.owner : "";
-      stats = [
-        { l:"Subjects", n:subjects.length },
-        { l:"Notes", n:posts.length },
-        { l:"Files", n:allFiles().length }
-      ];
     }
     card.innerHTML =
       '<span style="display:block;width:74px;margin:0 auto 10px;">' + avatarSpan({ name:name, avatar:avatar }, 74) + "</span>" +
@@ -1732,10 +1702,7 @@
       (handle && link ? '<a class="profile-handle" href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(handle) + " · View GitHub ↗</a>" : "") +
       '<div class="profile-role">🎓 Teacher · Publisher</div>' +
       (siteConfig.collegeName ? '<div class="profile-college">🎓 ' + esc(siteConfig.collegeName) + "</div>" : "") +
-      (bio ? '<div class="profile-bio">' + esc(bio) + "</div>" : "") +
-      '<div class="profile-stats">' + stats.map(function(x){
-        return '<div class="ps"><div class="n">' + esc(x.n) + '</div><div class="l">' + esc(x.l) + "</div></div>";
-      }).join("") + "</div>";
+      (bio ? '<div class="profile-bio">' + esc(bio) + "</div>" : "");
 
     renderContributors();
 
