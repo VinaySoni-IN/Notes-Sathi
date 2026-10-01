@@ -930,7 +930,11 @@
   function ageHours(d){
     var t = parseDate(d);
     if(!t || isNaN(t.getTime())) return null;
-    return (Date.now() - t.getTime()) / 3600000;
+    var h = (Date.now() - t.getTime()) / 3600000;
+    /* dates that look even slightly in the future (phone clock skew,
+       odd timezone labels on commits) count as "just now" — a fresh upload
+       must NEVER lose its story ring or NEW tag because of this */
+    return h < 0 ? 0 : h;
   }
   function fmtDate(d){
     var t = parseDate(d);
@@ -1051,7 +1055,7 @@
       var dt = null;
       if(f.date){
         var s = String(f.date);
-        if(/^\d{4}-\d{2}-\d{2}T[\d:.]+Z?$/.test(s)) dt = s;          // full ISO (hour precision)
+        if(/^\d{4}-\d{2}-\d{2}T[\d:.]+(Z|[+-]\d{2}:?\d{2})?$/.test(s)) dt = s;  // full ISO — Z or ±HH:MM offsets both OK
         else if(/^\d{4}-\d{2}-\d{2}$/.test(s)) dt = s;               // date only
       }
       var author = null;
@@ -1283,12 +1287,12 @@
   function isSeen(p){ return !!seenPosts[p.id]; }
   function isNewPost(p){
     var h = postAgeH(p);
-    return h !== null && h >= 0 && h < NEW_WINDOW_H && !isSeen(p);
+    return h !== null && h < NEW_WINDOW_H && !isSeen(p);
   }
   function storyPosts(){
     return posts.filter(function(p){
       var h = postAgeH(p);
-      return h !== null && h >= 0 && h < STORY_WINDOW_H;
+      return h !== null && h < STORY_WINDOW_H;
     }).sort(function(a, b){
       var ha = ageHours(a.date), hb = ageHours(b.date);
       return ha - hb; // freshest first
