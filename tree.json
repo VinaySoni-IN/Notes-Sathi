@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-01T17:54:27.982769Z",
+ "generatedAt": "2026-10-01T17:54:41.843519Z",
  "files": [
   {
    "path": "notes/Python-07.hi.pdf",
@@ -15,16 +15,6 @@
    "path": "notes/Python-07.pdf",
    "size": 556531,
    "date": "2026-10-01T09:33:57-04:00",
-   "author": {
-    "login": "VinaySoni-IN",
-    "name": "Vinay Sanjay Soni",
-    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
-   }
-  },
-  {
-   "path": "notes/Python-08.pdf",
-   "size": 855994,
-   "date": "2026-09-30T23:32:17-04:00",
    "author": {
     "login": "VinaySoni-IN",
     "name": "Vinay Sanjay Soni",
