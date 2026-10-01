@@ -1,6 +1,26 @@
 {
- "generatedAt": "2026-10-01T03:32:27.313278Z",
+ "generatedAt": "2026-10-01T13:34:19.974108Z",
  "files": [
+  {
+   "path": "notes/Python-07.hi.pdf",
+   "size": 5565797,
+   "date": "2026-10-01T09:33:57-04:00",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "Vinay Sanjay Soni",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Python-07.pdf",
+   "size": 556531,
+   "date": "2026-10-01T09:33:57-04:00",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "Vinay Sanjay Soni",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
   {
    "path": "notes/Python-08.hi.pdf",
    "size": 226081,
