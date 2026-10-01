@@ -987,6 +987,7 @@
     });
     return parts.join(" · ");
   }
+  function isLocalFile(){ return location.protocol === "file:"; }
   function fileUrl(path){
     return path.split("/").map(encodeURIComponent).join("/");
   }
@@ -1882,7 +1883,7 @@
       '<button class="pt-btn pt-act" id="pdfExtBtn" title="Open in new tab" aria-label="Open in new tab">' + svgExt() + "</button>" +
       "</div>" +
       '<div class="pdf-stage" id="pdfStage">' +
-      '<div class="pdf-loading" id="pdfLoading"><span class="spinner"></span>Opening PDF\u2026</div>' +
+      '<div class="pdf-loading" id="pdfLoading"><span class="spinner"></span><span id="pdfLoadText">Opening PDF\u2026</span></div>' +
       '<canvas class="pdf-canvas" id="pdfCanvas"></canvas>' +
       '<div class="pdf-errorbox" id="pdfErrorBox" style="display:none;">' +
       '<div class="big">\uD83D\uDCC4</div>' +
@@ -1897,12 +1898,17 @@
   function destroyPdf(){
     if(pdfState.task){ try{ pdfState.task.cancel(); }catch(e){} pdfState.task = null; }
     if(pdfState.doc){ try{ pdfState.doc.destroy(); }catch(e){} }
+    if(pdfState.loadTimer){ clearTimeout(pdfState.loadTimer); pdfState.loadTimer = null; }
     pdfState.doc = null; pdfState.page = 1; pdfState.zoom = 1;
   }
 
   function setPdfLoading(on){
     var el = document.getElementById("pdfLoading");
     if(el) el.style.display = on ? "flex" : "none";
+  }
+  function setPdfLoadText(t){
+    var el = document.getElementById("pdfLoadText");
+    if(el) el.textContent = t;
   }
   function showPdfError(msg){
     setPdfLoading(false);
@@ -1955,30 +1961,117 @@
       var ctx = canvas.getContext("2d");
       if(!ctx){ showPdfError("This device does not support canvas rendering."); return; }
       pdfState.task = page.render({ canvasContext:ctx, viewport:vp });
-      pdfState.task.promise.then(function(){ pdfState.task = null; }).catch(function(){ pdfState.task = null; });
+      pdfState.task.promise.then(function(){
+        pdfState.task = null;
+        if(pdfState.loadTimer){ clearTimeout(pdfState.loadTimer); pdfState.loadTimer = null; }
+        setPdfLoading(false); /* first paint done — hide the spinner now */
+      }).catch(function(err){
+        pdfState.task = null;
+        if(!(err && err.name === "RenderingCancelledException")){
+          setPdfLoading(false);
+          showPdfError("This page could not be drawn (low memory or unsupported image data).");
+        }
+      });
     }).catch(function(){});
   }
 
-  function initPdfViewer(f){
-    if(typeof window.pdfjsLib === "undefined" || !window.pdfjsLib){
-      showPdfError("The PDF viewer library did not load (offline first visit?). Use the buttons below.");
-      return;
+  function b64ToUint8(b64){
+    var bin = atob(b64), n = bin.length, u = new Uint8Array(n);
+    for(var i = 0; i < n; i++) u[i] = bin.charCodeAt(i);
+    return u;
+  }
+  /* demo notes: hand the bytes straight to pdf.js — works even when the app
+     is opened as a local file (file://), where fetching URLs is blocked */
+  function pdfSource(f){
+    if(f.demo && typeof DEMO_PDF_B64 === "string"){
+      try{ return { data: b64ToUint8(DEMO_PDF_B64) }; }catch(e){}
     }
-    try{ window.pdfjsLib.GlobalWorkerOptions.workerSrc = "pdf.worker.min.js"; }catch(e){}
-    destroyPdf();
-    pdfState.file = f; pdfState.page = 1; pdfState.zoom = 1;
-    setPdfLoading(true);
-    document.getElementById("pdfErrorBox").style.display = "none";
-    updatePdfPageLabel();
-    window.pdfjsLib.getDocument({ url:f.url, cMapUrl:"cmaps/", cMapPacked:true, standardFontDataUrl:"standard_fonts/" }).promise.then(function(doc){
-      if(!document.getElementById("pdfCanvas")){ try{ doc.destroy(); }catch(e){} return; }
-      pdfState.doc = doc;
-      setPdfLoading(false);
-      updatePdfPageLabel();
-      renderPdfPage();
+    return { url: f.url };
+  }
+
+  var PDFJS_CDN = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174";
+  var PDFJS_CDN_EXTRA = "https://unpkg.com/pdfjs-dist@3.11.174";
+
+  /* The local pdf.* files are preferred. If the site was deployed without them
+     (partial upload), the engine + its font/cmap resources load from a CDN
+     instead — and the service worker caches them, so offline still works. */
+  function ensurePdfJs(cb){
+    if(window.pdfjsLib) return cb(true);
+    var s = document.createElement("script");
+    s.src = PDFJS_CDN + "/pdf.min.js";
+    s.onload = function(){ cb(!!window.pdfjsLib); };
+    s.onerror = function(){ cb(false); };
+    document.head.appendChild(s);
+  }
+  function headOk(u){
+    return fetch(u, { method:"HEAD" }).then(function(r){ return r.ok; }).catch(function(){ return false; });
+  }
+  var pdfBases = null;
+  function detectPdfBases(cb){
+    if(pdfBases) return cb(pdfBases);
+    Promise.all([
+      headOk("pdf.worker.min.js"),
+      headOk("standard_fonts/LiberationSans-Regular.ttf"),
+      headOk("cmaps/Adobe-Japan1-0.bcmap")
+    ]).then(function(r){
+      pdfBases = {
+        workerSrc: r[0] ? "pdf.worker.min.js" : PDFJS_CDN + "/pdf.worker.min.js",
+        standardFontDataUrl: r[1] ? "standard_fonts/" : PDFJS_CDN_EXTRA + "/standard_fonts/",
+        cMapUrl: r[2] ? "cmaps/" : PDFJS_CDN_EXTRA + "/cmaps/"
+      };
+      cb(pdfBases);
     }).catch(function(){
-      setPdfLoading(false);
-      showPdfError("This PDF could not be opened inside the app.");
+      pdfBases = {
+        workerSrc: PDFJS_CDN + "/pdf.worker.min.js",
+        standardFontDataUrl: PDFJS_CDN_EXTRA + "/standard_fonts/",
+        cMapUrl: PDFJS_CDN_EXTRA + "/cmaps/"
+      };
+      cb(pdfBases);
+    });
+  }
+
+  function initPdfViewer(f){
+    setPdfLoading(true);
+    setPdfLoadText("Opening PDF\u2026");
+    var eb = document.getElementById("pdfErrorBox");
+    if(eb) eb.style.display = "none";
+    updatePdfPageLabel();
+    ensurePdfJs(function(okLib){
+      if(!okLib){
+        setPdfLoading(false);
+        showPdfError("The PDF viewer library did not load \u2014 check your connection and open this note again.");
+        return;
+      }
+      detectPdfBases(function(bases){
+        try{ window.pdfjsLib.GlobalWorkerOptions.workerSrc = bases.workerSrc; }catch(e){}
+        destroyPdf();
+        pdfState.file = f; pdfState.page = 1; pdfState.zoom = 1;
+        /* scanned notes are often several MB — show live progress so a slow
+           connection never looks like a broken viewer */
+        var slowTimer = setTimeout(function(){
+          setPdfLoadText("Still loading\u2026 slow connection? You can use \u2B87 or \u2197 above.");
+        }, 20000);
+        var task = window.pdfjsLib.getDocument(Object.assign(
+          { cMapUrl: bases.cMapUrl, cMapPacked:true, standardFontDataUrl: bases.standardFontDataUrl },
+          pdfSource(f)));
+        task.onProgress = function(ev){
+          if(ev && ev.total){
+            var pct = Math.min(100, Math.round(100 * ev.loaded / ev.total));
+            setPdfLoadText("Loading " + pct + "% \u00B7 " + fmtSize(ev.total));
+          }
+        };
+        task.promise.then(function(doc){
+          if(!document.getElementById("pdfCanvas")){ clearTimeout(slowTimer); try{ doc.destroy(); }catch(e){} return; }
+          pdfState.doc = doc;
+          updatePdfPageLabel();
+          renderPdfPage(); /* spinner is hidden after the first page is painted */
+        }).catch(function(){
+          clearTimeout(slowTimer);
+          setPdfLoading(false);
+          showPdfError("This PDF could not be opened inside the app.");
+        });
+        pdfState.loadTimer = slowTimer;
+      });
     });
   }
 
@@ -2204,6 +2297,19 @@
   });
 
   function boot(){
+    if(isLocalFile()){
+      setTimeout(function(){
+        showToast("\u26A0\uFE0F Local preview \u2014 deploy to GitHub Pages to load real notes", 4200);
+      }, 1200);
+      var db = document.getElementById("demoBanner");
+      if(db && !db.querySelector(".localHint")){
+        var s = document.createElement("div");
+        s.className = "localHint";
+        s.style.cssText = "margin-top:6px; font-weight:800;";
+        s.textContent = "\u26A0\uFE0F You opened this file directly \u2014 PDFs and notes need the app hosted on GitHub Pages.";
+        db.appendChild(s);
+      }
+    }
     applyTheme();
     seenPosts = loadMap(LS_SEEN);
     savedPosts = loadMap(LS_SAVED);
