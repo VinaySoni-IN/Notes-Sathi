@@ -1,16 +1,6 @@
 {
- "generatedAt": "2026-10-01T03:31:13.205446Z",
+ "generatedAt": "2026-10-01T03:31:30.526823Z",
  "files": [
-  {
-   "path": "notes/Scripting Language/python-1.hi.pdf",
-   "size": 2,
-   "date": "2026-09-30T00:49:10+05:30",
-   "author": {
-    "login": null,
-    "name": "Vinay Sanjay Soni",
-    "avatar": null
-   }
-  },
   {
    "path": "notes/config.json",
    "size": 382,
