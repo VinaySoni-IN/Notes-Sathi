@@ -1,36 +1,6 @@
 {
- "generatedAt": "2026-10-01T03:22:09.600690Z",
+ "generatedAt": "2026-10-01T03:23:00.728932Z",
  "files": [
-  {
-   "path": "notes/Physics/Unit-1-Motion.hi.pdf",
-   "size": 1343,
-   "date": "2026-10-01T03:18:37Z",
-   "author": {
-    "login": "github-actions[bot]",
-    "name": "github-actions[bot]",
-    "avatar": "https://avatars.githubusercontent.com/in/15368?v=4"
-   }
-  },
-  {
-   "path": "notes/Physics/Unit-1-Motion.pdf",
-   "size": 1395,
-   "date": "2026-10-01T03:18:37Z",
-   "author": {
-    "login": "github-actions[bot]",
-    "name": "github-actions[bot]",
-    "avatar": "https://avatars.githubusercontent.com/in/15368?v=4"
-   }
-  },
-  {
-   "path": "notes/Physics/Unit-2-Gravitation.pdf",
-   "size": 1145,
-   "date": "2026-10-01T03:18:37Z",
-   "author": {
-    "login": "github-actions[bot]",
-    "name": "github-actions[bot]",
-    "avatar": "https://avatars.githubusercontent.com/in/15368?v=4"
-   }
-  },
   {
    "path": "notes/Scripting Language/Python-1.pdf",
    "size": 2,
