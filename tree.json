@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-01T17:54:41.843519Z",
+ "generatedAt": "2026-10-01T17:59:21.761839Z",
  "files": [
   {
-   "path": "notes/Python-07.hi.pdf",
-   "size": 5565797,
+   "path": "notes/Python-07.pdf",
+   "size": 556531,
    "date": "2026-10-01T09:33:57-04:00",
    "author": {
     "login": "VinaySoni-IN",
@@ -12,9 +12,9 @@
    }
   },
   {
-   "path": "notes/Python-07.pdf",
-   "size": 556531,
-   "date": "2026-10-01T09:33:57-04:00",
+   "path": "notes/Semester-3/Python-07.hi.pdf",
+   "size": 2,
+   "date": "2026-10-01T13:59:09-04:00",
    "author": {
     "login": "VinaySoni-IN",
     "name": "Vinay Sanjay Soni",
