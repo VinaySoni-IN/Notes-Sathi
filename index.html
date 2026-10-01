@@ -171,6 +171,60 @@
 
   /* ============ STORIES TRAY (Instagram-style) ============ */
   #storiesWrap{ margin-bottom:6px; }
+
+  /* ============ SEMESTER ONBOARDING / SETTINGS ============ */
+  .sem-overlay{ align-items:center; justify-content:center; padding:16px; z-index:80; }
+  .sem-card{
+    width:100%; max-width:430px; max-height:calc(100dvh - 40px); overflow-y:auto;
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    box-shadow:var(--shadow); padding:22px 20px; animation:slideup .25s ease;
+  }
+  .sem-head{ text-align:center; margin-bottom:14px; }
+  .sem-logo{ font-size:40px; margin-bottom:6px; }
+  .sem-eyebrow{ font-size:11.5px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color:var(--ink-faint); }
+  .sem-title{ margin:6px 0 4px; font-size:20px; font-weight:800; font-family:var(--font-display); letter-spacing:-.3px; }
+  .sem-sub{ font-size:12.5px; color:var(--ink-soft); line-height:1.6; margin:0; }
+  .sem-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; margin:14px 0; }
+  .sem-pill{
+    border:1.5px solid var(--line); background:var(--card-2); color:var(--ink);
+    font-family:var(--font); font-size:12.5px; font-weight:800;
+    padding:11px 4px; border-radius:12px; cursor:pointer; transition:.13s ease; text-align:center;
+  }
+  .sem-pill:active{ transform:scale(.96); }
+  .sem-pill.sel{ border-color:var(--brand); background:var(--brand-soft); color:var(--brand); }
+  .sem-agree{ display:flex; flex-direction:column; gap:10px; }
+  .tc-box{
+    background:var(--card-2); border:1px solid var(--line-soft); border-radius:13px;
+    padding:12px 14px; max-height:180px; overflow-y:auto;
+  }
+  .tc-box b{ font-size:12px; display:block; margin-bottom:6px; }
+  .tc-box p{ margin:0; font-size:12px; line-height:1.75; color:var(--ink-soft); }
+  .ack-row{
+    display:flex; gap:10px; align-items:flex-start; cursor:pointer;
+    background:var(--brand-soft); border:1.5px solid var(--brand); border-radius:13px; padding:11px 13px;
+  }
+  .ack-row input{ width:18px; height:18px; margin-top:1px; accent-color:var(--brand); flex:none; cursor:pointer; }
+  .ack-row span{ font-size:12px; line-height:1.65; color:var(--ink); }
+  #semStart{ margin-top:14px; }
+  #semStart[disabled]{ opacity:.45; }
+  .searchbar{
+    display:flex; align-items:center; gap:8px;
+    background:var(--card); border:1.5px solid var(--line);
+    border-radius:13px; padding:9px 12px; margin:10px 0 12px;
+    transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .searchbar:focus-within{ border-color:var(--brand); box-shadow:0 0 0 3px var(--brand-soft); }
+  .searchbar svg{ width:16px; height:16px; color:var(--ink-faint); flex:none; }
+  .searchbar input{
+    flex:1; min-width:0; border:none; outline:none; background:transparent;
+    font-family:var(--font); font-size:13.5px; font-weight:600; color:var(--ink);
+  }
+  .searchbar input::placeholder{ color:var(--ink-faint); font-weight:500; }
+  .searchbar #searchClear{
+    flex:none; border:none; background:var(--card-2); color:var(--ink-soft);
+    width:22px; height:22px; border-radius:50%; cursor:pointer;
+    font-size:11px; font-weight:800; line-height:1; display:flex; align-items:center; justify-content:center;
+  }
   .tray-label{
     display:flex; align-items:center; gap:7px;
     font-size:11.5px; font-weight:800; color:var(--ink-faint);
@@ -673,6 +727,9 @@
         <div class="hdr-sub" id="hdrSub">College notes, beautifully organized</div>
       </div>
       <div class="hdr-actions">
+        <button class="iconbtn" id="semBtn" aria-label="Change semester" title="Semester settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
         <button class="iconbtn" id="themeBtn" aria-label="Toggle dark mode" title="Dark mode">
           <span id="themeIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg></span>
         </button>
@@ -689,6 +746,7 @@
         <div class="mast-tag" id="mastTag">Class notes — English + हिंदी, free for every student</div>
         <div class="mast-by" id="mastBy"></div>
         <div class="mast-stats">
+          <span class="mchip" id="mchipSem" style="display:none; cursor:pointer;" title="Change semester">🎓 Semester</span>
           <span class="mchip" id="mchipSubjects">— subjects</span>
           <span class="mchip" id="mchipNotes">— notes</span>
           <span class="mchip" id="mchipUpdated">—</span>
@@ -708,6 +766,12 @@
       <div id="storiesWrap" style="display:none;">
         <div class="tray-label" id="trayLabel"><span class="pulse"></span> Fresh uploads</div>
         <div class="stories" id="storyTray" aria-label="Fresh uploads"></div>
+      </div>
+
+      <div class="searchbar" id="searchWrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="searchInput" placeholder="Search notes… (name / subject)" autocomplete="off" enterkeyhint="search" aria-label="Search notes">
+        <button id="searchClear" aria-label="Clear search" title="Clear" hidden>✕</button>
       </div>
 
       <div class="chips" id="chipRow" aria-label="Subjects"></div>
@@ -819,6 +883,32 @@
 </nav>
 
 <!-- ============ VIEWER ============ -->
+<div class="overlay sem-overlay" id="semOverlay" role="dialog" aria-modal="true" aria-label="Welcome to Notes Sathi">
+  <div class="sem-card">
+    <div class="sem-head">
+      <div class="sem-logo">📚</div>
+      <div class="sem-eyebrow">Welcome to <b>Notes Sathi</b></div>
+      <h2 class="sem-title" id="semTitle">Choose your semester</h2>
+      <p class="sem-sub" id="semSub">Your notes will open for this semester by default. You can change it anytime from the ⚙️ settings icon.</p>
+    </div>
+    <div class="sem-grid" id="semGrid" role="radiogroup" aria-label="Semester"></div>
+
+    <div class="sem-agree" id="semAgree">
+      <div class="tc-box" id="tcBox">
+        <b>📜 Terms &amp; Conditions and Privacy Policy</b>
+        <p>Notes Sathi is a free educational notes platform provided as-is, with no warranties of any kind. All notes are contributed by teachers and contributors for study purposes only. By using this app you agree that: (1) the content is not an official publication of any school, college, university or examination body — always verify with your official syllabus, textbooks and teachers; (2) the owner, contributors and publishers of this app shall have no liability whatsoever for any errors, omissions, inaccuracies or consequences resulting from the use of this content; (3) the notes are shared for personal study only and may not be sold or redistributed without the respective author's permission. <b>Privacy:</b> we do not collect, track, store or sell any personal data — no accounts, no ads, no analytics. Your theme, semester, bookmarks and reading history are saved only in your own browser, on your own device, and never leave it. The app simply reads notes from a public GitHub repository. By continuing you accept these terms in full.</p>
+      </div>
+      <label class="ack-row" for="ackCheck">
+        <input type="checkbox" id="ackCheck">
+        <span><b>I acknowledge</b> that Notes Sathi is not an official source of information, and the owner and contributors hold no liability for the accuracy, completeness or use of the content.</span>
+      </label>
+    </div>
+
+    <button class="btn btn-primary btn-block" id="semStart" disabled>Start reading 📚</button>
+    <button class="btn btn-ghost btn-block" id="semCancel" style="display:none;">Cancel</button>
+  </div>
+</div>
+
 <div class="overlay screen-overlay" id="viewerOverlay" role="dialog" aria-modal="true" aria-label="Read note">
   <div class="screen">
     <div class="screen-head">
@@ -1290,7 +1380,7 @@
     return h !== null && h < NEW_WINDOW_H && !isSeen(p);
   }
   function storyPosts(){
-    return posts.filter(function(p){
+    return feedPosts().filter(function(p){
       var h = postAgeH(p);
       return h !== null && h < STORY_WINDOW_H;
     }).sort(function(a, b){
@@ -1317,12 +1407,28 @@
     persistMap(LS_SAVED, savedPosts);
   }
 
+  var searchQ = "";
+  function postMatchesSearch(p, q){
+    if(!q) return true;
+    q = q.toLowerCase();
+    if(p.title.toLowerCase().indexOf(q) > -1) return true;
+    if(p.subject.name.toLowerCase().indexOf(q) > -1) return true;
+    if(p.subjectRaw.toLowerCase().indexOf(q) > -1) return true;
+    for(var i = 0; i < p.files.length; i++){
+      if(p.files[i].name.toLowerCase().indexOf(q) > -1) return true;
+    }
+    return false;
+  }
+
   function visiblePosts(){
     if(activeSubject === "__saved"){
-      return posts.filter(function(p){ return isSaved(p); })
+      return posts.filter(function(p){ return isSaved(p) && postMatchesSearch(p, searchQ); })
                   .sort(function(a, b){ return (postAgeH(b) || 1e9) - (postAgeH(a) || 1e9); });
     }
-    var list = posts.filter(function(p){ return activeSubject === null || p.subjectRaw === activeSubject; });
+    var list = feedPosts().filter(function(p){
+      if(activeSubject !== null && p.subjectRaw !== activeSubject) return false;
+      return postMatchesSearch(p, searchQ);
+    });
     if(hasDates()){
       list.sort(function(a, b){
         if(a.date && b.date) return a.date < b.date ? 1 : a.date > b.date ? -1 : natCompare(a.title, b.title);
@@ -1455,8 +1561,10 @@
     if(siteConfig.collegeName) parts.push('<span>🎓 ' + esc(siteConfig.collegeName) + "</span>");
     by.innerHTML = parts.join('<span class="dot-sep">·</span>');
 
-    document.getElementById("mchipSubjects").textContent = subjects.length + " subjects";
-    document.getElementById("mchipNotes").textContent = posts.length + " notes";
+    var fp = feedPosts(), subsSeen = {};
+    fp.forEach(function(p){ subsSeen[p.subjectRaw] = 1; });
+    document.getElementById("mchipSubjects").textContent = Object.keys(subsSeen).length + " subjects";
+    document.getElementById("mchipNotes").textContent = fp.length + " notes";
 
     var upd = document.getElementById("mchipUpdated");
 
@@ -1506,10 +1614,14 @@
 
   function renderChips(){
     var row = document.getElementById("chipRow");
-    var html = '<button class="chip-pill' + (activeSubject === null ? " active" : "") + '" data-subj="all">All notes <span class="cnt">' + posts.length + "</span></button>";
+    var fp = feedPosts(), cnts = {};
+    fp.forEach(function(p){ cnts[p.subjectRaw] = (cnts[p.subjectRaw] || 0) + 1; });
+    var html = '<button class="chip-pill' + (activeSubject === null ? " active" : "") + '" data-subj="all">All notes <span class="cnt">' + fp.length + "</span></button>";
     subjects.forEach(function(s){
+      var c = semActive() ? (cnts[s.raw] || 0) : s.count;
+      if(c <= 0) return;
       html += '<button class="chip-pill' + (activeSubject === s.raw ? " active" : "") + '" data-subj="' + esc(s.raw) + '">' +
-        s.emoji + " " + esc(s.name) + ' <span class="cnt">' + s.count + "</span></button>";
+        s.emoji + " " + esc(s.name) + ' <span class="cnt">' + c + "</span></button>";
     });
     var savedCount = posts.filter(isSaved).length;
     if(savedCount > 0 || activeSubject === "__saved"){
@@ -1530,7 +1642,9 @@
     var feed = document.getElementById("feed");
     var label = document.getElementById("feedLabel");
     var list = visiblePosts();
-    if(activeSubject === "__saved"){
+    if(searchQ){
+      label.textContent = '🔍 "' + searchQ + '" — ' + list.length + " match" + (list.length === 1 ? "" : "es");
+    } else if(activeSubject === "__saved"){
       label.textContent = "🔖 Saved notes";
     } else {
       var activeSub = activeSubject === null ? null : subjects.filter(function(s){ return s.raw === activeSubject; })[0];
@@ -1545,7 +1659,7 @@
           '<div class="t">No notes published yet</div>' +
           '<div class="s">Teachers: upload PDFs into the <b>notes/</b> folder of the repository<br>and they appear here automatically within a minute.</div></div>';
       } else {
-        feed.innerHTML = '<div class="empty"><div class="big">🔍</div><div class="t">Nothing in this subject yet</div><div class="s">Try another subject chip above.</div></div>';
+        feed.innerHTML = '<div class="empty"><div class="big">🔍</div><div class="t">' + (searchQ ? "No notes match your search" : "Nothing in this subject yet") + '</div><div class="s">' + (searchQ ? "Try a different name or subject — or clear the search." : "Try another subject chip above.") + '</div></div>';
       }
       return;
     }
@@ -1568,14 +1682,14 @@
   /* ---------- FILES TAB ---------- */
   function allFiles(){
     var arr = [];
-    posts.forEach(function(p){
+    feedPosts().forEach(function(p){
       p.files.forEach(function(f){ arr.push({ post:p, file:f }); });
     });
     return arr;
   }
 
   function renderFiles(){
-    document.getElementById("fsNotes").textContent = posts.length;
+    document.getElementById("fsNotes").textContent = feedPosts().length;
     document.getElementById("fsFiles").textContent = allFiles().length;
     document.getElementById("fsSubjects").textContent = subjects.length;
     var total = 0;
@@ -2354,7 +2468,119 @@
     if(e.target === viewerOverlay) closeViewer();
   });
 
+  /* ============ SEMESTER (onboarding + settings) ============ */
+  var LS_SEM = "ns_sem_v1", LS_ACK = "ns_ack_v1";
+  var mySem = null, semSel = null, semSettingsMode = false;
+
+  function postSem(p){
+    var m = String(p.subjectRaw || "").match(/sem(?:ester)?[\s._-]*(\d)/i);
+    return m ? parseInt(m[1], 10) : null;
+  }
+  function semStructure(){ return posts.some(postSem); }
+  function semActive(){ return !!(mySem && semStructure()); }
+  function feedPosts(){
+    if(semActive()) return posts.filter(function(p){ return postSem(p) === mySem; });
+    return posts;
+  }
+
+  function updateSemChip(){
+    var chip = document.getElementById("mchipSem");
+    if(!chip) return;
+    if(mySem){ chip.style.display = ""; chip.textContent = "\uD83C\uDF93 Semester " + mySem; }
+    else chip.style.display = "none";
+  }
+
+  function buildSemGrid(){
+    var grid = document.getElementById("semGrid");
+    var html = "";
+    for(var i = 1; i <= 8; i++){
+      html += '<button class="sem-pill' + (semSel === i ? " sel" : "") + '" data-sem="' + i +
+        '" role="radio" aria-checked="' + (semSel === i ? "true" : "false") + '">Sem ' + i + "</button>";
+    }
+    grid.innerHTML = html;
+    grid.querySelectorAll(".sem-pill").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        semSel = parseInt(btn.getAttribute("data-sem"), 10);
+        buildSemGrid(); updateSemStart();
+      });
+    });
+  }
+  function updateSemStart(){
+    var btn = document.getElementById("semStart");
+    if(!btn) return;
+    if(semSettingsMode) btn.disabled = !semSel;
+    else btn.disabled = !(semSel && document.getElementById("ackCheck").checked);
+    btn.textContent = semSettingsMode ? "Save semester \u2705" : "Start reading \uD83D\uDCDA";
+  }
+  function openSemModal(settingsMode){
+    semSettingsMode = !!settingsMode;
+    semSel = settingsMode ? mySem : null;
+    var agree = document.getElementById("semAgree");
+    var cancel = document.getElementById("semCancel");
+    var title = document.getElementById("semTitle");
+    var sub = document.getElementById("semSub");
+    if(settingsMode){
+      agree.style.display = "none"; cancel.style.display = "";
+      title.textContent = "Change semester";
+      sub.textContent = "Pick your semester \u2014 your notes view updates instantly.";
+    } else {
+      agree.style.display = ""; cancel.style.display = "none";
+      title.textContent = "Choose your semester";
+      document.getElementById("ackCheck").checked = false;
+    }
+    buildSemGrid(); updateSemStart();
+    document.getElementById("semOverlay").classList.add("open");
+  }
+  function closeSemModal(){ document.getElementById("semOverlay").classList.remove("open"); }
+  function semAccepted(){
+    try{ return localStorage.getItem(LS_ACK) === "1"; }catch(e){ return false; }
+  }
+  function loadSem(){
+    try{
+      var v = parseInt(localStorage.getItem(LS_SEM), 10);
+      mySem = (v >= 1 && v <= 8) ? v : null;
+    }catch(e){ mySem = null; }
+  }
+  function saveSem(){
+    mySem = semSel;
+    try{
+      localStorage.setItem(LS_SEM, String(mySem));
+      if(!semSettingsMode) localStorage.setItem(LS_ACK, "1");
+    }catch(e){}
+    closeSemModal(); updateSemChip(); renderAll();
+    showToast("\uD83C\uDF93 Semester " + mySem + " saved");
+  }
+  function wireSem(){
+    buildSemGrid();
+    document.getElementById("semStart").addEventListener("click", function(){ if(!this.disabled) saveSem(); });
+    document.getElementById("semCancel").addEventListener("click", closeSemModal);
+    document.getElementById("ackCheck").addEventListener("change", updateSemStart);
+    document.getElementById("semBtn").addEventListener("click", function(){ openSemModal(true); });
+    document.getElementById("mchipSem").addEventListener("click", function(){ openSemModal(true); });
+  }
+
+  function wireSearch(){
+    var input = document.getElementById("searchInput");
+    var clearBtn = document.getElementById("searchClear");
+    if(!input) return;
+    input.addEventListener("input", function(){
+      searchQ = input.value.trim();
+      clearBtn.hidden = !searchQ;
+      renderFeed();
+    });
+    input.addEventListener("keydown", function(e){
+      if(e.key === "Escape"){ input.value = ""; searchQ = ""; clearBtn.hidden = true; renderFeed(); input.blur(); }
+    });
+    if(clearBtn) clearBtn.addEventListener("click", function(){
+      input.value = ""; searchQ = ""; clearBtn.hidden = true; renderFeed(); input.focus();
+    });
+  }
+
   function boot(){
+    wireSearch();
+    loadSem();
+    wireSem();
+    updateSemChip();
     if(isLocalFile()){
       setTimeout(function(){
         showToast("\u26A0\uFE0F Local preview \u2014 deploy to GitHub Pages to load real notes", 4200);
@@ -2382,6 +2608,8 @@
       }
       if(dataSource === "demo") showBanner("demo");
       renderAll();
+      updateSemChip();
+      if(!semAccepted()) openSemModal(false);
       if(dataSource === "cache") showBanner("warn", "Showing <b>saved notes</b> from your last visit (offline). Check again later for updates.");
       /* live GitHub data: hero sync (repo stars/forks/updated) + About profile */
       Promise.all([loadGitHubProfile(), loadRepoStats()]).then(function(res){
