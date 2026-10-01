@@ -1,26 +1,6 @@
 {
- "generatedAt": "2026-10-01T03:21:52.906667Z",
+ "generatedAt": "2026-10-01T03:22:09.600690Z",
  "files": [
-  {
-   "path": "notes/Mathematics/Chapter-4-Integration.hi.pdf",
-   "size": 1163,
-   "date": "2026-10-01T03:18:37Z",
-   "author": {
-    "login": "github-actions[bot]",
-    "name": "github-actions[bot]",
-    "avatar": "https://avatars.githubusercontent.com/in/15368?v=4"
-   }
-  },
-  {
-   "path": "notes/Mathematics/Chapter-4-Integration.pdf",
-   "size": 1162,
-   "date": "2026-10-01T03:18:37Z",
-   "author": {
-    "login": "github-actions[bot]",
-    "name": "github-actions[bot]",
-    "avatar": "https://avatars.githubusercontent.com/in/15368?v=4"
-   }
-  },
   {
    "path": "notes/Physics/Unit-1-Motion.hi.pdf",
    "size": 1343,
