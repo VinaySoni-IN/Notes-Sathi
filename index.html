@@ -569,8 +569,12 @@
     position:relative; background:var(--card);
     border:1px solid var(--line); border-radius:13px;
     overflow:auto; box-shadow:var(--shadow); min-height:320px;
+    -webkit-overflow-scrolling:touch;
   }
-  .pdf-canvas{ display:block; }
+  .pdf-canvas{ display:block; touch-action:pan-x pan-y; }
+  .pdf-canvas.pdf-anim{ transition:width .16s ease-out, height .16s ease-out; }
+  .pdf-canvas.pdf-in{ animation:pdfin .18s ease-out; }
+  @keyframes pdfin{ from{ opacity:.2 } to{ opacity:1 } }
   .pdf-loading{
     position:absolute; inset:0; z-index:3;
     display:flex; flex-direction:column; gap:12px; align-items:center; justify-content:center;
@@ -1899,7 +1903,8 @@
     if(pdfState.task){ try{ pdfState.task.cancel(); }catch(e){} pdfState.task = null; }
     if(pdfState.doc){ try{ pdfState.doc.destroy(); }catch(e){} }
     if(pdfState.loadTimer){ clearTimeout(pdfState.loadTimer); pdfState.loadTimer = null; }
-    pdfState.doc = null; pdfState.page = 1; pdfState.zoom = 1;
+    if(sharpTimer){ clearTimeout(sharpTimer); sharpTimer = null; }
+    pdfState.doc = null; pdfState.page = 1; pdfState.zoom = 1; pdfState.baseW = 0; pdfState.baseH = 0;
   }
 
   function setPdfLoading(on){
@@ -1954,25 +1959,39 @@
       var containerW = stage.clientWidth || 600;
       var base = page.getViewport({ scale:1 });
       var fitScale = base.width > 0 ? containerW / base.width : 1;
-      /* explicit pixel dimensions: the page can NEVER be css-squashed, and
-         zooming really zooms (the stage scrolls sideways when zoomed in) */
-      var dispW = Math.max(1, Math.floor(containerW * pdfState.zoom));
       var ratio = base.width > 0 ? base.height / base.width : 1.414;
-      var dispH = Math.max(1, Math.floor(dispW * ratio));
+      pdfState.baseW = Math.max(1, Math.floor(containerW));
+      pdfState.baseH = Math.max(1, Math.floor(containerW * ratio));
+      var dispW = Math.max(1, Math.floor(pdfState.baseW * pdfState.zoom));
+      var dispH = Math.max(1, Math.floor(pdfState.baseH * pdfState.zoom));
       var dpr = Math.min(window.devicePixelRatio || 1, 2); /* crisp text on phones */
-      var vp = page.getViewport({ scale: fitScale * pdfState.zoom * dpr });
-      canvas.width = Math.max(1, Math.floor(vp.width));
-      canvas.height = Math.max(1, Math.floor(vp.height));
-      canvas.style.width = dispW + "px";
-      canvas.style.height = dispH + "px";
-      canvas.style.display = "block";
-      var ctx = canvas.getContext("2d");
+      var scale = fitScale * pdfState.zoom * dpr;
+      var probe = page.getViewport({ scale: scale });
+      var MAXPX = 12e6; /* stay inside safe canvas limits on big scans */
+      if(probe.width * probe.height > MAXPX){
+        scale = scale * Math.sqrt(MAXPX / (probe.width * probe.height));
+      }
+      var vp = page.getViewport({ scale: scale });
+      /* draw OFFSCREEN, then swap in one atomic paint — no blank flash, so
+         zooming and page turns stay perfectly smooth */
+      var off = document.createElement("canvas");
+      off.width = Math.max(1, Math.round(vp.width));
+      off.height = Math.max(1, Math.round(vp.height));
+      var ctx = off.getContext("2d");
       if(!ctx){ showPdfError("This device does not support canvas rendering."); return; }
       pdfState.task = page.render({ canvasContext:ctx, viewport:vp });
       pdfState.task.promise.then(function(){
         pdfState.task = null;
+        if(!document.getElementById("pdfCanvas")) return;
+        canvas.width = off.width;
+        canvas.height = off.height;
+        try{ canvas.getContext("2d").drawImage(off, 0, 0); }catch(e){}
+        canvas.style.width = dispW + "px";
+        canvas.style.height = dispH + "px";
+        canvas.style.display = "block";
+        if(!canvas.classList.contains("pdf-in")) canvas.classList.add("pdf-in");
         if(pdfState.loadTimer){ clearTimeout(pdfState.loadTimer); pdfState.loadTimer = null; }
-        setPdfLoading(false); /* first paint done — hide the spinner now */
+        setPdfLoading(false);
       }).catch(function(err){
         pdfState.task = null;
         if(!(err && err.name === "RenderingCancelledException")){
@@ -1983,6 +2002,18 @@
     }).catch(function(){});
   }
 
+  /* ---------- buttery zoom: instant stretch NOW, sharp re-raster LATER ---------- */
+  var sharpTimer = null;
+  function applyZoomVisual(z){
+    var canvas = document.getElementById("pdfCanvas");
+    if(!canvas || !pdfState.baseW) return;
+    canvas.style.width = Math.floor(pdfState.baseW * z) + "px";
+    canvas.style.height = Math.floor(pdfState.baseH * z) + "px";
+  }
+  function scheduleSharpRender(){
+    if(sharpTimer) clearTimeout(sharpTimer);
+    sharpTimer = setTimeout(function(){ sharpTimer = null; renderPdfPage(); }, 240);
+  }
   function b64ToUint8(b64){
     var bin = atob(b64), n = bin.length, u = new Uint8Array(n);
     for(var i = 0; i < n; i++) u[i] = bin.charCodeAt(i);
@@ -2083,10 +2114,18 @@
     });
   }
 
-  function setPdfZoom(z){
-    pdfState.zoom = Math.max(0.5, Math.min(4, Math.round(z * 4) / 4));
+  function setPdfZoom(z, pinch){
+    var nz = Math.max(0.5, Math.min(4, Math.round(z * 4) / 4));
+    if(nz === pdfState.zoom) return;
+    pdfState.zoom = nz;
     updatePdfPageLabel();
-    renderPdfPage();
+    var canvas = document.getElementById("pdfCanvas");
+    if(canvas){
+      if(pinch) canvas.classList.remove("pdf-anim");   /* 1:1 finger tracking */
+      else canvas.classList.add("pdf-anim");           /* animated button zoom */
+    }
+    applyZoomVisual(nz);     /* instant — no re-render needed to SEE it */
+    scheduleSharpRender();   /* re-raster crisp once the gesture settles */
   }
 
   function wirePdfToolbar(f){
@@ -2104,6 +2143,7 @@
     var stage = document.getElementById("pdfStage");
     if(canvas) canvas.addEventListener("click", function(e){
       if(!pdfState.doc) return;
+      if(pdfState.pinchUntil && Date.now() < pdfState.pinchUntil) return; /* just pinched — not a tap */
       var rect = canvas.getBoundingClientRect();
       var x = (e.clientX - rect.left) / rect.width;
       if(x < 0.28 && pdfState.page > 1){ pdfState.page--; updatePdfPageLabel(); renderPdfPage(); }
@@ -2119,10 +2159,15 @@
       canvas.addEventListener("touchmove", function(e){
         if(pinch && e.touches && e.touches.length === 2 && pdfState.doc){
           if(e.cancelable) e.preventDefault();
-          setPdfZoom(pinch.z * tdist(e.touches) / pinch.d);
+          setPdfZoom(pinch.z * tdist(e.touches) / pinch.d, true);
         }
       }, { passive:false });
-      canvas.addEventListener("touchend", function(e){ if(!e.touches || e.touches.length < 2) pinch = null; }, { passive:true });
+      canvas.addEventListener("touchend", function(e){
+        if(!e.touches || e.touches.length < 2){
+          if(pinch) pdfState.pinchUntil = Date.now() + 350; /* swallow the trailing tap */
+          pinch = null;
+        }
+      }, { passive:true });
     }
     /* ctrl/cmd + wheel to zoom (desktop) */
     if(stage) stage.addEventListener("wheel", function(e){
