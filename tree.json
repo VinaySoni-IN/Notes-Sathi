@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-10-01T15:01:43Z",
+ "generatedAt": "2026-10-01T15:15:53.350619Z",
  "files": [
   {
-   "path": "notes/Computer-Science/DBMS-Unit-2-SQL.pdf",
-   "size": 1208,
-   "date": "2026-09-27T11:01:43Z",
+   "path": "notes/Python-07.hi.pdf",
+   "size": 5565797,
+   "date": "2026-10-01T09:33:57-04:00",
    "author": {
     "login": "VinaySoni-IN",
     "name": "Vinay Sanjay Soni",
@@ -12,19 +12,9 @@
    }
   },
   {
-   "path": "notes/Computer-Science/DBMS-Unit-3.pdf",
-   "size": 1155,
-   "date": "2026-10-01T12:01:43Z",
-   "author": {
-    "login": null,
-    "name": "rahul-ta`",
-    "avatar": null
-   }
-  },
-  {
-   "path": "notes/Mathematics/Chapter-4-Integration.hi.pdf",
-   "size": 1163,
-   "date": "2026-09-29T23:01:43Z",
+   "path": "notes/Python-07.pdf",
+   "size": 556531,
+   "date": "2026-10-01T09:33:57-04:00",
    "author": {
     "login": "VinaySoni-IN",
     "name": "Vinay Sanjay Soni",
@@ -32,9 +22,9 @@
    }
   },
   {
-   "path": "notes/Mathematics/Chapter-4-Integration.pdf",
-   "size": 1162,
-   "date": "2026-10-01T10:01:43Z",
+   "path": "notes/Python-08.hi.pdf",
+   "size": 226081,
+   "date": "2026-09-30T23:32:17-04:00",
    "author": {
     "login": "VinaySoni-IN",
     "name": "Vinay Sanjay Soni",
@@ -42,9 +32,9 @@
    }
   },
   {
-   "path": "notes/Physics/Unit-1-Motion.hi.pdf",
-   "size": 1343,
-   "date": "2026-09-30T08:01:43Z",
+   "path": "notes/Python-08.pdf",
+   "size": 855994,
+   "date": "2026-09-30T23:32:17-04:00",
    "author": {
     "login": "VinaySoni-IN",
     "name": "Vinay Sanjay Soni",
@@ -52,19 +42,9 @@
    }
   },
   {
-   "path": "notes/Physics/Unit-1-Motion.pdf",
-   "size": 1395,
-   "date": "2026-09-30T09:01:43Z",
-   "author": {
-    "login": "VinaySoni-IN",
-    "name": "Vinay Sanjay Soni",
-    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
-   }
-  },
-  {
-   "path": "notes/Physics/Unit-2-Gravitation.pdf",
-   "size": 1145,
-   "date": "2026-10-01T13:01:43Z",
+   "path": "notes/config.json",
+   "size": 382,
+   "date": "2026-10-01T08:56:16+05:30",
    "author": {
     "login": "VinaySoni-IN",
     "name": "Vinay Sanjay Soni",
