@@ -1610,7 +1610,12 @@
     } else {
       items.sort(function(a, b){
         var c = natCompare(a.post.subject.name, b.post.subject.name);
-        return c !== 0 ? c : natCompare(a.post.base, b.post.base);
+        if(c !== 0) return c;
+        /* inside a subject: newest uploads at the top (upload time decides) */
+        var ha = ageHours(a.file.date || a.post.date), hb = ageHours(b.file.date || b.post.date);
+        var na = (ha === null || isNaN(ha)) ? 1e12 : ha, nb = (hb === null || isNaN(hb)) ? 1e12 : hb;
+        if(na !== nb) return na - nb;
+        return natCompare(a.post.base, b.post.base);
       });
     }
     if(!items.length){
