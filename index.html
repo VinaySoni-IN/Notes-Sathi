@@ -525,6 +525,24 @@
     margin:0 0 10px; font-size:14px; font-weight:800; display:flex; align-items:center; gap:7px;
   }
   .about-card.flash{ outline:3px solid var(--brand); outline-offset:4px; }
+  #helpCard{ padding:14px 16px; }
+  #helpCard h4{ margin-bottom:4px; }
+  .help-sub{ margin:0 0 12px; font-size:12px; color:var(--ink-soft); }
+  .help-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .help-btn{
+    display:flex; align-items:center; gap:10px; text-decoration:none; cursor:pointer;
+    border-radius:13px; padding:11px 12px; border:1.5px solid var(--line);
+    background:var(--card-2); transition:.14s ease;
+  }
+  .help-btn:active{ transform:scale(.97); }
+  .help-btn svg{ width:22px; height:22px; flex:none; }
+  .help-btn span{ display:flex; flex-direction:column; line-height:1.3; min-width:0; }
+  .help-btn b{ font-size:12.5px; color:var(--ink); }
+  .help-btn small{ font-size:10.5px; color:var(--ink-soft); font-weight:600; }
+  .help-btn.ig{ border-color:#E1306C; background:linear-gradient(135deg, rgba(240,148,51,.14), rgba(220,39,67,.14)); }
+  .help-btn.ig svg{ color:#E1306C; }
+  .help-btn.wa{ border-color:var(--wa); background:rgba(37,211,102,.12); }
+  .help-btn.wa svg{ color:var(--wa); }
   .steps{ counter-reset:step; margin:0; padding:0; list-style:none; }
   .steps li{
     counter-increment:step; position:relative; padding:0 0 14px 38px;
@@ -811,6 +829,21 @@
     <section class="tab-panel" id="aboutTab">
       <div class="profile-card" id="profileCard"></div>
       <div class="status-row"><span class="status-dot" id="statusDot"></span><span id="statusText">Loading…</span></div>
+
+      <div class="about-card" id="helpCard">
+        <h4>🙋 Need help?</h4>
+        <p class="help-sub">Questions, notes requests or suggestions — reach out directly.</p>
+        <div class="help-row">
+          <a class="help-btn ig" href="https://instagram.com/vinay.sanjay.soni" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+            <span><b>Instagram</b><small>@vinay.sanjay.soni</small></span>
+          </a>
+          <a class="help-btn wa" href="https://wa.me/918989031351?text=Hi%20Vinay!%20I%20need%20help%20with%20Notes%20Sathi%20%F0%9F%93%9A" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.6 8.6 0 0 1-3.9-.9L3 20l1-5.3a8.2 8.2 0 0 1-1-4A8.4 8.4 0 0 1 11.5 3a8.4 8.4 0 0 1 9.5 8.5z"/><path d="M8.7 8.4c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .6.5l.7 1.6c.1.3 0 .5-.1.6l-.4.5c-.1.2-.2.3 0 .6a7 7 0 0 0 3 2.6c.3.1.5.1.6-.1l.5-.6c.2-.2.4-.2.6-.1l1.5.8c.4.2.5.4.5.6-.1 1-.8 1.8-2.3 1.8-1.6 0-4.3-1.3-5.8-3.6-1.2-1.8-1.3-3-.9-3.7z" fill="currentColor" stroke="none"/></svg>
+            <span><b>WhatsApp</b><small>+91 89890 31351</small></span>
+          </a>
+        </div>
+      </div>
 
       <div id="contribWrap" style="display:none;">
         <div class="section-label" style="margin-top:2px;">✍️ Contributors — notes by person</div>
