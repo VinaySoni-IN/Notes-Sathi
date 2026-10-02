@@ -708,6 +708,54 @@
   .foot-note{ font-size:11px; color:var(--ink-faint); line-height:1.7; }
   .foot-note b{ font-weight:800; }
 
+  /* ============ PYQ FLOATING BUTTON + SHEET ============ */
+  .pyq-fab{
+    position:fixed; right:14px; bottom:calc(76px + env(safe-area-inset-bottom,0px)); z-index:45;
+    display:none; align-items:center; gap:7px;
+    border:none; cursor:pointer; padding:12px 17px 12px 14px; border-radius:26px;
+    background:linear-gradient(135deg, #6366F1, #8B5CF6);
+    color:#fff; font-family:var(--font); font-size:13.5px; font-weight:800; letter-spacing:.2px;
+    box-shadow:0 8px 22px rgba(99,102,241,.42);
+    transition:transform .14s ease, box-shadow .14s ease;
+  }
+  .pyq-fab.show{ display:flex; animation:fabpop .25s ease; }
+  .pyq-fab:active{ transform:scale(.94); }
+  .pyq-fab svg{ width:17px; height:17px; }
+  .pyq-fab-count{
+    background:#fff; color:#6366F1; font-size:10.5px; font-weight:800;
+    border-radius:12px; padding:2px 7px; line-height:1.3;
+  }
+  @keyframes fabpop{ from{ transform:scale(.6); opacity:0; } to{ transform:scale(1); opacity:1; } }
+  .pyq-overlay{ align-items:flex-end; justify-content:center; z-index:60; }
+  .pyq-sheet{
+    width:100%; max-width:var(--app-max); max-height:74dvh; overflow-y:auto;
+    background:var(--card); border-radius:22px 22px 0 0;
+    box-shadow:var(--shadow-lg); padding:8px 16px calc(18px + env(safe-area-inset-bottom,0px));
+    animation:sheetup .26s ease;
+  }
+  @keyframes sheetup{ from{ transform:translateY(46px); opacity:.5; } to{ transform:none; opacity:1; } }
+  .pyq-grab{ width:40px; height:4px; border-radius:3px; background:var(--line); margin:4px auto 10px; }
+  .pyq-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+  .pyq-title{ display:flex; align-items:center; gap:10px; }
+  .pyq-emoji{ font-size:22px; }
+  .pyq-title b{ display:block; font-size:16px; font-weight:800; font-family:var(--font-display); letter-spacing:-.2px; }
+  .pyq-title small{ display:block; font-size:11.5px; color:var(--ink-soft); font-weight:600; }
+  .pyq-row{
+    display:flex; align-items:center; gap:11px; width:100%; text-align:left;
+    background:var(--card-2); border:1px solid var(--line-soft); border-radius:13px;
+    padding:11px 13px; margin-top:9px; cursor:pointer; transition:.13s ease;
+  }
+  .pyq-row:active{ background:var(--brand-soft); }
+  .pyq-row .pyq-ic{ font-size:19px; flex:none; }
+  .pyq-row .pyq-main{ flex:1; min-width:0; }
+  .pyq-row .pyq-name{ font-size:13.5px; font-weight:800; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pyq-row .pyq-meta{ font-size:11px; color:var(--ink-soft); margin-top:2px; font-weight:600; }
+  .pyq-row .lbadge{ flex:none; }
+  .pyq-empty{ text-align:center; padding:34px 14px 22px; }
+  .pyq-empty .big{ font-size:40px; margin-bottom:10px; }
+  .pyq-empty .t{ font-weight:800; font-size:14.5px; margin-bottom:4px; }
+  .pyq-empty .s{ font-size:12px; color:var(--ink-soft); line-height:1.6; }
+
   /* ============ TOAST ============ */
   .toast{
     position:fixed; left:50%; bottom:calc(84px + env(safe-area-inset-bottom,0px));
@@ -916,6 +964,25 @@
 </nav>
 
 <!-- ============ VIEWER ============ -->
+<button class="pyq-fab" id="pyqFab" aria-label="Previous year questions">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>
+  <span>PYQ's</span>
+  <b class="pyq-fab-count" id="pyqFabCount" hidden>0</b>
+</button>
+
+<div class="overlay pyq-overlay" id="pyqOverlay" role="dialog" aria-modal="true" aria-label="Previous year questions">
+  <div class="pyq-sheet" id="pyqSheet">
+    <div class="pyq-grab"></div>
+    <div class="pyq-head">
+      <div class="pyq-title"><span class="pyq-emoji">📝</span><div><b>PYQ's</b><small>Previous year question papers</small></div></div>
+      <button class="iconbtn" id="pyqClose" aria-label="Close" title="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="pyq-list" id="pyqList"></div>
+  </div>
+</div>
+
 <div class="overlay sem-overlay" id="semOverlay" role="dialog" aria-modal="true" aria-label="Welcome to Notes Sathi">
   <div class="sem-card">
     <div class="sem-head">
@@ -1924,6 +1991,8 @@
   var currentTab = "homeTab";
   function activateTab(tabId){
     currentTab = tabId;
+    var fab = document.getElementById("pyqFab");
+    if(fab) fab.classList.toggle("show", tabId === "homeTab");
     document.querySelectorAll(".tabbtn").forEach(function(b){ b.classList.toggle("active", b.getAttribute("data-tab") === tabId); });
     document.querySelectorAll(".tab-panel").forEach(function(p){ p.classList.toggle("active", p.id === tabId); });
     try{ window.scrollTo({ top:0 }); }catch(e){}
@@ -1947,6 +2016,7 @@
   });
 
   function renderAll(){
+    renderPyqFab();
     renderMasthead();
     renderStories();
     renderChips();
@@ -2592,6 +2662,75 @@
     document.getElementById("mchipSem").addEventListener("click", function(){ openSemModal(true); });
   }
 
+  /* ============ PYQ's (floating button, Home tab only) ============ */
+  function isPyqSubject(raw){
+    return /(^|[\/\s_-])(pyqs?|previous[-\s_]?year[-\s_]?questions?|question[-\s_]?papers?)([\/\s_-]|$)/i.test(String(raw || ""));
+  }
+  function pyqItems(){
+    return allFiles()
+      .filter(function(it){ return isPyqSubject(it.post.subjectRaw); })
+      .sort(function(a, b){
+        var ha = ageHours(a.file.date || a.post.date), hb = ageHours(b.file.date || b.post.date);
+        var na = (ha === null || isNaN(ha)) ? 1e12 : ha, nb = (hb === null || isNaN(hb)) ? 1e12 : hb;
+        return na - nb;
+      });
+  }
+  function renderPyqFab(){
+    var fab = document.getElementById("pyqFab");
+    var count = document.getElementById("pyqFabCount");
+    if(!fab) return;
+    var n = pyqItems().length;
+    if(count){
+      count.textContent = n;
+      count.hidden = n <= 0;
+    }
+  }
+  function renderPyqSheet(){
+    var list = document.getElementById("pyqList");
+    if(!list) return;
+    var items = pyqItems();
+    if(!items.length){
+      list.innerHTML = '<div class="pyq-empty"><div class="big">📝</div>' +
+        '<div class="t">No PYQ papers yet</div>' +
+        '<div class="s">Previous year question papers appear here as soon as they are<br>uploaded to the <b>notes/PYQ/</b> folder.</div></div>';
+      return;
+    }
+    list.innerHTML = items.map(function(it){
+      var p = it.post, f = it.file;
+      var when = f.date || p.date;
+      return '<button class="pyq-row" data-id="' + esc(p.id) + '" data-lang="' + f.lang + '">' +
+        '<span class="pyq-ic">' + (p.subject.emoji || "📄") + "</span>" +
+        '<span class="pyq-main"><span class="pyq-name">' + esc(prettifyTitle(p.base)) + "</span>" +
+        '<span class="pyq-meta">' + esc(p.subject.name) + (when ? " · " + timeAgo(when) : "") + " · " + fmtSize(f.size) + "</span></span>" +
+        '<span class="lbadge' + (f.lang === "hi" ? " hi" : " en") + '">' + (f.lang === "hi" ? "हिंदी" : "EN") + "</span>" +
+        "</button>";
+    }).join("");
+    list.querySelectorAll(".pyq-row").forEach(function(row){
+      row.addEventListener("click", function(){
+        closePyqSheet();
+        openViewer(row.getAttribute("data-id"), row.getAttribute("data-lang"));
+      });
+    });
+  }
+  function openPyqSheet(){
+    renderPyqSheet();
+    document.getElementById("pyqOverlay").classList.add("open");
+  }
+  function closePyqSheet(){
+    document.getElementById("pyqOverlay").classList.remove("open");
+  }
+  function wirePyq(){
+    var fab = document.getElementById("pyqFab");
+    var ov = document.getElementById("pyqOverlay");
+    if(fab) fab.addEventListener("click", openPyqSheet);
+    var c = document.getElementById("pyqClose");
+    if(c) c.addEventListener("click", closePyqSheet);
+    if(ov) ov.addEventListener("click", function(e){ if(e.target === ov) closePyqSheet(); });
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape" && ov && ov.classList.contains("open")) closePyqSheet();
+    });
+  }
+
   function wireSearch(){
     var input = document.getElementById("searchInput");
     var clearBtn = document.getElementById("searchClear");
@@ -2611,6 +2750,9 @@
 
   function boot(){
     wireSearch();
+    wirePyq();
+    var fabBoot = document.getElementById("pyqFab");
+    if(fabBoot) fabBoot.classList.add("show"); /* app opens on Home */
     loadSem();
     wireSem();
     updateSemChip();
