@@ -1,5 +1,5 @@
 /* Notes Sathi — service worker (installable + offline-friendly blog) */
-var CACHE = "notes-sathi-v25";
+var CACHE = "notes-sathi-v26";
 var SHELL = [
   "./",
   "./index.html",
