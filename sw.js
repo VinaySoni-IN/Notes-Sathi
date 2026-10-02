@@ -1,11 +1,13 @@
 /* Notes Sathi — service worker (installable + offline-friendly blog) */
-var CACHE = "notes-sathi-v28";
+var CACHE = "notes-sathi-v29";
 var SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
   "./icon-192.png",
   "./icon-512.png",
+  "./images/college-logo.png",
+  "./images/important.png",
   "./pdf.min.js",
   "./pdf.worker.min.js",
     "./standard_fonts/FoxitDingbats.pfb",

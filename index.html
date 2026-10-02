@@ -171,6 +171,17 @@
 
   /* ============ STORIES TRAY (Instagram-style) ============ */
   #storiesWrap{ margin-bottom:6px; }
+  .story-ring.perm{ background:linear-gradient(135deg, #6366F1, #A855F7); }
+  .story-ring.perm.perm-important{ background:linear-gradient(135deg, #F59E0B, #EF4444); }
+  .story-inner.perm-inner{ background:#fff; }
+  .story-inner.perm-inner img{
+    width:100%; height:100%; object-fit:cover; border-radius:50%; display:block;
+  }
+  .story.perm .story-name{ color:var(--brand); }
+  .story-divider{
+    flex:none; align-self:center; width:1.5px; height:44px; margin:0 6px;
+    background:var(--line); border-radius:2px;
+  }
 
   /* ============ SEMESTER ONBOARDING / SETTINGS ============ */
   .sem-overlay{ align-items:center; justify-content:center; padding:16px; z-index:80; }
@@ -1229,6 +1240,8 @@
         if(c.teacherName) siteConfig.teacherName = String(c.teacherName).slice(0, 60);
         if(c.collegeName) siteConfig.collegeName = String(c.collegeName).slice(0, 80);
         if(c.subjectEmojis && typeof c.subjectEmojis === "object") siteConfig.subjectEmojis = c.subjectEmojis;
+        if(c.officialStoryUrl) siteConfig.officialStoryUrl = String(c.officialStoryUrl).slice(0, 300);
+        if(c.importantStoryUrl) siteConfig.importantStoryUrl = String(c.importantStoryUrl).slice(0, 300);
       }
     }).catch(function(){ /* optional file */ });
   }
@@ -1680,18 +1693,51 @@
   }
 
   /* ---------- stories tray (Instagram-style, 24h NEW) ---------- */
+  var PERM_STORIES = [
+    {
+      key: "official", name: "Official", sub: "\u2197 Website",
+      img: "images/college-logo.png", cls: "perm-official",
+      fallbackUrl: "https://satpudaengineeringcollege.com/",
+      cfgKey: "officialStoryUrl"
+    },
+    {
+      key: "important", name: "Important", sub: "\u2197 Open",
+      img: "images/important.png", cls: "perm-important",
+      fallbackUrl: "https://wa.me/918989031351",
+      cfgKey: "importantStoryUrl"
+    }
+  ];
+  function permStoryUrl(s){
+    var v = siteConfig && siteConfig[s.cfgKey];
+    return (typeof v === "string" && /^https?:\/\//i.test(v)) ? v : s.fallbackUrl;
+  }
+
   function renderStories(){
     var wrap = document.getElementById("storiesWrap");
     var tray = document.getElementById("storyTray");
     var list = storyPosts();
-    if(!list.length){ wrap.style.display = "none"; return; }
+
+    /* permanent quick-link stories: always present, never fade, never expire */
+    var html = "";
+    PERM_STORIES.forEach(function(s){
+      html += '<button class="story perm" data-url="' + esc(permStoryUrl(s)) + '" aria-label="' + esc(s.name) + '">' +
+        '<span class="story-ring perm ' + s.cls + '">' +
+        '<span class="story-inner perm-inner"><img src="' + s.img + '" alt="' + esc(s.name) + '" loading="lazy"></span>' +
+        "</span>" +
+        '<span class="story-name">' + esc(s.name) + "</span>" +
+        '<span class="story-time">' + s.sub + "</span>" +
+        "</button>";
+    });
+    if(list.length) html += '<span class="story-divider" aria-hidden="true"></span>';
+
     wrap.style.display = "block";
     var anyLive = list.some(function(p){ return postAgeH(p) < NEW_WINDOW_H && !isSeen(p); });
-    document.getElementById("trayLabel").innerHTML = anyLive
-      ? '<span class="pulse"></span> Fresh uploads · new within 24h'
-      : "Recent uploads";
+    document.getElementById("trayLabel").innerHTML = list.length
+      ? (anyLive
+        ? '<span class="pulse"></span> Fresh uploads · new within 24h'
+        : "Recent uploads")
+      : "Quick links";
     var shown = list;
-    var html = "";
     shown.forEach(function(p){
       var h = postAgeH(p);
       var ringCls = h < NEW_WINDOW_H ? (isSeen(p) ? "seen" : "live") : "recent";
@@ -1707,7 +1753,18 @@
         "</button>";
     });
     tray.innerHTML = html;
-    tray.querySelectorAll(".story").forEach(function(btn){
+    tray.querySelectorAll(".story.perm").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var u = btn.getAttribute("data-url");
+        if(!u) return;
+        try{ window.open(u, "_blank", "noopener"); }
+        catch(e){
+          var a = document.createElement("a"); a.href = u; a.target = "_blank"; a.rel = "noopener";
+          document.body.appendChild(a); a.click(); a.remove();
+        }
+      });
+    });
+    tray.querySelectorAll(".story:not(.perm)").forEach(function(btn){
       btn.addEventListener("click", function(){ openViewer(btn.getAttribute("data-id")); });
     });
   }
