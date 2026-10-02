@@ -974,7 +974,7 @@
   <div class="pyq-sheet" id="pyqSheet">
     <div class="pyq-grab"></div>
     <div class="pyq-head">
-      <div class="pyq-title"><span class="pyq-emoji">📝</span><div><b>PYQ's</b><small>Previous year question papers</small></div></div>
+      <div class="pyq-title"><span class="pyq-emoji">📝</span><div><b>PYQ's</b><small id="pyqSub">Previous year question papers</small></div></div>
       <button class="iconbtn" id="pyqClose" aria-label="Close" title="Close">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
@@ -2667,13 +2667,26 @@
     return /(^|[\/\s_-])(pyqs?|previous[-\s_]?year[-\s_]?questions?|question[-\s_]?papers?)([\/\s_-]|$)/i.test(String(raw || ""));
   }
   function pyqItems(){
-    return allFiles()
-      .filter(function(it){ return isPyqSubject(it.post.subjectRaw); })
-      .sort(function(a, b){
-        var ha = ageHours(a.file.date || a.post.date), hb = ageHours(b.file.date || b.post.date);
-        var na = (ha === null || isNaN(ha)) ? 1e12 : ha, nb = (hb === null || isNaN(hb)) ? 1e12 : hb;
-        return na - nb;
-      });
+    /* semester-aware: papers inside a semester folder (e.g. notes/Sem 3/PYQ/)
+       show only to that semester's students; papers in a plain PYQ folder
+       are common and show to everyone */
+    var out = [];
+    posts.forEach(function(p){
+      if(!isPyqSubject(p.subjectRaw)) return;
+      var ps = postSem(p);
+      if(mySem && ps !== null && ps !== mySem) return;
+      p.files.forEach(function(f){ out.push({ post:p, file:f }); });
+    });
+    return out.sort(function(a, b){
+      var ha = ageHours(a.file.date || a.post.date), hb = ageHours(b.file.date || b.post.date);
+      var na = (ha === null || isNaN(ha)) ? 1e12 : ha, nb = (hb === null || isNaN(hb)) ? 1e12 : hb;
+      return na - nb;
+    });
+  }
+  function allPyqCount(){
+    var n = 0;
+    posts.forEach(function(p){ if(isPyqSubject(p.subjectRaw)) n += p.files.length; });
+    return n;
   }
   function renderPyqFab(){
     var fab = document.getElementById("pyqFab");
@@ -2687,12 +2700,17 @@
   }
   function renderPyqSheet(){
     var list = document.getElementById("pyqList");
+    var sub = document.getElementById("pyqSub");
     if(!list) return;
+    if(sub) sub.textContent = mySem ? "For Semester " + mySem : "Previous year question papers";
     var items = pyqItems();
     if(!items.length){
+      var otherSem = allPyqCount() > 0;
       list.innerHTML = '<div class="pyq-empty"><div class="big">📝</div>' +
-        '<div class="t">No PYQ papers yet</div>' +
-        '<div class="s">Previous year question papers appear here as soon as they are<br>uploaded to the <b>notes/PYQ/</b> folder.</div></div>';
+        '<div class="t">' + (otherSem && mySem ? "No papers for Semester " + mySem + " yet" : "No PYQ papers yet") + "</div>" +
+        '<div class="s">' + (otherSem && mySem
+          ? "Papers for <b>Semester " + mySem + "</b> will appear here as soon as they are<br>uploaded to the <b>notes/Sem " + mySem + "/PYQ/</b> folder."
+          : "Previous year question papers appear here as soon as they are<br>uploaded to the <b>notes/PYQ/</b> folder.") + "</div></div>";
       return;
     }
     list.innerHTML = items.map(function(it){
@@ -2701,7 +2719,7 @@
       return '<button class="pyq-row" data-id="' + esc(p.id) + '" data-lang="' + f.lang + '">' +
         '<span class="pyq-ic">' + (p.subject.emoji || "📄") + "</span>" +
         '<span class="pyq-main"><span class="pyq-name">' + esc(prettifyTitle(p.base)) + "</span>" +
-        '<span class="pyq-meta">' + esc(p.subject.name) + (when ? " · " + timeAgo(when) : "") + " · " + fmtSize(f.size) + "</span></span>" +
+        '<span class="pyq-meta">' + (postSem(p) ? "Sem " + postSem(p) + " · " : "") + (when ? timeAgo(when) + " · " : "") + fmtSize(f.size) + "</span></span>" +
         '<span class="lbadge' + (f.lang === "hi" ? " hi" : " en") + '">' + (f.lang === "hi" ? "हिंदी" : "EN") + "</span>" +
         "</button>";
     }).join("");
