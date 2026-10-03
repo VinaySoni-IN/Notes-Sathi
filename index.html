@@ -810,10 +810,6 @@
   .up-row2{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
   .up-field{ margin-bottom:10px; }
   .up-field label{ display:block; font-size:11px; font-weight:800; color:var(--ink-soft); margin-bottom:5px; text-transform:uppercase; letter-spacing:.4px; }
-  .up-newsubject{
-    background:none; border:none; color:var(--brand); font-family:var(--font);
-    font-size:12px; font-weight:800; cursor:pointer; padding:0; margin-bottom:12px;
-  }
   .up-drop{
     border:2px dashed var(--line); border-radius:15px; padding:26px 14px; text-align:center;
     transition:.15s ease; background:var(--card-2);
@@ -919,9 +915,9 @@
         <div class="mast-by" id="mastBy"></div>
         <div class="mast-stats">
           <span class="mchip" id="mchipSem" style="display:none; cursor:pointer;" title="Change semester">🎓 Semester</span>
-          <span class="mchip" id="mchipSubjects">— subjects</span>
-          <span class="mchip" id="mchipNotes">— notes</span>
-          <span class="mchip" id="mchipUpdated">—</span>
+          <span class="mchip" id="mchipSubjects" style="cursor:pointer;" title="Open Files — by subject">— subjects</span>
+          <span class="mchip" id="mchipNotes" style="cursor:pointer;" title="Open Files — A to Z">— notes</span>
+          <span class="mchip" id="mchipUpdated" style="cursor:pointer;" title="Open Files — newest first">—</span>
         </div>
       </section>
 
@@ -1092,12 +1088,6 @@
               <select id="upSubject" class="up-input"></select>
             </div>
           </div>
-          <div class="up-field" id="upNewSubjectWrap" hidden>
-            <label>New subject name</label>
-            <input type="text" id="upNewSubject" class="up-input" placeholder="e.g. Digital Electronics">
-          </div>
-          <button class="up-newsubject" id="upNewSubjectBtn" type="button">➕ New subject</button>
-
           <div class="up-drop" id="upDrop">
             <div class="up-drop-emoji">📥</div>
             <div class="up-drop-t">Drag &amp; drop PDFs here</div>
@@ -2914,6 +2904,17 @@ post.files.forEach(function(f){
     document.getElementById("ackCheck").addEventListener("change", updateSemStart);
     document.getElementById("semBtn").addEventListener("click", function(){ openSemModal(true); });
     document.getElementById("mchipSem").addEventListener("click", function(){ openSemModal(true); });
+  function goFilesWithSort(sort){
+    filesSort = sort;
+    document.querySelectorAll("#fileSortSeg button").forEach(function(x){
+      x.classList.toggle("active", x.getAttribute("data-sort") === sort);
+    });
+    activateTab("filesTab");
+    try{ window.scrollTo({ top:0, behavior:"smooth" }); }catch(e){}
+  }
+  document.getElementById("mchipSubjects").addEventListener("click", function(){ goFilesWithSort("subj"); });
+  document.getElementById("mchipNotes").addEventListener("click", function(){ goFilesWithSort("az"); });
+  document.getElementById("mchipUpdated").addEventListener("click", function(){ goFilesWithSort("new"); });
   }
 
   /* ============ PYQ's (floating button, Home tab only) ============ */
@@ -3092,20 +3093,16 @@ post.files.forEach(function(f){
     });
     if(!sel.getAttribute("data-has-new")){ /* keep new-subject option last */ }
     var cur = sel.value;
-    var html = vals.sort().map(function(v){
-      return '<option value="' + esc(v) + '">' + esc(v) + "</option>";
-    }).join("") + '<option value="__new__">\u2795 New subject\u2026</option>';
+    var html = '<option value="" disabled' + (vals.indexOf(cur) > -1 ? "" : " selected") + '>Select subject *</option>' +
+      vals.sort().map(function(v){
+        return '<option value="' + esc(v) + '">' + esc(v) + "</option>";
+      }).join("");
     sel.innerHTML = html;
     if(vals.indexOf(cur) > -1) sel.value = cur;
-    document.getElementById("upNewSubjectWrap").hidden = sel.value !== "__new__";
   }
 
   function upSubjectValue(){
-    var sel = document.getElementById("upSubject");
-    if(sel.value === "__new__"){
-      return (document.getElementById("upNewSubject").value || "").trim();
-    }
-    return sel.value || "";
+    return (document.getElementById("upSubject").value || "").trim();
   }
 
   function upTargetName(item){
@@ -3156,7 +3153,7 @@ post.files.forEach(function(f){
         : "";
       var cls = (i.status === "done" || i.status === "updated") ? "ok" : i.status === "error" ? "err" : (i.status === "uploading" || i.status === "reading") ? "busy" : "";
       return '<div class="up-item" data-uid="' + i.id + '">' +
-        '<span class="up-ic">' + (i.lang === "hi" ? "\uD83D\uDCD8" : "\uD83D\uDCC4") + "</span>" +
+        '<span class="up-ic">' + (i.lang === "hi" ? "\uD83D\uDCD5" : "\uD83D\uDCD8") + "</span>" +
         '<span class="up-mid"><span class="up-name">' + esc(upTargetName(i)) + "</span>" +
         '<span class="up-meta">' + esc(fmtSize(i.size)) + " \u00B7 " + esc(upTargetPath(i)) + "</span>" +
         (i.status === "uploading" ? '<span class="up-bar"><i style="width:' + Math.round(i.progress) + '%"></i></span>' : "") +
@@ -3266,18 +3263,8 @@ post.files.forEach(function(f){
   function wireUpload(){
     document.getElementById("upSignIn").addEventListener("click", upSignIn);
     document.getElementById("upSignOut").addEventListener("click", upSignOut);
-    document.getElementById("upSubject").addEventListener("change", function(){
-      document.getElementById("upNewSubjectWrap").hidden = this.value !== "__new__";
-      upRenderQueue();
-    });
-    document.getElementById("upNewSubject").addEventListener("input", upRenderQueue);
+    document.getElementById("upSubject").addEventListener("change", upRenderQueue);
     document.getElementById("upSem").addEventListener("change", upRenderQueue);
-    document.getElementById("upNewSubjectBtn").addEventListener("click", function(){
-      document.getElementById("upSubject").value = "__new__";
-      document.getElementById("upNewSubjectWrap").hidden = false;
-      document.getElementById("upNewSubject").focus();
-      upRenderQueue();
-    });
     var drop = document.getElementById("upDrop");
     var fin = document.getElementById("upFileInput");
     document.getElementById("upBrowse").addEventListener("click", function(){ fin.click(); });
