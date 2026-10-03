@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-03T19:57:25.253088Z",
+ "generatedAt": "2026-10-03T20:20:57.649348Z",
  "files": [
   {
    "path": "notes/Sem 3/IT/INTRO TO IT-6.pdf",
@@ -15,6 +15,16 @@
    "path": "notes/Sem 3/Physics 2/Physics2.pdf",
    "size": 160200,
    "date": "2026-10-04T01:27:14+05:30",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "Vinay Sanjay Soni",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Sem 3/it/Python-05.hi.pdf",
+   "size": 581452,
+   "date": "2026-10-04T01:50:47+05:30",
    "author": {
     "login": "VinaySoni-IN",
     "name": "Vinay Sanjay Soni",
