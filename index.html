@@ -1031,30 +1031,30 @@
       <div class="up-head">
         <div>
           <div class="up-eyebrow">TEACHER DASHBOARD</div>
-          <h3 class="up-title">\uD83D\uDCE4 Upload notes</h3>
-          <p class="up-sub">Pick semester &amp; subject, drop your PDFs \u2014 publishing is handled for you.</p>
+          <h3 class="up-title">📤 Upload notes</h3>
+          <p class="up-sub">Pick semester &amp; subject, drop your PDFs — publishing is handled for you.</p>
         </div>
       </div>
 
       <div class="up-card" id="upGate">
-        <div class="up-gate-emoji">\uD83D\uDD10</div>
+        <div class="up-gate-emoji">🔐</div>
         <div class="up-gate-title">Teacher sign-in</div>
-        <p class="up-gate-sub">Sign in once with a GitHub <b>fine-grained personal access token</b> (only this repository, Contents: Read &amp; write) and upload notes from here \u2014 no GitHub knowledge needed afterwards.</p>
-        <input type="password" id="upTokenInput" class="up-input" placeholder="github_pat_\u2026 (paste your token)" autocomplete="off">
+        <p class="up-gate-sub">Sign in once with a GitHub <b>fine-grained personal access token</b> (only this repository, Contents: Read &amp; write) and upload notes from here — no GitHub knowledge needed afterwards.</p>
+        <input type="password" id="upTokenInput" class="up-input" placeholder="github_pat_… (paste your token)" autocomplete="off">
         <label class="up-remember"><input type="checkbox" id="upRemember"> Remember on this device (not on shared computers)</label>
         <button class="btn btn-primary btn-block" id="upSignIn">Sign in</button>
         <div class="up-error" id="upGateError" hidden></div>
         <details class="up-help">
-          <summary>How do I create a token? (one-time, \u22482 minutes)</summary>
+          <summary>How do I create a token? (one-time, ≈2 minutes)</summary>
           <ol>
-            <li>Open <b>github.com \u2192 Settings \u2192 Developer settings \u2192 Fine-grained tokens \u2192 Generate new token</b></li>
-            <li>Name it <i>Notes Upload</i>, set a short expiry (30\u201390 days)</li>
-            <li><b>Repository access \u2192 Only select repositories \u2192 Notes-Sathi</b></li>
-            <li>Permissions \u2192 <b>Contents: Read and write</b> (nothing else needed)</li>
+            <li>Open <b>github.com → Settings → Developer settings → Fine-grained tokens → Generate new token</b></li>
+            <li>Name it <i>Notes Upload</i>, set a short expiry (30–90 days)</li>
+            <li><b>Repository access → Only select repositories → Notes-Sathi</b></li>
+            <li>Permissions → <b>Contents: Read and write</b> (nothing else needed)</li>
             <li>Generate, copy the token, and paste it above</li>
           </ol>
         </details>
-        <p class="up-security">\uD83D\uDD12 The token is stored only in your browser and sent only to GitHub. Sign out on shared computers.</p>
+        <p class="up-security">🔒 The token is stored only in your browser and sent only to GitHub. Sign out on shared computers.</p>
       </div>
 
       <div id="upDash" hidden>
@@ -1085,10 +1085,10 @@
             <label>New subject name</label>
             <input type="text" id="upNewSubject" class="up-input" placeholder="e.g. Digital Electronics">
           </div>
-          <button class="up-newsubject" id="upNewSubjectBtn" type="button">\u2795 New subject</button>
+          <button class="up-newsubject" id="upNewSubjectBtn" type="button">➕ New subject</button>
 
           <div class="up-drop" id="upDrop">
-            <div class="up-drop-emoji">\uD83D\uDCE5</div>
+            <div class="up-drop-emoji">📥</div>
             <div class="up-drop-t">Drag &amp; drop PDFs here</div>
             <div class="up-drop-s">or</div>
             <button class="btn btn-primary" id="upBrowse">Browse files</button>
