@@ -1,6 +1,6 @@
 <table>
 <tr>
-<td><img src="icon-512.png" width="72"></td>
+<td><img src="icon-512.jpg" width="72"></td>
 <td>
 
 # Notes Sathi
