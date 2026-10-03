@@ -767,6 +767,90 @@
   .pyq-empty .t{ font-weight:800; font-size:14.5px; margin-bottom:4px; }
   .pyq-empty .s{ font-size:12px; color:var(--ink-soft); line-height:1.6; }
 
+  /* ============ UPLOAD DASHBOARD ============ */
+  .up-head{ margin-bottom:12px; }
+  .up-eyebrow{ font-size:10.5px; font-weight:800; letter-spacing:1px; color:var(--brand); }
+  .up-title{ margin:4px 0 3px; font-size:21px; font-weight:800; font-family:var(--font-display); letter-spacing:-.3px; }
+  .up-sub{ margin:0; font-size:12.5px; color:var(--ink-soft); line-height:1.6; }
+  .up-card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:16px; margin-bottom:14px; box-shadow:var(--shadow-sm);
+  }
+  .up-gate-emoji{ font-size:38px; text-align:center; }
+  .up-gate-title{ text-align:center; font-size:16.5px; font-weight:800; margin:6px 0 6px; }
+  .up-gate-sub{ font-size:12.5px; color:var(--ink-soft); line-height:1.65; margin:0 0 12px; }
+  .up-input{
+    width:100%; box-sizing:border-box; font-family:var(--font); font-size:13px; font-weight:600;
+    color:var(--ink); background:var(--card-2); border:1.5px solid var(--line);
+    border-radius:11px; padding:10px 12px; outline:none;
+  }
+  .up-input:focus{ border-color:var(--brand); }
+  select.up-input{ appearance:auto; }
+  .up-remember{ display:flex; gap:8px; align-items:center; font-size:11.5px; color:var(--ink-soft); font-weight:600; margin:10px 0 12px; cursor:pointer; }
+  .up-remember input{ accent-color:var(--brand); width:15px; height:15px; }
+  .up-error{
+    margin-top:10px; background:rgba(239,68,68,.12); border:1px solid #EF4444;
+    color:#DC2626; border-radius:10px; padding:9px 12px; font-size:12px; font-weight:700;
+  }
+  .up-help{ margin-top:12px; font-size:12px; color:var(--ink-soft); }
+  .up-help summary{ cursor:pointer; font-weight:800; color:var(--ink); }
+  .up-help ol{ margin:8px 0 0 18px; line-height:1.8; }
+  .up-security{ margin:12px 0 0; font-size:10.8px; color:var(--ink-faint); line-height:1.6; }
+  .up-who{ display:flex; align-items:center; gap:11px; }
+  .up-who-main{ flex:1; min-width:0; }
+  .up-who-main b{ display:block; font-size:14px; }
+  .up-who-main small{ display:block; font-size:11px; color:var(--ink-soft); font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .up-row2{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .up-field{ margin-bottom:10px; }
+  .up-field label{ display:block; font-size:11px; font-weight:800; color:var(--ink-soft); margin-bottom:5px; text-transform:uppercase; letter-spacing:.4px; }
+  .up-newsubject{
+    background:none; border:none; color:var(--brand); font-family:var(--font);
+    font-size:12px; font-weight:800; cursor:pointer; padding:0; margin-bottom:12px;
+  }
+  .up-drop{
+    border:2px dashed var(--line); border-radius:15px; padding:26px 14px; text-align:center;
+    transition:.15s ease; background:var(--card-2);
+  }
+  .up-drop.drag{ border-color:var(--brand); background:var(--brand-soft); }
+  .up-drop-emoji{ font-size:30px; margin-bottom:6px; }
+  .up-drop-t{ font-size:13.5px; font-weight:800; }
+  .up-drop-s{ font-size:11px; color:var(--ink-soft); margin:4px 0 10px; font-weight:600; }
+  .up-item{
+    display:flex; align-items:center; gap:10px; background:var(--card-2);
+    border:1px solid var(--line-soft); border-radius:13px; padding:10px 12px; margin-top:10px;
+  }
+  .up-item .up-ic{ font-size:19px; flex:none; }
+  .up-item .up-mid{ flex:1; min-width:0; }
+  .up-item .up-name{ font-size:12.5px; font-weight:800; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .up-item .up-meta{ font-size:10.5px; color:var(--ink-soft); font-weight:600; margin-top:2px; }
+  .up-item .up-status{ font-size:10.5px; font-weight:800; flex:none; }
+  .up-item .up-status.ok{ color:#16A34A; }
+  .up-item .up-status.err{ color:#DC2626; }
+  .up-item .up-status.busy{ color:var(--brand); }
+  .up-lang{ display:flex; border:1.5px solid var(--line); border-radius:9px; overflow:hidden; flex:none; }
+  .up-lang button{
+    border:none; background:var(--card); font-family:var(--font); font-size:10px; font-weight:800;
+    padding:5px 8px; cursor:pointer; color:var(--ink-soft);
+  }
+  .up-lang button.on{ background:var(--brand); color:#fff; }
+  .up-rm{
+    border:none; background:none; color:var(--ink-faint); font-size:15px; cursor:pointer;
+    padding:2px 4px; flex:none;
+  }
+  .up-bar{ height:4px; background:var(--line); border-radius:3px; margin-top:6px; overflow:hidden; }
+  .up-bar i{ display:block; height:100%; width:0; background:var(--brand); border-radius:3px; transition:width .2s ease; }
+  .up-actions{ margin-top:14px; }
+  .up-pathprev{
+    font-size:11px; font-weight:700; color:var(--ink-soft); background:var(--card-2);
+    border:1px dashed var(--line); border-radius:10px; padding:8px 11px; margin-bottom:10px;
+    word-break:break-all; line-height:1.6;
+  }
+  .up-summary{
+    margin-top:14px; background:rgba(22,163,74,.1); border:1px solid #16A34A;
+    border-radius:13px; padding:13px 15px; font-size:12.5px; font-weight:700; color:#166534; line-height:1.7;
+  }
+  .up-summary .btn{ margin-top:9px; }
+
   /* ============ TOAST ============ */
   .toast{
     position:fixed; left:50%; bottom:calc(84px + env(safe-area-inset-bottom,0px));
@@ -911,6 +995,7 @@
 
       <div class="about-card" id="teachersCard">
         <h4>📘 How teachers publish</h4>
+        <button class="btn btn-primary btn-block" id="openUploadBtn" style="margin-bottom:12px;">📤 Open Upload Dashboard</button>
         <ol class="steps">
           <li>Open the repository on GitHub → <b>notes</b> folder.</li>
           <li><b>Add file → Upload files</b> → drop your PDFs → commit.</li>
@@ -937,6 +1022,87 @@
           notes are published by Contributed Teachers and stay <b>free for every student</b>.
           No accounts, no tracking, no fees. Made with ❤️ by <b>Vinay Soni</b>.
           Installable as an app (Add to Home Screen) for offline reading.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ UPLOAD TAB (teacher dashboard) ============ -->
+    <section class="tab-panel" id="uploadTab">
+      <div class="up-head">
+        <div>
+          <div class="up-eyebrow">TEACHER DASHBOARD</div>
+          <h3 class="up-title">\uD83D\uDCE4 Upload notes</h3>
+          <p class="up-sub">Pick semester &amp; subject, drop your PDFs \u2014 publishing is handled for you.</p>
+        </div>
+      </div>
+
+      <div class="up-card" id="upGate">
+        <div class="up-gate-emoji">\uD83D\uDD10</div>
+        <div class="up-gate-title">Teacher sign-in</div>
+        <p class="up-gate-sub">Sign in once with a GitHub <b>fine-grained personal access token</b> (only this repository, Contents: Read &amp; write) and upload notes from here \u2014 no GitHub knowledge needed afterwards.</p>
+        <input type="password" id="upTokenInput" class="up-input" placeholder="github_pat_\u2026 (paste your token)" autocomplete="off">
+        <label class="up-remember"><input type="checkbox" id="upRemember"> Remember on this device (not on shared computers)</label>
+        <button class="btn btn-primary btn-block" id="upSignIn">Sign in</button>
+        <div class="up-error" id="upGateError" hidden></div>
+        <details class="up-help">
+          <summary>How do I create a token? (one-time, \u22482 minutes)</summary>
+          <ol>
+            <li>Open <b>github.com \u2192 Settings \u2192 Developer settings \u2192 Fine-grained tokens \u2192 Generate new token</b></li>
+            <li>Name it <i>Notes Upload</i>, set a short expiry (30\u201390 days)</li>
+            <li><b>Repository access \u2192 Only select repositories \u2192 Notes-Sathi</b></li>
+            <li>Permissions \u2192 <b>Contents: Read and write</b> (nothing else needed)</li>
+            <li>Generate, copy the token, and paste it above</li>
+          </ol>
+        </details>
+        <p class="up-security">\uD83D\uDD12 The token is stored only in your browser and sent only to GitHub. Sign out on shared computers.</p>
+      </div>
+
+      <div id="upDash" hidden>
+        <div class="up-card up-who">
+          <span id="upAvatar"></span>
+          <div class="up-who-main"><b id="upTeacherName">Teacher</b><small id="upRepoLine">repository</small></div>
+          <button class="btn btn-ghost" id="upSignOut">Sign out</button>
+        </div>
+
+        <div class="up-card">
+          <div class="up-row2">
+            <div class="up-field">
+              <label>Semester (optional)</label>
+              <select id="upSem" class="up-input">
+                <option value="">No semester</option>
+                <option value="Sem 1">Sem 1</option><option value="Sem 2">Sem 2</option>
+                <option value="Sem 3">Sem 3</option><option value="Sem 4">Sem 4</option>
+                <option value="Sem 5">Sem 5</option><option value="Sem 6">Sem 6</option>
+                <option value="Sem 7">Sem 7</option><option value="Sem 8">Sem 8</option>
+              </select>
+            </div>
+            <div class="up-field">
+              <label>Subject</label>
+              <select id="upSubject" class="up-input"></select>
+            </div>
+          </div>
+          <div class="up-field" id="upNewSubjectWrap" hidden>
+            <label>New subject name</label>
+            <input type="text" id="upNewSubject" class="up-input" placeholder="e.g. Digital Electronics">
+          </div>
+          <button class="up-newsubject" id="upNewSubjectBtn" type="button">\u2795 New subject</button>
+
+          <div class="up-drop" id="upDrop">
+            <div class="up-drop-emoji">\uD83D\uDCE5</div>
+            <div class="up-drop-t">Drag &amp; drop PDFs here</div>
+            <div class="up-drop-s">or</div>
+            <button class="btn btn-primary" id="upBrowse">Browse files</button>
+            <input type="file" id="upFileInput" multiple accept=".pdf,.png,.jpg,.jpeg,.webp" hidden>
+          </div>
+
+          <div id="upQueue"></div>
+
+          <div class="up-actions" id="upActions" hidden>
+            <div class="up-pathprev" id="upPathPrev"></div>
+            <button class="btn btn-primary btn-block" id="upStart">Upload all <span id="upCount"></span></button>
+          </div>
+
+          <div class="up-summary" id="upSummary" hidden></div>
         </div>
       </div>
     </section>
@@ -971,6 +1137,10 @@
   <button class="tabbtn" data-tab="aboutTab" aria-label="About">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
     About
+  </button>
+  <button class="tabbtn" data-tab="uploadTab" aria-label="Upload">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.9A7 7 0 1 1 15.7 8h1.8a4.5 4.5 0 0 1 2.4 8.3"/><path d="M12 12v9"/><path d="m8 16 4-4 4 4"/></svg>
+    Upload
   </button>
 </nav>
 
@@ -2806,6 +2976,309 @@
     });
   }
 
+  /* ============ UPLOAD DASHBOARD (teacher) ============ */
+  var LS_GH_TOKEN = "ns_gh_token_v1";
+  var ghToken = "", ghUser = null, ghBranch = "main";
+  var upQueue = [], upSeq = 0, upBusy = false;
+
+  function ghRequest(method, path, body, onProgress, cb){
+    var xhr = new XMLHttpRequest();
+    var url = path.indexOf("http") === 0 ? path : ("https://api.github.com" + path);
+    xhr.open(method, url, true);
+    xhr.setRequestHeader("Accept", "application/vnd.github+json");
+    if(ghToken) xhr.setRequestHeader("Authorization", "Bearer " + ghToken);
+    xhr.setRequestHeader("X-GitHub-Api-Version", "2022-11-28");
+    if(body) xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onload = function(){
+      var data = null;
+      try{ data = JSON.parse(xhr.responseText); }catch(e){}
+      cb(xhr.status, data);
+    };
+    xhr.onerror = function(){ cb(0, null); };
+    if(onProgress) xhr.upload.onprogress = function(ev){
+      if(ev.lengthComputable) onProgress(ev.loaded, ev.total);
+    };
+    xhr.send(body ? JSON.stringify(body) : null);
+  }
+
+  function upRepoSlug(){
+    return (CONFIG.owner && CONFIG.repo) ? (CONFIG.owner + "/" + CONFIG.repo) : "";
+  }
+
+  function upSignIn(){
+    var inp = document.getElementById("upTokenInput");
+    var err = document.getElementById("upGateError");
+    var tok = (inp.value || "").trim();
+    if(!tok){ err.textContent = "Paste your token first."; err.hidden = false; return; }
+    err.hidden = true;
+    ghToken = tok;
+    ghRequest("GET", "/user", null, null, function(status, data){
+      if(status === 200 && data && (data.login || data.name)){
+        ghUser = data;
+        if(document.getElementById("upRemember").checked){
+          try{ localStorage.setItem(LS_GH_TOKEN, tok); }catch(e){}
+        }
+        upOpenDash();
+      } else {
+        ghToken = "";
+        err.textContent = status === 401 ? "That token was rejected — check it and try again." : "Could not reach GitHub (status " + status + "). Try again.";
+        err.hidden = false;
+      }
+    });
+  }
+
+  function upOpenDash(){
+    document.getElementById("upGate").hidden = true;
+    document.getElementById("upDash").hidden = false;
+    var who = (ghUser && (ghUser.name || ghUser.login)) || "Teacher";
+    document.getElementById("upTeacherName").textContent = who;
+    document.getElementById("upAvatar").innerHTML = avatarSpan(ghUser, 40);
+    document.getElementById("upRepoLine").textContent = "\uD83D\uDCDD " + (upRepoSlug() || "repository not detected") + " \u00B7 branch: " + ghBranch;
+    upFillSubjects();
+    /* confirm the default branch once */
+    if(upRepoSlug()){
+      ghRequest("GET", "/repos/" + upRepoSlug(), null, null, function(st, d){
+        if(st === 200 && d && d.default_branch){
+          ghBranch = d.default_branch;
+          document.getElementById("upRepoLine").textContent = "\uD83D\uDCDD " + upRepoSlug() + " \u00B7 branch: " + ghBranch;
+        }
+      });
+    }
+  }
+
+  function upSignOut(){
+    ghToken = ""; ghUser = null; upQueue = [];
+    try{ localStorage.removeItem(LS_GH_TOKEN); }catch(e){}
+    document.getElementById("upDash").hidden = true;
+    document.getElementById("upGate").hidden = false;
+    document.getElementById("upTokenInput").value = "";
+    document.getElementById("upRemember").checked = false;
+    upRenderQueue();
+  }
+
+  function upFillSubjects(){
+    var sel = document.getElementById("upSubject");
+    var seen = {}, vals = [];
+    subjects.forEach(function(s){
+      var v = s.raw;
+      if(!/^config\.json$/i.test(v) && !seen[v]){ seen[v] = 1; vals.push(v); }
+    });
+    if(!sel.getAttribute("data-has-new")){ /* keep new-subject option last */ }
+    var cur = sel.value;
+    var html = vals.sort().map(function(v){
+      return '<option value="' + esc(v) + '">' + esc(v) + "</option>";
+    }).join("") + '<option value="__new__">\u2795 New subject\u2026</option>';
+    sel.innerHTML = html;
+    if(vals.indexOf(cur) > -1) sel.value = cur;
+    document.getElementById("upNewSubjectWrap").hidden = sel.value !== "__new__";
+  }
+
+  function upSubjectValue(){
+    var sel = document.getElementById("upSubject");
+    if(sel.value === "__new__"){
+      return (document.getElementById("upNewSubject").value || "").trim();
+    }
+    return sel.value || "";
+  }
+
+  function upTargetName(item){
+    var n = (item.name || "").trim();
+    var m = n.match(/^(.*?)(\.hi)?\.pdf$/i);
+    if(!m) return n;
+    return m[1] + (item.lang === "hi" ? ".hi" : "") + ".pdf";
+  }
+  function upTargetPath(item){
+    var parts = [CONFIG.notesDir || "notes"];
+    var sem = document.getElementById("upSem").value;
+    if(sem) parts.push(sem);
+    var sub = upSubjectValue();
+    if(sub) parts.push(sub);
+    return parts.join("/") + "/" + upTargetName(item);
+  }
+
+  function upAddFiles(fileList){
+    var files = Array.prototype.slice.call(fileList || []);
+    files.forEach(function(f){
+      if(f.size > 95 * 1024 * 1024){
+        upQueue.push({ id:++upSeq, name:f.name, size:f.size, file:f, lang:/\.hi\.pdf$/i.test(f.name) ? "hi" : "en", status:"error", error:"too large (>95 MB)" });
+        return;
+      }
+      upQueue.push({ id:++upSeq, name:f.name, size:f.size, file:f, lang:/\.hi\.pdf$/i.test(f.name) ? "hi" : "en", status:"pending", progress:0 });
+    });
+    upRenderQueue();
+  }
+
+  function upRenderQueue(){
+    var q = document.getElementById("upQueue");
+    var act = document.getElementById("upActions");
+    var count = document.getElementById("upCount");
+    if(!q) return;
+    if(!upQueue.length){ q.innerHTML = ""; act.hidden = true; return; }
+    act.hidden = false;
+    count.textContent = "\u2014 " + upQueue.filter(function(i){ return i.status === "pending" || i.status === "error"; }).length + " file" + (upQueue.length > 1 ? "s" : "");
+    document.getElementById("upPathPrev").innerHTML = upQueue.filter(function(i){ return i.status === "pending"; }).slice(0, 3).map(function(i){
+      return "\uD83D\uDCC1 " + esc(upTargetPath(i));
+    }).join("<br>") + (upQueue.filter(function(i){ return i.status === "pending"; }).length > 3 ? "<br>\u2026" : "");
+    q.innerHTML = upQueue.map(function(i){
+      var st = i.status === "pending" ? "\u23F3 waiting"
+        : i.status === "reading" ? "\uD83D\uDCD6 reading\u2026"
+        : i.status === "uploading" ? "\u2B06\uFE0F " + Math.round(i.progress) + "%"
+        : i.status === "done" ? "\u2713 uploaded"
+        : i.status === "updated" ? "\u2713 updated existing"
+        : i.status === "error" ? "\u2717 " + (i.error || "failed")
+        : "";
+      var cls = (i.status === "done" || i.status === "updated") ? "ok" : i.status === "error" ? "err" : (i.status === "uploading" || i.status === "reading") ? "busy" : "";
+      return '<div class="up-item" data-uid="' + i.id + '">' +
+        '<span class="up-ic">' + (i.lang === "hi" ? "\uD83D\uDCD8" : "\uD83D\uDCC4") + "</span>" +
+        '<span class="up-mid"><span class="up-name">' + esc(upTargetName(i)) + "</span>" +
+        '<span class="up-meta">' + esc(fmtSize(i.size)) + " \u00B7 " + esc(upTargetPath(i)) + "</span>" +
+        (i.status === "uploading" ? '<span class="up-bar"><i style="width:' + Math.round(i.progress) + '%"></i></span>' : "") +
+        "</span>" +
+        (i.status === "pending" ? '<span class="up-lang"><button data-lang="en" class="' + (i.lang === "en" ? "on" : "") + '">EN</button><button data-lang="hi" class="' + (i.lang === "hi" ? "on" : "") + '">\u0939\u093F\u0902</button></span>' : "") +
+        (i.status === "pending" ? '<button class="up-rm" data-rm="' + i.id + '" aria-label="Remove">\u2715</button>' : "") +
+        '<span class="up-status ' + cls + '">' + st + "</span></div>";
+    }).join("");
+    q.querySelectorAll(".up-lang button").forEach(function(b){
+      b.addEventListener("click", function(){
+        var id = parseInt(b.closest(".up-item").getAttribute("data-uid"), 10);
+        upQueue.forEach(function(i){ if(i.id === id) i.lang = b.getAttribute("data-lang"); });
+        upRenderQueue();
+      });
+    });
+    q.querySelectorAll(".up-rm").forEach(function(b){
+      b.addEventListener("click", function(){
+        var id = parseInt(b.getAttribute("data-rm"), 10);
+        upQueue = upQueue.filter(function(i){ return i.id !== id; });
+        upRenderQueue();
+      });
+    });
+  }
+
+  function readB64(file, cb){
+    try{
+      var r = new FileReader();
+      r.onload = function(){ cb(String(r.result).split(",")[1] || ""); };
+      r.onerror = function(){ cb(null); };
+      r.readAsDataURL(file);
+    }catch(e){ cb(null); }
+  }
+
+  function upPutItem(item, sha, cb){
+    readB64(item.file, function(b64){
+      if(b64 === null){ item.status = "error"; item.error = "could not read file"; upRenderQueue(); return cb(); }
+      var path = upTargetPath(item);
+      var enc = path.split("/").map(encodeURIComponent).join("/");
+      var body = {
+        message: "Upload notes: " + upTargetName(item) + (sha ? " (update)" : ""),
+        content: b64,
+        branch: ghBranch
+      };
+      if(sha) body.sha = sha;
+      ghRequest("PUT", "/repos/" + upRepoSlug() + "/contents/" + enc, body, function(loaded, total){
+        item.progress = total ? (100 * loaded / total) : 0;
+        item.status = "uploading";
+        upRenderQueue();
+      }, function(status, data){
+        if(status === 201 || status === 200){ item.status = sha ? "updated" : "done"; upRenderQueue(); cb(); }
+        else if((status === 422 || status === 409) && !sha){
+          /* file already exists — fetch its sha and overwrite */
+          ghRequest("GET", "/repos/" + upRepoSlug() + "/contents/" + enc + "?ref=" + encodeURIComponent(ghBranch), null, null, function(st2, d2){
+            if(st2 === 200 && d2 && d2.sha){ upPutItem(item, d2.sha, cb); }
+            else { item.status = "error"; item.error = "already exists (could not overwrite)"; upRenderQueue(); cb(); }
+          });
+        }
+        else if(status === 401){ item.status = "error"; item.error = "token rejected"; upRenderQueue(); cb("auth"); }
+        else if(status === 403){ item.status = "error"; item.error = "rate limit / no permission"; upRenderQueue(); cb("auth"); }
+        else { item.status = "error"; item.error = "HTTP " + status + (data && data.message ? " \u2014 " + String(data.message).slice(0, 80) : ""); upRenderQueue(); cb(); }
+      });
+    });
+  }
+
+  function upStartUpload(){
+    if(upBusy) return;
+    var slug = upRepoSlug();
+    if(!slug){ showToast("\u26A0\uFE0F Repository not detected \u2014 open the app from its GitHub Pages link"); return; }
+    if(!upSubjectValue()){ showToast("\u26A0\uFE0F Pick a subject first"); return; }
+    var pending = upQueue.filter(function(i){ return i.status === "pending" || i.status === "error"; });
+    if(!pending.length){ showToast("Nothing new to upload"); return; }
+    upBusy = true;
+    var stop = false;
+    (function next(idx){
+      if(idx >= pending.length || stop){
+        upBusy = false;
+        var ok = upQueue.filter(function(i){ return i.status === "done" || i.status === "updated"; }).length;
+        var bad = upQueue.filter(function(i){ return i.status === "error"; }).length;
+        if(ok){
+          var s = document.getElementById("upSummary");
+          s.hidden = false;
+          s.innerHTML = "\u2705 <b>" + ok + " file" + (ok > 1 ? "s" : "") + " published!</b> " +
+            (bad ? "\u2717 " + bad + " failed. " : "") +
+            "Your notes go live for students within ~1 minute (the repository rebuilds the list automatically)." +
+            '<br><button class="btn btn-primary" id="upRefreshFeed">\uD83D\uDD04 Refresh notes feed</button>';
+          document.getElementById("upRefreshFeed").addEventListener("click", function(){
+            loadData().then(function(){
+              renderAll();
+              showToast("\uD83D\uDCDD Feed refreshed");
+            });
+          });
+          showToast("\uD83D\uDE80 " + ok + " file" + (ok > 1 ? "s" : "") + " uploaded");
+        }
+        return;
+      }
+      var item = pending[idx];
+      item.status = "reading"; item.progress = 0;
+      upRenderQueue();
+      upPutItem(item, null, function(err){
+        if(err === "auth"){ stop = true; showToast("\u26A0\uFE0F Token problem \u2014 sign in again"); }
+        next(idx + 1);
+      });
+    })(0);
+  }
+
+  function wireUpload(){
+    document.getElementById("upSignIn").addEventListener("click", upSignIn);
+    document.getElementById("upSignOut").addEventListener("click", upSignOut);
+    document.getElementById("upSubject").addEventListener("change", function(){
+      document.getElementById("upNewSubjectWrap").hidden = this.value !== "__new__";
+      upRenderQueue();
+    });
+    document.getElementById("upNewSubject").addEventListener("input", upRenderQueue);
+    document.getElementById("upSem").addEventListener("change", upRenderQueue);
+    document.getElementById("upNewSubjectBtn").addEventListener("click", function(){
+      document.getElementById("upSubject").value = "__new__";
+      document.getElementById("upNewSubjectWrap").hidden = false;
+      document.getElementById("upNewSubject").focus();
+      upRenderQueue();
+    });
+    var drop = document.getElementById("upDrop");
+    var fin = document.getElementById("upFileInput");
+    document.getElementById("upBrowse").addEventListener("click", function(){ fin.click(); });
+    fin.addEventListener("change", function(){ upAddFiles(fin.files); fin.value = ""; });
+    ["dragenter", "dragover"].forEach(function(ev){
+      drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.add("drag"); });
+    });
+    ["dragleave", "drop"].forEach(function(ev){
+      drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.remove("drag"); });
+    });
+    drop.addEventListener("drop", function(e){
+      if(e.dataTransfer && e.dataTransfer.files) upAddFiles(e.dataTransfer.files);
+    });
+    document.getElementById("upStart").addEventListener("click", upStartUpload);
+    /* remembered token? try silent sign-in */
+    var saved = null;
+    try{ saved = localStorage.getItem(LS_GH_TOKEN); }catch(e){}
+    if(saved){
+      ghToken = saved;
+      ghRequest("GET", "/user", null, null, function(status, data){
+        if(status === 200 && data){ ghUser = data; upOpenDash(); }
+        else { ghToken = ""; try{ localStorage.removeItem(LS_GH_TOKEN); }catch(e){} }
+      });
+    }
+    /* teachers card shortcut */
+    var tbtn = document.getElementById("openUploadBtn");
+    if(tbtn) tbtn.addEventListener("click", function(){ activateTab("uploadTab"); });
+  }
+
   function wireSearch(){
     var input = document.getElementById("searchInput");
     var clearBtn = document.getElementById("searchClear");
@@ -2825,6 +3298,7 @@
 
   function boot(){
     wireSearch();
+    wireUpload();
     wirePyq();
     var fabBoot = document.getElementById("pyqFab");
     if(fabBoot) fabBoot.classList.add("show"); /* app opens on Home */
