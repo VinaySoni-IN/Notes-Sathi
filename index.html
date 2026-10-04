@@ -587,10 +587,13 @@
     display:flex; align-items:center; justify-content:center;
   }
   .steps b{ font-weight:800; }
+  .about-card, .up-card, .steps li, .up-help{ min-width:0; max-width:100%; overflow-wrap:anywhere; }
   .code-chip{
     font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
     font-size:11.5px; background:var(--card-2); border:1px solid var(--line);
-    padding:2px 8px; border-radius:7px; white-space:nowrap;
+    padding:2px 8px; border-radius:7px;
+    white-space:normal; overflow-wrap:anywhere; word-break:break-word;
+    display:inline;
   }
 
   /* ============ VIEWER ============ */
@@ -931,7 +934,7 @@
         <div class="mast-tag" id="mastTag">Class notes — English + हिंदी, free for every student</div>
         <div class="mast-by" id="mastBy"></div>
         <div class="mast-stats">
-          <span class="mchip" id="mchipBranch" style="display:none; cursor:pointer;" title="Change branch">🏛 Branch</span>
+          <span class="mchip" id="mchipBranch" style="display:none; cursor:pointer;" title="Change branch">Branch</span>
           <span class="mchip" id="mchipSem" style="display:none; cursor:pointer;" title="Change semester">🎓 Semester</span>
           <span class="mchip" id="mchipSubjects" style="cursor:pointer;" title="Open Files — by subject">— subjects</span>
           <span class="mchip" id="mchipNotes" style="cursor:pointer;" title="Open Files — A to Z">— notes</span>
@@ -1028,7 +1031,7 @@
           <li>Tap <b>Upload all</b> → students see the notes within ~1 minute, with <b>stories</b> and a <b>NEW</b> badge for 24 hours.</li>
         </ol>
         <p style="margin:10px 0 0; font-size:11.5px; color:var(--ink-soft); line-height:1.7;">
-          <b>Prefer GitHub directly?</b> Upload into <span class="code-chip">notes/Polytechnic/Civil&nbsp;Engineering/Sem&nbsp;3/Building&nbsp;Construction/</span> (English + Hindi pair: <span class="code-chip">Unit-1.pdf</span> + <span class="code-chip">Unit-1.hi.pdf</span>). PYQ papers go in <span class="code-chip">notes/Polytechnic/Civil&nbsp;Engineering/Sem&nbsp;3/PYQ/</span> — they show up in the 📝 PYQ's sheet, not the feed.
+          <b>Prefer GitHub directly?</b> Upload into <span class="code-chip">notes/Polytechnic/Civil Engineering/Sem 3/Building Construction/</span> (English + Hindi pair: <span class="code-chip">Unit-1.pdf</span> + <span class="code-chip">Unit-1.hi.pdf</span>). PYQ papers go in <span class="code-chip">notes/Polytechnic/Civil Engineering/Sem 3/PYQ/</span> — they show up in the 📝 PYQ's sheet, not the feed.
         </p>
       </div>
 
@@ -3215,7 +3218,7 @@ post.files.forEach(function(f){
       if(myProgram === "Polytechnic" && myBranch){
         var bl = branchLabel(myBranch);
         bchip.style.display = "";
-        bchip.textContent = "\uD83C\uDFDB " + bl.key;
+        bchip.textContent = bl.emoji + " " + bl.key;
         bchip.title = "Change program / branch \u2014 " + bl.label;
       } else bchip.style.display = "none";
     }
