@@ -538,6 +538,33 @@
   }
   [data-theme="dark"] .profile-role{ color:#A5B4FC; }
   .profile-college{ font-size:12.5px; color:var(--ink-soft); margin-top:7px; }
+  .app-info{ text-align:center; padding:2px 0 0; }
+  .app-icon{
+    width:64px; height:64px; border-radius:16px; margin:0 auto 10px; display:block;
+    border:1px solid var(--line); box-shadow:var(--shadow);
+    background:linear-gradient(135deg,#EEF2FF,#E0E7FF);
+  }
+  [data-theme="dark"] .app-icon{ background:linear-gradient(135deg,#1E1B4B,#312E81); }
+  .app-name{ font-family:var(--font-display); font-size:21px; font-weight:800; letter-spacing:-.4px; }
+  .app-tag{ font-size:12px; color:var(--ink-soft); margin-top:5px; line-height:1.55; }
+  .app-college{ font-size:11.5px; color:var(--ink-faint); font-weight:700; margin-top:6px; }
+  .founder-row{
+    display:flex; align-items:center; gap:11px; margin-top:14px; padding-top:13px;
+    border-top:1px solid var(--line);
+  }
+  .founder-av{ flex:none; line-height:0; }
+  .founder-mid{ flex:1; min-width:0; text-align:left; }
+  .founder-line1{ display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+  .founder-name{ font-size:14px; font-weight:800; }
+  .founder-role{
+    background:var(--brand-soft); color:var(--brand); font-size:10px; font-weight:800;
+    padding:2.5px 9px; border-radius:20px;
+  }
+  [data-theme="dark"] .founder-role{ color:#A5B4FC; }
+  .founder-gh{ font-size:11px; color:var(--ink-soft); font-weight:700; text-decoration:none; display:inline-block; margin-top:3px; }
+  .founder-sync{ flex:none; display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
+  .founder-sync .s-line{ display:flex; align-items:center; gap:5px; font-size:10.5px; font-weight:800; color:var(--ink-soft); }
+  .sync-when{ font-size:10px; color:var(--ink-faint); font-weight:700; }
   .ps .n{ font-size:17px; font-weight:800; }
   .ps .l{ font-size:10.5px; color:var(--ink-faint); font-weight:700; }
   .status-row{
@@ -999,7 +1026,6 @@
     <!-- ============ ABOUT TAB ============ -->
     <section class="tab-panel" id="aboutTab">
       <div class="profile-card" id="profileCard"></div>
-      <div class="status-row"><span class="status-dot" id="statusDot"></span><span id="statusText">Loading…</span></div>
 
       <div class="about-card" id="helpCard">
         <h4>🙋 Need help?</h4>
@@ -2206,27 +2232,38 @@ post.files.forEach(function(f){
 
   function renderAbout(){
     var card = document.getElementById("profileCard");
-    var name, handle, bio, avatar, link;
+    var name, handle, avatar, link;
     if(gitProfile && (gitProfile.name || gitProfile.login)){
       name = gitProfile.name || gitProfile.login;
       handle = gitProfile.login ? "@" + gitProfile.login : "";
-      bio = gitProfile.bio || "";
       avatar = gitProfile.avatar_url || "";
       link = gitProfile.html_url || ("https://github.com/" + CONFIG.owner);
     } else {
       name = siteConfig.teacherName || siteConfig.blogTitle || "Notes Sathi";
       handle = CONFIG.owner ? "@" + CONFIG.owner : "";
-      bio = siteConfig.tagline;
       avatar = "";
       link = CONFIG.owner ? "https://github.com/" + CONFIG.owner : "";
     }
+    var appName = siteConfig.blogTitle || "Notes Sathi";
+    var appTag = siteConfig.tagline || "College notes, beautifully organized — English + हिंदी, free for every student.";
     card.innerHTML =
-      '<span style="display:block;width:74px;margin:0 auto 10px;">' + avatarSpan({ name:name, avatar:avatar }, 74) + "</span>" +
-      '<div class="profile-name">' + esc(name) + "</div>" +
-      (handle && link ? '<a class="profile-handle" href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(handle) + " · View GitHub ↗</a>" : "") +
-      '<div class="profile-role">🎓 Teacher · Publisher</div>' +
-      (siteConfig.collegeName ? '<div class="profile-college">🎓 ' + esc(siteConfig.collegeName) + "</div>" : "") +
-      (bio ? '<div class="profile-bio">' + esc(bio) + "</div>" : "");
+      '<div class="app-info">' +
+        '<img class="app-icon" src="icon-192.png" alt="Notes Sathi" width="64" height="64" onerror="this.style.display=\'none\'">' +
+        '<div class="app-name">' + esc(appName) + "</div>" +
+        '<div class="app-tag">' + esc(appTag) + "</div>" +
+        (siteConfig.collegeName ? '<div class="app-college">🎓 ' + esc(siteConfig.collegeName) + "</div>" : "") +
+      "</div>" +
+      '<div class="founder-row">' +
+        '<span class="founder-av">' + avatarSpan({ name:name, avatar:avatar }, 40) + "</span>" +
+        '<div class="founder-mid">' +
+          '<div class="founder-line1"><span class="founder-name">' + esc(name) + '</span>' +
+          '<span class="founder-role">✨ Founder / Developer</span></div>' +
+          (handle && link ? '<a class="founder-gh" href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(handle) + " · GitHub ↗</a>" : "") +
+        "</div>" +
+        '<div class="founder-sync"><span class="s-line"><span class="status-dot" id="statusDot"></span><span id="statusText"></span></span>' +
+        (repoStats && repoStats.pushed_at ? '<span class="sync-when">updated ' + timeAgo(repoStats.pushed_at) + "</span>" : "") +
+        "</div>" +
+      "</div>";
 
     renderContributors();
 
@@ -2234,13 +2271,13 @@ post.files.forEach(function(f){
     var txt = document.getElementById("statusText");
     if(dataSource === "tree" || dataSource === "api"){
       dot.className = "status-dot ok";
-      txt.textContent = "Connected to GitHub — notes update automatically";
+      txt.textContent = "Live";
     } else if(dataSource === "cache"){
       dot.className = "status-dot ok";
-      txt.textContent = "Showing saved notes from your last visit (offline)";
+      txt.textContent = "Offline";
     } else {
       dot.className = "status-dot demo";
-      txt.textContent = "Demo mode — connect a GitHub repository to go live";
+      txt.textContent = "Demo";
     }
   }
 
