@@ -1,7 +1,7 @@
 ================================================================================
                     NOTES SATHI — TERMS AND CONDITIONS
 ================================================================================
-Version     : 1.1
+Version     : 1.2
 Effective   : 04 October 2026
 Applies to  : Every visitor, reader, student and contributor of the Notes
               Sathi platform (the "Platform"), hosted at
@@ -283,6 +283,7 @@ Operator    : Vinay Soni ("Owner", "we", "us", "our")
 Vinay Soni (Founder / Developer & Grievance Officer)
 WhatsApp : +91 89890 31351
 Instagram: @vinay.sanjay.soni
+E-mail   : vinay.sanjaysoni@gmail.com
 Written  : https://github.com/VinaySoni-IN/Notes-Sathi/issues
 ================================================================================
 END OF TERMS AND CONDITIONS

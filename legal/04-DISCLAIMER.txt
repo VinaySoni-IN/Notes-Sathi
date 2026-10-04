@@ -1,7 +1,7 @@
 ================================================================================
                          NOTES SATHI — DISCLAIMER
 ================================================================================
-Version    : 1.1
+Version    : 1.2
 Effective  : 04 October 2026
 Platform   : https://vinaysoni-in.github.io/Notes-Sathi/
 Operator   : Vinay Soni (individual, in personal capacity)
@@ -118,6 +118,7 @@ Operator   : Vinay Soni (individual, in personal capacity)
 --------------------------------------------------------------------------------
 9.1  Corrections, error reports and objections:
      WhatsApp : +91 89890 31351 (Vinay Soni)
+     E-mail   : vinay.sanjaysoni@gmail.com
      Instagram: @vinay.sanjay.soni
      Written  : https://github.com/VinaySoni-IN/Notes-Sathi/issues
 ================================================================================

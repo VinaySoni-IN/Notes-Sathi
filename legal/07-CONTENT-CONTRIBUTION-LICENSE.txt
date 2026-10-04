@@ -1,7 +1,7 @@
 ================================================================================
                  NOTES SATHI — CONTENT CONTRIBUTION LICENSE
 ================================================================================
-Version    : 1.0
+Version    : 1.1
 Effective  : 04 October 2026
 Platform   : https://vinaysoni-in.github.io/Notes-Sathi/
 Repository : https://github.com/VinaySoni-IN/Notes-Sathi
@@ -78,7 +78,8 @@ Licensee   : Notes Sathi, operated by Vinay Soni ("Owner")
 --------------------------------------------------------------------------------
 5.1  A Contributor may revoke this licence in respect of any Content at any
      time by requesting removal through the Grievance channels
-     (WhatsApp +91 89890 31351 or a GitHub Issue). Removal from the live
+     (WhatsApp +91 89890 31351, e-mail vinay.sanjaysoni@gmail.com,
+     or a GitHub Issue). Removal from the live
      app and the current repository state is carried out within 72 hours.
 
 5.2  Revocation does not apply retroactively to copies lawfully downloaded

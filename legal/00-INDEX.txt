@@ -7,9 +7,9 @@ Founder    : Vinay Soni ("Owner")
 Service    : Free, non-commercial, community notes platform for the students
              of Satpuda College of Engineering and Polytechnic, Balaghat,
              Madhya Pradesh, India.
-Version    : 1.1
+Version    : 1.2
 Effective  : 04 October 2026
-Last updated : 04 October 2026 (v1.1 — added No-Refunds and strict No-Responsibility clauses)
+Last updated : 04 October 2026 (v1.2 — Grievance Officer e-mail published)
 ================================================================================
 
 IMPORTANT NOTE
@@ -88,13 +88,14 @@ Grievance Officer : Vinay Soni (Founder / Developer)
 WhatsApp          : +91 89890 31351
                     (also reachable through the in-app "Need help?" card)
 Instagram         : @vinay.sanjay.soni
+E-mail            : vinay.sanjaysoni@gmail.com
 Written notices   : https://github.com/VinaySoni-IN/Notes-Sathi/issues
                     (GitHub Issues — creates a permanent written record)
 Repository        : https://github.com/VinaySoni-IN/Notes-Sathi
 
-A dedicated e-mail address for legal notices may be published in a future
-revision of this index. Until such publication, written notices sent through
-GitHub Issues or WhatsApp shall be treated as validly delivered.
+Written legal notices may be sent to the e-mail address above. Notices sent
+through GitHub Issues or WhatsApp shall equally be treated as validly
+delivered.
 
 Response commitments:
   * Acknowledgment of any complaint / notice : within 48 hours

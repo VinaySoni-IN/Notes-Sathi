@@ -1,7 +1,7 @@
 ================================================================================
      NOTES SATHI — GRIEVANCE REDRESSAL MECHANISM AND FIRST COMPLAINT REPORT
 ================================================================================
-Version    : 1.0
+Version    : 1.1
 Effective  : 04 October 2026
 Platform   : https://vinaysoni-in.github.io/Notes-Sathi/
 Repository : https://github.com/VinaySoni-IN/Notes-Sathi
@@ -19,14 +19,14 @@ PART A — GRIEVANCE REDRESSAL MECHANISM
      Name         : Vinay Soni
      Role         : Grievance Officer (also Founder / Developer)
      WhatsApp     : +91 89890 31351
+     E-mail       : vinay.sanjaysoni@gmail.com
      Instagram    : @vinay.sanjay.soni
      Written      : https://github.com/VinaySoni-IN/Notes-Sathi/issues
      Hours        : 10:00 AM – 8:00 PM IST, Mon–Sat
 
-1.2  A dedicated e-mail address for formal legal notices may be published in
-     a future revision. Until then, a GitHub Issue, or a WhatsApp message
-     clearly marked "LEGAL NOTICE" or "GRIEVANCE", constitutes valid written
-     notice.
+1.2  Formal legal notices may be sent to the Grievance Officer's e-mail
+     address above. An e-mail, a GitHub Issue, or a WhatsApp message clearly
+     marked "LEGAL NOTICE" or "GRIEVANCE" constitutes valid written notice.
 
 2. WHAT YOU CAN COMPLAIN ABOUT
 --------------------------------------------------------------------------------

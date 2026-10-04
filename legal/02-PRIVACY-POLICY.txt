@@ -1,7 +1,7 @@
 ================================================================================
                     NOTES SATHI — PRIVACY POLICY
 ================================================================================
-Version    : 1.0
+Version    : 1.1
 Effective  : 04 October 2026
 Operator   : Vinay Soni ("Owner", "we", "us", "our")
 Platform   : https://vinaysoni-in.github.io/Notes-Sathi/
@@ -139,6 +139,7 @@ Personal Data Protection Act, 2023 (India).
 --------------------------------------------------------------------------------
 10.1 Grievance Officer: Vinay Soni (Founder / Developer)
      WhatsApp : +91 89890 31351
+     E-mail   : vinay.sanjaysoni@gmail.com
      Instagram: @vinay.sanjay.soni
      Written  : https://github.com/VinaySoni-IN/Notes-Sathi/issues
 10.2 Privacy complaints are acknowledged within 48 hours and resolved within

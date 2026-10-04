@@ -1,7 +1,7 @@
 ================================================================================
         NOTES SATHI — COPYRIGHT POLICY AND TAKEDOWN NOTICE PROCEDURE
 ================================================================================
-Version    : 1.0
+Version    : 1.1
 Effective  : 04 October 2026
 Operator   : Vinay Soni ("Owner")
 Platform   : https://vinaysoni-in.github.io/Notes-Sathi/
@@ -82,6 +82,8 @@ Repository : https://github.com/VinaySoni-IN/Notes-Sathi
 4.2  Send the notice through ANY of these official channels:
 
      WhatsApp : +91 89890 31351 (Grievance Officer: Vinay Soni)
+     E-mail   : vinay.sanjaysoni@gmail.com
+              (subject line: "Copyright Notice — <file name>")
      Instagram: @vinay.sanjay.soni
      Written  : https://github.com/VinaySoni-IN/Notes-Sathi/issues
                 (a GitHub Issue titled "Copyright Notice — <file name>"
