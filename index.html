@@ -202,6 +202,23 @@
     padding:11px 4px; border-radius:12px; cursor:pointer; transition:.13s ease; text-align:center;
   }
   .sem-pill:active{ transform:scale(.96); }
+  .pick-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:14px 0; }
+  .pick-card{
+    position:relative; border:1.5px solid var(--line); background:var(--card-2); color:var(--ink);
+    font-family:var(--font); border-radius:14px; padding:14px 10px 12px; cursor:pointer;
+    display:flex; flex-direction:column; align-items:center; gap:3px; transition:.13s ease; text-align:center;
+  }
+  .pick-card:active{ transform:scale(.97); }
+  .pick-card.sel{ border-color:var(--brand); background:var(--brand-soft); box-shadow:inset 0 0 0 1px var(--brand); }
+  .pick-emoji{ font-size:26px; line-height:1.25; }
+  .pick-t{ font-size:13.5px; font-weight:800; }
+  .pick-s{ font-size:10.5px; color:var(--ink-soft); line-height:1.35; }
+  .pick-card.soon{ opacity:.55; pointer-events:none; }
+  .pick-soon{
+    position:absolute; top:8px; right:8px; background:var(--brand); color:#fff;
+    font-size:8.5px; font-weight:800; letter-spacing:.4px; text-transform:uppercase;
+    padding:3px 7px; border-radius:999px;
+  }
   .sem-pill.sel{ border-color:var(--brand); background:var(--brand-soft); color:var(--brand); }
   .sem-agree{ display:flex; flex-direction:column; gap:10px; }
   .tc-box{
@@ -895,7 +912,7 @@
         <div class="hdr-sub" id="hdrSub">College notes, beautifully organized</div>
       </div>
       <div class="hdr-actions">
-        <button class="iconbtn" id="semBtn" aria-label="Change semester" title="Semester settings">
+        <button class="iconbtn" id="semBtn" aria-label="Change program, branch and semester" title="Program · Branch · Semester">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
         </button>
         <button class="iconbtn" id="themeBtn" aria-label="Toggle dark mode" title="Dark mode">
@@ -914,6 +931,7 @@
         <div class="mast-tag" id="mastTag">Class notes — English + हिंदी, free for every student</div>
         <div class="mast-by" id="mastBy"></div>
         <div class="mast-stats">
+          <span class="mchip" id="mchipBranch" style="display:none; cursor:pointer;" title="Change branch">🏛 Branch</span>
           <span class="mchip" id="mchipSem" style="display:none; cursor:pointer;" title="Change semester">🎓 Semester</span>
           <span class="mchip" id="mchipSubjects" style="cursor:pointer;" title="Open Files — by subject">— subjects</span>
           <span class="mchip" id="mchipNotes" style="cursor:pointer;" title="Open Files — A to Z">— notes</span>
@@ -1005,12 +1023,12 @@
         <button class="btn btn-primary btn-block" id="openUploadBtn" style="margin-bottom:12px;">📤 Open Upload Dashboard</button>
         <ol class="steps">
           <li>Open the <b>Upload</b> tab in the app and <b>sign in once</b> with your GitHub token — a step-by-step guide is included there.</li>
-          <li>Pick your <b>Semester</b> and <b>Subject</b> — both are required, so every note lands in the right folder automatically.</li>
+          <li>Pick your <b>Program</b>, <b>Branch</b>, <b>Semester</b> and <b>Subject</b> — all required, so every note lands in the right folder automatically.</li>
           <li><b>Drag &amp; drop your PDFs</b> — 📘 English and 📕 हिंदी versions are detected automatically; tap to switch if needed.</li>
           <li>Tap <b>Upload all</b> → students see the notes within ~1 minute, with <b>stories</b> and a <b>NEW</b> badge for 24 hours.</li>
         </ol>
         <p style="margin:10px 0 0; font-size:11.5px; color:var(--ink-soft); line-height:1.7;">
-          <b>Prefer GitHub directly?</b> Upload into <span class="code-chip">notes/Sem&nbsp;3/Physics/</span> (English + Hindi pair: <span class="code-chip">Unit-1.pdf</span> + <span class="code-chip">Unit-1.hi.pdf</span>). PYQ papers go in <span class="code-chip">notes/Sem&nbsp;3/PYQ/</span> — they show up in the 📝 PYQ's sheet, not the feed.
+          <b>Prefer GitHub directly?</b> Upload into <span class="code-chip">notes/Polytechnic/Civil&nbsp;Engineering/Sem&nbsp;3/Building&nbsp;Construction/</span> (English + Hindi pair: <span class="code-chip">Unit-1.pdf</span> + <span class="code-chip">Unit-1.hi.pdf</span>). PYQ papers go in <span class="code-chip">notes/Polytechnic/Civil&nbsp;Engineering/Sem&nbsp;3/PYQ/</span> — they show up in the 📝 PYQ's sheet, not the feed.
         </p>
       </div>
 
@@ -1076,7 +1094,27 @@
         <div class="up-card">
           <div class="up-row2">
             <div class="up-field">
-              <label>Semester (optional)</label>
+              <label>Program</label>
+              <select id="upProgram" class="up-input">
+                <option value="Polytechnic" selected>Polytechnic</option>
+                <option value="B.Tech" disabled>B.Tech (coming soon)</option>
+              </select>
+            </div>
+            <div class="up-field">
+              <label>Branch *</label>
+              <select id="upBranch" class="up-input">
+                <option value="" disabled selected>Select branch *</option>
+                <option value="Civil">Civil Engineering</option>
+                <option value="Mechanical">Mechanical Engineering</option>
+                <option value="Electrical">Electrical Engineering</option>
+                <option value="Mining">Mining &amp; Mine Surveying</option>
+                <option value="Computer Science">Computer Science</option>
+              </select>
+            </div>
+          </div>
+          <div class="up-row2">
+            <div class="up-field">
+              <label>Semester *</label>
               <select id="upSem" class="up-input">
                 <option value="" disabled selected>Select semester *</option>
                 <option value="Sem 1">Sem 1</option><option value="Sem 2">Sem 2</option>
@@ -1086,7 +1124,7 @@
               </select>
             </div>
             <div class="up-field">
-              <label>Subject</label>
+              <label>Subject *</label>
               <select id="upSubject" class="up-input"></select>
             </div>
           </div>
@@ -1172,9 +1210,12 @@
     <div class="sem-head">
       <div class="sem-logo">📚</div>
       <div class="sem-eyebrow">Welcome to <b>Notes Sathi</b></div>
-      <h2 class="sem-title" id="semTitle">Choose your semester</h2>
-      <p class="sem-sub" id="semSub">Your notes will open for this semester by default. You can change it anytime from the ⚙️ settings icon.</p>
+      <h2 class="sem-title" id="semTitle">Choose your program</h2>
+      <p class="sem-sub" id="semSub">Pick your course — your notes, files and uploads follow this choice. You can change it anytime from the ⚙️ settings icon.</p>
     </div>
+    <button class="btn btn-ghost btn-block" id="semBack" style="display:none; margin-bottom:4px;">← Back</button>
+    <div class="pick-grid" id="wizProgram" role="radiogroup" aria-label="Program"></div>
+    <div class="pick-grid" id="wizBranch" role="radiogroup" aria-label="Branch"></div>
     <div class="sem-grid" id="semGrid" role="radiogroup" aria-label="Semester"></div>
 
     <div class="sem-agree" id="semAgree">
@@ -1376,7 +1417,13 @@
   }
   function subjectDisplayName(raw){
     var segs = String(raw || "").split("/").map(function(x){ return x.trim(); }).filter(Boolean);
+    /* strip program and branch folders (v2.0), then semester folders */
+    if(segs.length > 1 && normProgram(segs[0])){
+      segs.shift();
+      if(segs.length > 1 && !isSemSeg(segs[0]) && branchKeyOf(segs[0])) segs.shift();
+    }
     while(segs.length > 1 && isSemSeg(segs[0])) segs.shift();
+    if(segs.length === 1 && isSemSeg(segs[0])) segs = [];   /* lone Sem folder → general notes */
     return segs.length ? prettifySubject(segs.join("/")) : "Notes";
   }
   function isLocalFile(){ return location.protocol === "file:"; }
@@ -1580,6 +1627,13 @@
       var ext = (fileName.match(/\.([a-z0-9]+)$/i) || [null, ""])[1].toLowerCase();
       if(VIEWABLE.indexOf(ext) < 0 && DOWNLOADABLE.indexOf(ext) < 0) return;
 
+      /* v2.0 structure: notes/Polytechnic/[Branch]/Sem N/[Subject]/file.pdf
+         legacy paths (notes/Sem N/..., notes/file.pdf) stay college-wide */
+      var program = null, branch = null;
+      if(segs.length && normProgram(segs[0])){
+        program = normProgram(segs[0]);
+        if(segs.length > 1 && !isSemSeg(segs[1]) && branchKeyOf(segs[1])) branch = branchKeyOf(segs[1]);
+      }
       var subjectRaw = segs.join("/");
       var nameNoExt = fileName.slice(0, fileName.length - ext.length - 1);
       var sl = splitLang(nameNoExt);
@@ -1589,7 +1643,7 @@
       var post = subjMap[key];
       if(!post){
         post = subjMap[key] = {
-          id:key, subjectRaw:subjectRaw, base:sl.base,
+          id:key, subjectRaw:subjectRaw, base:sl.base, program:program, branch:branch,
           title:prettifyTitle(sl.base), files:[], date:null, size:0, demo:!!f.demo
         };
         postMap.push(post);
@@ -1862,7 +1916,7 @@ post.files.forEach(function(f){
     by.innerHTML = parts.join('<span class="dot-sep">·</span>');
 
     var fp = feedPosts(), subsSeen = {};
-    fp.forEach(function(p){ subsSeen[p.subjectRaw] = 1; });
+    fp.forEach(function(p){ subsSeen[p.subjectKey] = 1; });
     document.getElementById("mchipSubjects").textContent = Object.keys(subsSeen).length + " subjects";
     document.getElementById("mchipNotes").textContent = fp.length + " notes";
 
@@ -1962,7 +2016,7 @@ post.files.forEach(function(f){
     fp.forEach(function(p){ cnts[p.subjectKey] = (cnts[p.subjectKey] || 0) + 1; });
     var html = '<button class="chip-pill' + (activeSubject === null ? " active" : "") + '" data-subj="all">All notes <span class="cnt">' + fp.length + "</span></button>";
     subjects.forEach(function(s){
-      var c = semActive() ? (cnts[s.raw] || 0) : s.count;
+      var c = cnts[s.raw] || 0;
       if(c <= 0) return;
       html += '<button class="chip-pill' + (activeSubject === s.raw ? " active" : "") + '" data-subj="' + esc(s.raw) + '">' +
         s.emoji + " " + esc(s.name) + ' <span class="cnt">' + c + "</span></button>";
@@ -2001,7 +2055,11 @@ post.files.forEach(function(f){
       } else if(!posts.length){
         feed.innerHTML = '<div class="empty"><div class="big">📭</div>' +
           '<div class="t">No notes published yet</div>' +
-          '<div class="s">Teachers: upload PDFs into the <b>notes/</b> folder of the repository<br>and they appear here automatically within a minute.</div></div>';
+          '<div class="s">Teachers: publish from the <b>\uD83D\uDCE4 Upload tab</b> (or drop PDFs into the notes/ folder on GitHub)<br>\u2014 they appear here automatically within a minute.</div></div>';
+      } else if(activeSubject === null && !searchQ && !feedPosts().length){
+        feed.innerHTML = '<div class="empty"><div class="big">📭</div>' +
+          '<div class="t">No notes for your selection yet</div>' +
+          '<div class="s">Notes for your <b>program \u00b7 branch \u00b7 semester</b> will appear here<br>as soon as teachers upload them.</div></div>';
       } else {
         feed.innerHTML = '<div class="empty"><div class="big">🔍</div><div class="t">' + (searchQ ? "No notes match your search" : "Nothing in this subject yet") + '</div><div class="s">' + (searchQ ? "Try a different name or subject — or clear the search." : "Try another subject chip above.") + '</div></div>';
       }
@@ -2035,7 +2093,8 @@ post.files.forEach(function(f){
   function renderFiles(){
     document.getElementById("fsNotes").textContent = feedPosts().length;
     document.getElementById("fsFiles").textContent = allFiles().length;
-    document.getElementById("fsSubjects").textContent = subjects.length;
+    var seenSubj = {}; feedPosts().forEach(function(p){ seenSubj[p.subjectKey] = 1; });
+    document.getElementById("fsSubjects").textContent = Object.keys(seenSubj).length;
     var total = 0;
     allFiles().forEach(function(x){ total += x.file.size; });
     document.getElementById("fsSize").textContent = fmtSize(total);
@@ -2767,6 +2826,7 @@ post.files.forEach(function(f){
       return;
     }
     var list = posts.filter(function(p){
+      if(!postMatchesSelection(p)) return false;
       if(!matchesType(p)) return false;
       var hay = (p.title + " " + p.subject.name + " " + p.base + " " + p.files.map(function(f){ return f.name; }).join(" ")).toLowerCase();
       return hay.indexOf(q) > -1;
@@ -2816,8 +2876,313 @@ post.files.forEach(function(f){
   });
 
   /* ============ SEMESTER (onboarding + settings) ============ */
-  var LS_SEM = "ns_sem_v1", LS_ACK = "ns_ack_v1";
+  var LS_SEM = "ns_sem_v1", LS_ACK = "ns_ack_v1", LS_PROG = "ns_prog_v1", LS_BRANCH = "ns_branch_v1";
   var mySem = null, semSel = null, semSettingsMode = false;
+  var myProgram = null, myBranch = null;
+  var wizStep = 1, wizProgram = null, wizBranch = null;
+
+  /* ---------- program + branch (v2.0 structure) ---------- */
+  var PROGRAMS = [
+    { key:"Polytechnic", emoji:"\uD83C\uDFEB", sub:"Diploma \u00b7 Pick your branch", active:true },
+    { key:"B.Tech", emoji:"\uD83C\uDF93", sub:"Degree \u00b7 Coming soon", active:false }
+  ];
+  var BRANCHES = [
+    { key:"Civil", label:"Civil Engineering", emoji:"\uD83C\uDFD7\uFE0F" },
+    { key:"Mechanical", label:"Mechanical Engineering", emoji:"\u2699\uFE0F" },
+    { key:"Electrical", label:"Electrical Engineering", emoji:"\u26A1" },
+    { key:"Mining", label:"Mining & Mine Surveying", emoji:"\u26CF\uFE0F" },
+    { key:"Computer Science", label:"Computer Science", emoji:"\uD83D\uDCBB" }
+  ];
+  function normProgram(seg){
+    var s = String(seg || "").trim().toLowerCase().replace(/\s+/g, " ");
+    if(/^(polytechnic|poly|diploma)$/.test(s)) return "Polytechnic";
+    if(/^b[.\s-]*tech/.test(s) || s === "btech") return "B.Tech";
+    return null;
+  }
+  function branchKeyOf(seg){
+    var s = String(seg || "").trim().toLowerCase().replace(/&/g, " and ").replace(/\s+/g, " ").trim();
+    var t = s.replace(/engineering/g, "").replace(/and/g, "").replace(/[^a-z]/g, "");
+    if(t === "civil") return "Civil";
+    if(t === "mechanical") return "Mechanical";
+    if(t === "electrical" || t === "ee") return "Electrical";
+    if(t.indexOf("mining") === 0 || t.indexOf("minesurvey") === 0) return "Mining";
+    if(t === "computerscience" || t === "cs" || t === "cse" || t === "computer") return "Computer Science";
+    return null;
+  }
+  /* ---------- built-in RGPV diploma scheme (subject folders per branch + semester) ---------- */
+  var CURRICULUM = {
+  "Computer Science": {
+    "Sem 1": [
+      "Mathematics-I",
+      "Applied Physics-I",
+      "Applied Chemistry",
+      "Communication Skills in English",
+      "Engineering Graphics",
+      "Engineering Workshop Practice",
+      "Sports and Yoga",
+      "Library"
+    ],
+    "Sem 2": [
+      "Mathematics-II",
+      "Applied Physics-II",
+      "Fundamentals of Electrical and Electronics Engineering",
+      "Engineering Mechanics",
+      "Environmental Science",
+      "Introduction to IT Systems",
+      "Library"
+    ],
+    "Sem 3": [
+      "Computer Programming",
+      "Scripting Languages",
+      "Data Structures",
+      "Computer System Organisation",
+      "Algorithms",
+      "Summer Internship-I",
+      "Professional Development",
+      "Recovery Classes or Library etc."
+    ],
+    "Sem 4": [
+      "Operating Systems",
+      "Introduction to DBMS",
+      "Computer Networks",
+      "SSAD or Software Engineering",
+      "Web Technologies",
+      "Minor Project",
+      "Essence of Indian Knowledge and Tradition",
+      "Library or Seminar or Visits etc."
+    ],
+    "Sem 5": [
+      "Introduction to e-Governance",
+      "Internet of Things",
+      "Information Security OR Multimedia Technologies",
+      "Advanced Computer Networks OR Data Sciences: Data Warehousing and Data Mining",
+      "Renewable Energy Technologies OR Operation Research",
+      "Summer Internship-II",
+      "Major Project",
+      "Workshop or Visits etc.",
+      "Recovery Classes or Library etc."
+    ],
+    "Sem 6": [
+      "Entrepreneurship and Start-ups",
+      "Mobile Computing OR Free and Open Source Software (FOSS)",
+      "Network Forensics",
+      "Software Testing OR Disaster Management",
+      "Artificial Intelligence OR Engineering Economics and Accountancy",
+      "Project Management",
+      "Indian Constitution",
+      "Major Project",
+      "Seminar",
+      "Library or Visits etc."
+    ]
+  },
+  "Electrical": {
+    "Sem 1": [
+      "Mathematics-I",
+      "Applied Physics-I",
+      "Introduction to IT Systems",
+      "Fundamentals of Electrical & Electronics Engineering",
+      "Engineering Mechanics",
+      "Environmental Science",
+      "Sports and Yoga",
+      "Library"
+    ],
+    "Sem 2": [
+      "Mathematics-II",
+      "Applied Physics-II",
+      "Communication Skills in English",
+      "Applied Chemistry",
+      "Engineering Graphics",
+      "Engineering Workshop Practice",
+      "Library"
+    ],
+    "Sem 3": [
+      "Introduction to Electric Generation Systems",
+      "Electric Circuits",
+      "Electrical and Electronic Measurements",
+      "Electric Motors and Transformers",
+      "Renewable Energy Power Plants",
+      "Summer Internship-I",
+      "Professional Development",
+      "Recovery Classes or Library etc."
+    ],
+    "Sem 4": [
+      "Fundamentals of Power Electronics",
+      "Electric Power Transmission and Distribution",
+      "Induction, Synchronous and Special Electric Machines",
+      "Industrial Automation and Control",
+      "Industrial Drives OR Electrical Testing and Commissioning OR Electrical Estimation and Contracting",
+      "Minor Project",
+      "Essence of Indian Knowledge and Tradition",
+      "Library or Seminar or Visits etc."
+    ],
+    "Sem 5": [
+      "Microcontroller Applications",
+      "Energy Conservation and Audit",
+      "Electric Traction",
+      "Switchgear and Protection",
+      "Renewable Energy Technologies OR Electric Vehicles OR Illumination Practices",
+      "Internet of Things",
+      "Summer Internship-II",
+      "Major Project",
+      "Workshop or Seminar or Visit etc.",
+      "Recovery Classes or Library etc."
+    ],
+    "Sem 6": [
+      "Entrepreneurship and Start-ups",
+      "Building Electrification",
+      "Project Management",
+      "Artificial Intelligence OR Disaster Management",
+      "Engineering Economics and Accountancy",
+      "Indian Constitution",
+      "Major Project",
+      "Seminar",
+      "Library or Visits etc."
+    ]
+  },
+  "Civil": {
+    "Sem 1": [
+      "Mathematics-I",
+      "Applied Physics-I",
+      "Introduction to IT Systems",
+      "Fundamentals of Electrical & Electronics Engineering",
+      "Engineering Mechanics",
+      "Environmental Science",
+      "Sports and Yoga",
+      "Library"
+    ],
+    "Sem 2": [
+      "Mathematics-II",
+      "Applied Physics-II",
+      "Communication Skills in English",
+      "Applied Chemistry",
+      "Engineering Graphics",
+      "Engineering Workshop Practice",
+      "Library"
+    ],
+    "Sem 3": [
+      "Construction Materials",
+      "Basic Surveying",
+      "Mechanics of Materials",
+      "Building Construction",
+      "Concrete Technology",
+      "Geotechnical Engineering",
+      "Summer Internship-I",
+      "Professional Development",
+      "Recovery Classes or Library etc."
+    ],
+    "Sem 4": [
+      "Hydraulics",
+      "Advanced Surveying",
+      "Theory of Structures",
+      "Building Planning and Drawing",
+      "Water Resources Engineering",
+      "Transportation Engineering",
+      "Construction Management",
+      "Precast and Prestressed Concrete",
+      "Minor Project",
+      "Essence of Indian Knowledge and Tradition",
+      "Library or Seminar or Visits etc."
+    ],
+    "Sem 5": [
+      "Design of Steel and RCC Structures",
+      "Estimating and Costing",
+      "Internet of Things",
+      "Solid Waste Management",
+      "Green Building and Energy Conservation",
+      "Traffic Engineering OR Pavement Design and Maintenance OR Renewable Energy Technologies",
+      "Summer Internship-II",
+      "Major Project",
+      "Recovery Classes or Library etc."
+    ],
+    "Sem 6": [
+      "Entrepreneurship and Start-ups",
+      "Public Health Engineering",
+      "Tendering and Accounts",
+      "Repairs and Maintenance of Structures OR Project Management",
+      "Disaster Management OR Artificial Intelligence",
+      "Engineering Economics and Accountancy",
+      "Indian Constitution",
+      "Major Project",
+      "Seminar",
+      "Library or Visits etc."
+    ]
+  },
+  "Mechanical": {
+    "Sem 1": [
+      "Mathematics-I",
+      "Applied Physics-I",
+      "Applied Chemistry",
+      "Communication Skills in English",
+      "Engineering Graphics",
+      "Engineering Workshop Practice",
+      "Sports and Yoga",
+      "Library"
+    ],
+    "Sem 2": [
+      "Mathematics-II",
+      "Applied Physics-II",
+      "Fundamentals of Electrical and Electronics Engineering",
+      "Engineering Mechanics",
+      "Environmental Science",
+      "Introduction to IT Systems",
+      "Library"
+    ],
+    "Sem 3": [
+      "Basic Mechanical Engineering",
+      "Fluid Mechanics and Hydraulic Machinery",
+      "Manufacturing Engineering",
+      "Material Science and Engineering",
+      "Thermal Engineering-I",
+      "Computer Aided Machine Drawing Practice",
+      "Summer Internship-I",
+      "Professional Development",
+      "Recovery Classes or Library etc."
+    ],
+    "Sem 4": [
+      "Measurements and Metrology",
+      "Strength of Materials",
+      "Material Handling System",
+      "Heat Transfer OR Computer Integrated Manufacturing",
+      "Refrigeration and Air-Conditioning",
+      "Minor Project",
+      "Essence of Indian Knowledge and Tradition",
+      "Library or Seminar or Visits etc."
+    ],
+    "Sem 5": [
+      "Theory of Machines and Mechanisms",
+      "Industrial Engineering and Management",
+      "Farm Equipment and Farm Machinery OR Renewable Energy Technologies OR Hybrid Vehicles OR Automobile Engineering",
+      "CAD/CAM Lab",
+      "Power Plant Engineering OR Advanced Manufacturing Processes",
+      "Internet of Things",
+      "Summer Internship-II",
+      "Major Project",
+      "Recovery Classes or Library etc.",
+      "Workshop or Seminar or Visit etc."
+    ],
+    "Sem 6": [
+      "Entrepreneurship and Start-ups",
+      "Design of Machine Elements",
+      "Production and Operations Management",
+      "Project Management",
+      "Engineering Economics and Accountancy",
+      "Indian Constitution",
+      "Disaster Management OR Artificial Intelligence OR Seminar",
+      "Major Project",
+      "Library or Visits etc."
+    ]
+  }
+};
+  var BRANCH_FOLDER = {
+  "Computer Science": "Computer Science and Engineering",
+  "Electrical": "Electrical Engineering",
+  "Civil": "Civil Engineering",
+  "Mechanical": "Mechanical Engineering"
+};
+  function branchLabel(k){
+    for(var i = 0; i < BRANCHES.length; i++){ if(BRANCHES[i].key === k) return BRANCHES[i]; }
+    return { key:k, label:k, emoji:"\uD83D\uDCDA" };
+  }
 
   function postSem(p){
     var m = String(p.subjectRaw || "").match(/sem(?:ester)?[\s._-]*(\d)/i);
@@ -2825,18 +3190,45 @@ post.files.forEach(function(f){
   }
   function semStructure(){ return posts.some(postSem); }
   function semActive(){ return !!(mySem && semStructure()); }
+  /* college-wide notes (no program/branch folder) show for everyone;
+     branch notes show only inside their own branch */
+  function postMatchesSelection(p){
+    if(p.program && p.program !== myProgram) return false;
+    if(p.program === "Polytechnic" && myProgram === "Polytechnic" && p.branch && p.branch !== myBranch) return false;
+    return true;
+  }
   function feedPosts(){
-    var base = posts;
-    if(semActive()) base = posts.filter(function(p){ return postSem(p) === mySem; });
+    var base = posts.filter(postMatchesSelection);
+    if(semActive()) base = base.filter(function(p){ return postSem(p) === mySem; });
     /* PYQ papers live only in the PYQ sheet — never in feed/files/stories */
     return base.filter(function(p){ return !isPyqSubject(p.subjectRaw); });
   }
 
   function updateSemChip(){
     var chip = document.getElementById("mchipSem");
-    if(!chip) return;
-    if(mySem){ chip.style.display = ""; chip.textContent = "\uD83C\uDF93 Semester " + mySem; }
-    else chip.style.display = "none";
+    if(chip){
+      if(mySem){ chip.style.display = ""; chip.textContent = "\uD83C\uDF93 Semester " + mySem; }
+      else chip.style.display = "none";
+    }
+    var bchip = document.getElementById("mchipBranch");
+    if(bchip){
+      if(myProgram === "Polytechnic" && myBranch){
+        var bl = branchLabel(myBranch);
+        bchip.style.display = "";
+        bchip.textContent = "\uD83C\uDFDB " + bl.key;
+        bchip.title = "Change program / branch \u2014 " + bl.label;
+      } else bchip.style.display = "none";
+    }
+    syncUploadSelection();
+  }
+  function syncUploadSelection(){
+    var p = document.getElementById("upProgram");
+    var b = document.getElementById("upBranch");
+    if(p && myProgram) p.value = (myProgram === "B.Tech") ? "Polytechnic" : myProgram;
+    if(b && myBranch && myProgram === "Polytechnic"){
+      var has = Array.prototype.some.call(b.options, function(o){ return o.value === myBranch; });
+      if(has) b.value = myBranch;
+    }
   }
 
   function buildSemGrid(){
@@ -2858,46 +3250,122 @@ post.files.forEach(function(f){
     var btn = document.getElementById("semStart");
     if(!btn) return;
     if(semSettingsMode) btn.disabled = !semSel;
-    else btn.disabled = !(semSel && document.getElementById("ackCheck").checked);
+    else btn.disabled = !(semSel && (alreadyAcked() || document.getElementById("ackCheck").checked));
     btn.textContent = semSettingsMode ? "Save semester \u2705" : "Start reading \uD83D\uDCDA";
+  }
+  function buildWizProgram(){
+    var grid = document.getElementById("wizProgram");
+    var html = "";
+    PROGRAMS.forEach(function(pg){
+      var cls = "pick-card" + (wizProgram === pg.key ? " sel" : "") + (pg.active ? "" : " soon");
+      html += '<button class="' + cls + '" data-prog="' + esc(pg.key) + '" role="radio"' +
+        ' aria-checked="' + (wizProgram === pg.key ? "true" : "false") + '"' + (pg.active ? "" : " disabled") + '>' +
+        '<span class="pick-emoji">' + pg.emoji + '</span>' +
+        '<span class="pick-t">' + esc(pg.key) + '</span>' +
+        '<span class="pick-s">' + esc(pg.sub) + '</span>' +
+        (pg.active ? "" : '<span class="pick-soon">Coming soon</span>') + '</button>';
+    });
+    grid.innerHTML = html;
+    grid.querySelectorAll(".pick-card").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        wizProgram = btn.getAttribute("data-prog");
+        if(wizProgram !== "Polytechnic") return;   /* B.Tech = coming soon */
+        wizStep = 2; renderWiz();
+      });
+    });
+  }
+  function buildWizBranch(){
+    var grid = document.getElementById("wizBranch");
+    var html = "";
+    BRANCHES.forEach(function(b){
+      html += '<button class="pick-card' + (wizBranch === b.key ? " sel" : "") + '" data-branch="' + esc(b.key) +
+        '" role="radio" aria-checked="' + (wizBranch === b.key ? "true" : "false") + '">' +
+        '<span class="pick-emoji">' + b.emoji + '</span>' +
+        '<span class="pick-t">' + esc(b.key) + '</span>' +
+        '<span class="pick-s">' + esc(b.label) + '</span></button>';
+    });
+    grid.innerHTML = html;
+    grid.querySelectorAll(".pick-card").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        wizBranch = btn.getAttribute("data-branch");
+        wizStep = 3; renderWiz();
+      });
+    });
+  }
+  function renderWiz(){
+    var wprog = document.getElementById("wizProgram");
+    var wbr = document.getElementById("wizBranch");
+    var grid = document.getElementById("semGrid");
+    var back = document.getElementById("semBack");
+    var title = document.getElementById("semTitle");
+    var sub = document.getElementById("semSub");
+    var agree = document.getElementById("semAgree");
+    var start = document.getElementById("semStart");
+    var cancel = document.getElementById("semCancel");
+    wprog.style.display = wizStep === 1 ? "" : "none";
+    wbr.style.display = wizStep === 2 ? "" : "none";
+    grid.style.display = wizStep === 3 ? "" : "none";
+    back.style.display = wizStep === 1 ? "none" : "";
+    agree.style.display = (wizStep === 3 && !semSettingsMode && !alreadyAcked()) ? "" : "none";
+    cancel.style.display = semSettingsMode ? "" : "none";
+    start.style.display = wizStep === 3 ? "" : "none";
+    if(wizStep === 1){
+      title.textContent = "Choose your program";
+      sub.textContent = "Pick your course \u2014 your notes, files and uploads follow this choice.";
+      buildWizProgram();
+    } else if(wizStep === 2){
+      title.textContent = "Choose your branch";
+      sub.textContent = "Polytechnic \u2014 " + BRANCHES.length + " branches at your college.";
+      buildWizBranch();
+    } else {
+      title.textContent = semSettingsMode ? "Change semester" : "Choose your semester";
+      sub.textContent = (wizProgram === "Polytechnic" && wizBranch ? branchLabel(wizBranch).label + " \u2014 " : "") +
+        "Pick your semester \u2014 your notes view updates instantly.";
+      buildSemGrid(); updateSemStart();
+    }
   }
   function openSemModal(settingsMode){
     semSettingsMode = !!settingsMode;
-    semSel = settingsMode ? mySem : null;
-    var agree = document.getElementById("semAgree");
-    var cancel = document.getElementById("semCancel");
-    var title = document.getElementById("semTitle");
-    var sub = document.getElementById("semSub");
-    if(settingsMode){
-      agree.style.display = "none"; cancel.style.display = "";
-      title.textContent = "Change semester";
-      sub.textContent = "Pick your semester \u2014 your notes view updates instantly.";
-    } else {
-      agree.style.display = ""; cancel.style.display = "none";
-      title.textContent = "Choose your semester";
-      document.getElementById("ackCheck").checked = false;
-    }
-    buildSemGrid(); updateSemStart();
+    semSel = mySem;   /* preselect saved semester (old users skip re-picking) */
+    wizProgram = myProgram || null;
+    wizBranch = myBranch || null;
+    wizStep = 1;
+    if(!semSettingsMode) document.getElementById("ackCheck").checked = false;
+    renderWiz();
     document.getElementById("semOverlay").classList.add("open");
   }
   function closeSemModal(){ document.getElementById("semOverlay").classList.remove("open"); }
-  function semAccepted(){
+  function alreadyAcked(){
     try{ return localStorage.getItem(LS_ACK) === "1"; }catch(e){ return false; }
+  }
+  function semAccepted(){
+    try{
+      if(localStorage.getItem(LS_ACK) !== "1") return false;
+    }catch(e){ return false; }
+    /* program (+ branch for Polytechnic) AND semester must all be chosen */
+    return !!(myProgram && mySem && (myProgram !== "Polytechnic" || myBranch));
   }
   function loadSem(){
     try{
+      var p = localStorage.getItem(LS_PROG);
+      myProgram = (p === "Polytechnic" || p === "B.Tech") ? p : null;
+      myBranch = localStorage.getItem(LS_BRANCH) || null;
       var v = parseInt(localStorage.getItem(LS_SEM), 10);
       mySem = (v >= 1 && v <= 8) ? v : null;
-    }catch(e){ mySem = null; }
+    }catch(e){ myProgram = null; myBranch = null; mySem = null; }
   }
   function saveSem(){
+    myProgram = wizProgram || "Polytechnic";
+    myBranch = wizBranch;
     mySem = semSel;
     try{
+      localStorage.setItem(LS_PROG, myProgram);
+      localStorage.setItem(LS_BRANCH, myBranch || "");
       localStorage.setItem(LS_SEM, String(mySem));
       if(!semSettingsMode) localStorage.setItem(LS_ACK, "1");
     }catch(e){}
     closeSemModal(); updateSemChip(); renderAll();
-    showToast("\uD83C\uDF93 Semester " + mySem + " saved");
+    showToast("\uD83C\uDF93 " + (myProgram === "Polytechnic" && myBranch ? myProgram + " \u00b7 " + myBranch + " \u00b7 " : "") + "Semester " + mySem + " saved");
   }
   function wireSem(){
     buildSemGrid();
@@ -2906,6 +3374,10 @@ post.files.forEach(function(f){
     document.getElementById("ackCheck").addEventListener("change", updateSemStart);
     document.getElementById("semBtn").addEventListener("click", function(){ openSemModal(true); });
     document.getElementById("mchipSem").addEventListener("click", function(){ openSemModal(true); });
+    document.getElementById("mchipBranch").addEventListener("click", function(){ openSemModal(true); });
+    document.getElementById("semBack").addEventListener("click", function(){
+      if(wizStep > 1){ wizStep--; renderWiz(); }
+    });
   function goFilesWithSort(sort){
     filesSort = sort;
     document.querySelectorAll("#fileSortSeg button").forEach(function(x){
@@ -2930,6 +3402,7 @@ post.files.forEach(function(f){
     var out = [];
     posts.forEach(function(p){
       if(!isPyqSubject(p.subjectRaw)) return;
+      if(!postMatchesSelection(p)) return;
       var ps = postSem(p);
       if(mySem && ps !== null && ps !== mySem) return;
       p.files.forEach(function(f){ out.push({ post:p, file:f }); });
@@ -2942,7 +3415,7 @@ post.files.forEach(function(f){
   }
   function allPyqCount(){
     var n = 0;
-    posts.forEach(function(p){ if(isPyqSubject(p.subjectRaw)) n += p.files.length; });
+    posts.forEach(function(p){ if(isPyqSubject(p.subjectRaw) && postMatchesSelection(p)) n += p.files.length; });
     return n;
   }
   function renderPyqFab(){
@@ -2959,15 +3432,17 @@ post.files.forEach(function(f){
     var list = document.getElementById("pyqList");
     var sub = document.getElementById("pyqSub");
     if(!list) return;
-    if(sub) sub.textContent = mySem ? "For Semester " + mySem : "Previous year question papers";
+    if(sub) sub.textContent = mySem
+      ? ((myProgram === "Polytechnic" && myBranch ? myBranch + " \u00b7 " : "") + "For Semester " + mySem)
+      : "Previous year question papers";
     var items = pyqItems();
     if(!items.length){
       var otherSem = allPyqCount() > 0;
       list.innerHTML = '<div class="pyq-empty"><div class="big">📝</div>' +
         '<div class="t">' + (otherSem && mySem ? "No papers for Semester " + mySem + " yet" : "No PYQ papers yet") + "</div>" +
         '<div class="s">' + (otherSem && mySem
-          ? "Papers for <b>Semester " + mySem + "</b> will appear here as soon as they are<br>uploaded to the <b>notes/Sem " + mySem + "/PYQ/</b> folder."
-          : "Previous year question papers appear here as soon as they are<br>uploaded to the <b>notes/PYQ/</b> folder.") + "</div></div>";
+          ? "Papers for <b>Semester " + mySem + "</b> will appear here as soon as they are<br>uploaded to the <b>notes/" + (myProgram === "Polytechnic" && myBranch ? "Polytechnic/" + myBranch + "/" : "") + "Sem " + mySem + "/PYQ/</b> folder."
+          : "Previous year question papers appear here as soon as they are<br>uploaded to the <b>notes/" + (myProgram === "Polytechnic" && myBranch ? "Polytechnic/" + myBranch + "/" : "") + "PYQ/</b> folder.") + "</div></div>";
       return;
     }
     list.innerHTML = items.map(function(it){
@@ -3086,17 +3561,38 @@ post.files.forEach(function(f){
     upRenderQueue();
   }
 
+  /* subject list = built-in curriculum for the picked branch + semester,
+     plus any subject folders actually discovered in the repository */
+  function upScopedSubjectVals(){
+    var br = document.getElementById("upBranch").value;
+    var m = String(document.getElementById("upSem").value || "").match(/(\d)/);
+    var semNo = m ? parseInt(m[1], 10) : null;
+    if(!br || semNo === null) return null;   /* selection incomplete -> caller falls back */
+    var vals = [], seen = {};
+    var curr = CURRICULUM[br] && CURRICULUM[br]["Sem " + semNo];
+    (curr || []).forEach(function(s){
+      if(!seen[s.toLowerCase()]){ seen[s.toLowerCase()] = 1; vals.push(s); }
+    });
+    posts.forEach(function(p){
+      if(isPyqSubject(p.subjectRaw)) return;
+      var ok = (p.program === "Polytechnic" && p.branch === br && postSem(p) === semNo) ||
+               (!p.program && postSem(p) === semNo);
+      if(ok && !seen[p.subjectKey]){ seen[p.subjectKey] = 1; vals.push(p.subject.name); }
+    });
+    return vals;
+  }
   function upFillSubjects(){
     var sel = document.getElementById("upSubject");
-    var seen = {}, vals = [];
-    subjects.forEach(function(s){
-      var v = s.raw;
-      if(!/^config\.json$/i.test(v) && !seen[v]){ seen[v] = 1; vals.push(v); }
-    });
-    if(!sel.getAttribute("data-has-new")){ /* keep new-subject option last */ }
+    var scoped = upScopedSubjectVals();
+    var vals = scoped ? scoped.slice() : [];
+    if(!vals.length){
+      /* branch/semester not picked yet (or unknown branch) -> offer every known subject */
+      subjects.forEach(function(s){ if(vals.indexOf(s.name) < 0) vals.push(s.name); });
+      vals.sort(function(a, b){ return a.toLowerCase() < b.toLowerCase() ? -1 : 1; });
+    }
     var cur = sel.value;
     var html = '<option value="" disabled' + (vals.indexOf(cur) > -1 ? "" : " selected") + '>Select subject *</option>' +
-      vals.sort().map(function(v){
+      vals.map(function(v){
         return '<option value="' + esc(v) + '">' + esc(v) + "</option>";
       }).join("");
     sel.innerHTML = html;
@@ -3114,7 +3610,10 @@ post.files.forEach(function(f){
     return m[1] + (item.lang === "hi" ? ".hi" : "") + ".pdf";
   }
   function upTargetPath(item){
-    var parts = [CONFIG.notesDir || "notes"];
+    var parts = [CONFIG.notesDir || "notes", document.getElementById("upProgram").value || "Polytechnic"];
+    var brKey = document.getElementById("upBranch").value;
+    var br = brKey ? (BRANCH_FOLDER[brKey] || brKey) : "";
+    if(br) parts.push(br);
     var sem = document.getElementById("upSem").value;
     if(sem) parts.push(sem);
     var sub = upSubjectValue();
@@ -3224,6 +3723,7 @@ post.files.forEach(function(f){
     if(upBusy) return;
     var slug = upRepoSlug();
     if(!slug){ showToast("\u26A0\uFE0F Repository not detected \u2014 open the app from its GitHub Pages link"); return; }
+    if(!document.getElementById("upBranch").value){ showToast("\u26A0\uFE0F Pick a branch first"); return; }
     if(!document.getElementById("upSem").value){ showToast("\u26A0\uFE0F Pick a semester first"); return; }
     if(!upSubjectValue()){ showToast("\u26A0\uFE0F Pick a subject first"); return; }
     var pending = upQueue.filter(function(i){ return i.status === "pending" || i.status === "error"; });
@@ -3266,7 +3766,8 @@ post.files.forEach(function(f){
     document.getElementById("upSignIn").addEventListener("click", upSignIn);
     document.getElementById("upSignOut").addEventListener("click", upSignOut);
     document.getElementById("upSubject").addEventListener("change", upRenderQueue);
-    document.getElementById("upSem").addEventListener("change", upRenderQueue);
+    document.getElementById("upSem").addEventListener("change", function(){ upFillSubjects(); upRenderQueue(); });
+    document.getElementById("upBranch").addEventListener("change", function(){ upFillSubjects(); upRenderQueue(); });
     var drop = document.getElementById("upDrop");
     var fin = document.getElementById("upFileInput");
     document.getElementById("upBrowse").addEventListener("click", function(){ fin.click(); });
@@ -3343,7 +3844,9 @@ post.files.forEach(function(f){
     }).then(function(files){
       if(dataSource === "tree" || dataSource === "api") writeCache(files);
       var any = buildModel(files);
-      if(!any && dataSource !== "demo"){
+      /* an empty (but valid) notes folder shows the honest empty state -
+         never fake demo notes on a live site */
+      if(!any && dataSource === "cache"){
         buildModel(demoFiles());
         dataSource = "demo";
       }
