@@ -1,54 +1,2054 @@
 {
- "generatedAt": "2026-10-03T20:20:57.649348Z",
+ "generatedAt": "2026-10-04T08:52:48.070251Z",
  "files": [
   {
-   "path": "notes/Sem 3/IT/INTRO TO IT-6.pdf",
-   "size": 155022,
-   "date": "2026-10-04T00:50:38+05:30",
+   "path": "notes/Polytechnic/Civil Engineering/Sem 1/Applied Physics-I/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
    "author": {
     "login": "VinaySoni-IN",
-    "name": "Vinay Sanjay Soni",
+    "name": "VinaySoni-IN",
     "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
    }
   },
   {
-   "path": "notes/Sem 3/Physics 2/Physics2.pdf",
-   "size": 160200,
-   "date": "2026-10-04T01:27:14+05:30",
+   "path": "notes/Polytechnic/Civil Engineering/Sem 1/Engineering Mechanics/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
    "author": {
     "login": "VinaySoni-IN",
-    "name": "Vinay Sanjay Soni",
+    "name": "VinaySoni-IN",
     "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
    }
   },
   {
-   "path": "notes/Sem 3/it/Python-05.hi.pdf",
-   "size": 581452,
-   "date": "2026-10-04T01:50:47+05:30",
+   "path": "notes/Polytechnic/Civil Engineering/Sem 1/Environmental Science/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
    "author": {
     "login": "VinaySoni-IN",
-    "name": "Vinay Sanjay Soni",
+    "name": "VinaySoni-IN",
     "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
    }
   },
   {
-   "path": "notes/Semester-1/PYQ/Python-07.hi.pdf",
-   "size": 2,
-   "date": "2026-10-02T05:31:26-04:00",
+   "path": "notes/Polytechnic/Civil Engineering/Sem 1/Fundamentals of Electrical & Electronics Engineering/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
    "author": {
-    "login": null,
-    "name": "Vinay Sanjay Soni",
-    "avatar": null
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
    }
   },
   {
-   "path": "notes/Semester-3/Python-07.pdf",
-   "size": 556531,
-   "date": "2026-10-01T13:59:51-04:00",
+   "path": "notes/Polytechnic/Civil Engineering/Sem 1/Introduction to IT Systems/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
    "author": {
-    "login": null,
-    "name": "Vinay Sanjay Soni",
-    "avatar": null
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 1/Library/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 1/Mathematics-I/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 1/Sports and Yoga/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 2/Applied Chemistry/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 2/Applied Physics-II/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 2/Communication Skills in English/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 2/Engineering Graphics/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 2/Engineering Workshop Practice/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 2/Library/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 2/Mathematics-II/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 3/Basic Surveying/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 3/Building Construction/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 3/Concrete Technology/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 3/Construction Materials/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 3/Geotechnical Engineering/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 3/Mechanics of Materials/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 3/Professional Development/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 3/Recovery Classes or Library etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 3/Summer Internship-I/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 4/Advanced Surveying/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 4/Building Planning and Drawing/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 4/Construction Management/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 4/Essence of Indian Knowledge and Tradition/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 4/Hydraulics/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 4/Library or Seminar or Visits etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 4/Minor Project/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 4/Precast and Prestressed Concrete/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 4/Theory of Structures/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 4/Transportation Engineering/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 4/Water Resources Engineering/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 5/Design of Steel and RCC Structures/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 5/Estimating and Costing/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 5/Green Building and Energy Conservation/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 5/Internet of Things/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 5/Major Project/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 5/Recovery Classes or Library etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 5/Solid Waste Management/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 5/Summer Internship-II/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 5/Traffic Engineering OR Pavement Design and Maintenance OR Renewable Energy Technologies/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 6/Disaster Management OR Artificial Intelligence/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 6/Engineering Economics and Accountancy/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 6/Entrepreneurship and Start-ups/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 6/Indian Constitution/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 6/Library or Visits etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 6/Major Project/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 6/Public Health Engineering/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 6/Repairs and Maintenance of Structures OR Project Management/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 6/Seminar/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Civil Engineering/Sem 6/Tendering and Accounts/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 1/Applied Chemistry/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 1/Applied Physics-I/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 1/Communication Skills in English/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 1/Engineering Graphics/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 1/Engineering Workshop Practice/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 1/Library/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 1/Mathematics-I/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 1/Sports and Yoga/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 2/Applied Physics-II/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 2/Engineering Mechanics/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 2/Environmental Science/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 2/Fundamentals of Electrical and Electronics Engineering/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 2/Introduction to IT Systems/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 2/Library/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 2/Mathematics-II/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Algorithms/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Computer Programming/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Computer System Organisation/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Data Structures/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Professional Development/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Recovery Classes or Library etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Scripting Languages/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Summer Internship-I/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 4/Computer Networks/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 4/Essence of Indian Knowledge and Tradition/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 4/Introduction to DBMS/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 4/Library or Seminar or Visits etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 4/Minor Project/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 4/Operating Systems/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 4/SSAD or Software Engineering/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 4/Web Technologies/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 5/Advanced Computer Networks OR Data Sciences: Data Warehousing and Data Mining/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 5/Information Security OR Multimedia Technologies/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 5/Internet of Things/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 5/Introduction to e-Governance/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 5/Major Project/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 5/Recovery Classes or Library etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 5/Renewable Energy Technologies OR Operation Research/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 5/Summer Internship-II/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 5/Workshop or Visits etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 6/Artificial Intelligence OR Engineering Economics and Accountancy/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 6/Entrepreneurship and Start-ups/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 6/Indian Constitution/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 6/Library or Visits etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 6/Major Project/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 6/Mobile Computing OR Free and Open Source Software (FOSS)/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 6/Network Forensics/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 6/Project Management/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 6/Seminar/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 6/Software Testing OR Disaster Management/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 1/Applied Physics-I/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 1/Engineering Mechanics/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 1/Environmental Science/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 1/Fundamentals of Electrical & Electronics Engineering/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 1/Introduction to IT Systems/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 1/Library/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 1/Mathematics-I/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 1/Sports and Yoga/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 2/Applied Chemistry/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 2/Applied Physics-II/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 2/Communication Skills in English/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 2/Engineering Graphics/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 2/Engineering Workshop Practice/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 2/Library/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 2/Mathematics-II/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 3/Electric Circuits/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 3/Electric Motors and Transformers/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 3/Electrical and Electronic Measurements/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 3/Introduction to Electric Generation Systems/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 3/Professional Development/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 3/Recovery Classes or Library etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 3/Renewable Energy Power Plants/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 3/Summer Internship-I/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 4/Electric Power Transmission and Distribution/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 4/Essence of Indian Knowledge and Tradition/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 4/Fundamentals of Power Electronics/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 4/Induction, Synchronous and Special Electric Machines/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 4/Industrial Automation and Control/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 4/Industrial Drives OR Electrical Testing and Commissioning OR Electrical Estimation and Contracting/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 4/Library or Seminar or Visits etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 4/Minor Project/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 5/Electric Traction/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 5/Energy Conservation and Audit/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 5/Internet of Things/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 5/Major Project/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 5/Microcontroller Applications/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 5/Recovery Classes or Library etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 5/Renewable Energy Technologies OR Electric Vehicles OR Illumination Practices/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 5/Summer Internship-II/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 5/Switchgear and Protection/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 5/Workshop or Seminar or Visit etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 6/Artificial Intelligence OR Disaster Management/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 6/Building Electrification/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 6/Engineering Economics and Accountancy/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 6/Entrepreneurship and Start-ups/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 6/Indian Constitution/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 6/Library or Visits etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 6/Major Project/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 6/Project Management/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Electrical Engineering/Sem 6/Seminar/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 1/Applied Chemistry/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 1/Applied Physics-I/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 1/Communication Skills in English/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 1/Engineering Graphics/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 1/Engineering Workshop Practice/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 1/Library/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 1/Mathematics-I/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 1/Sports and Yoga/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 2/Applied Physics-II/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 2/Engineering Mechanics/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 2/Environmental Science/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 2/Fundamentals of Electrical and Electronics Engineering/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 2/Introduction to IT Systems/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 2/Library/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 2/Mathematics-II/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 3/Basic Mechanical Engineering/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 3/Computer Aided Machine Drawing Practice/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 3/Fluid Mechanics and Hydraulic Machinery/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 3/Manufacturing Engineering/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 3/Material Science and Engineering/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 3/Professional Development/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 3/Recovery Classes or Library etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 3/Summer Internship-I/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 3/Thermal Engineering-I/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 4/Essence of Indian Knowledge and Tradition/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 4/Heat Transfer OR Computer Integrated Manufacturing/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 4/Library or Seminar or Visits etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 4/Material Handling System/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 4/Measurements and Metrology/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 4/Minor Project/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 4/Refrigeration and Air-Conditioning/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 4/Strength of Materials/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 5/CAD/CAM Lab/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 5/Farm Equipment and Farm Machinery OR Renewable Energy Technologies OR Hybrid Vehicles OR Automobile Engineering/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 5/Industrial Engineering and Management/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 5/Internet of Things/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 5/Major Project/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 5/Power Plant Engineering OR Advanced Manufacturing Processes/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 5/Recovery Classes or Library etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 5/Summer Internship-II/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 5/Theory of Machines and Mechanisms/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 5/Workshop or Seminar or Visit etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 6/Design of Machine Elements/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 6/Disaster Management OR Artificial Intelligence OR Seminar/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 6/Engineering Economics and Accountancy/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 6/Entrepreneurship and Start-ups/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 6/Indian Constitution/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 6/Library or Visits etc./.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 6/Major Project/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 6/Production and Operations Management/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Mechanical Engineering/Sem 6/Project Management/.gitkeep",
+   "size": 0,
+   "date": "2026-10-04T08:52:36Z",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "VinaySoni-IN",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
    }
   },
   {
