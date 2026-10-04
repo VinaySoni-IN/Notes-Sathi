@@ -1,0 +1,119 @@
+================================================================================
+                    NOTES SATHI — LEGAL DOCUMENTATION INDEX
+================================================================================
+Platform   : Notes Sathi (https://vinaysoni-in.github.io/Notes-Sathi/)
+Repository : https://github.com/VinaySoni-IN/Notes-Sathi
+Founder    : Vinay Soni ("Owner")
+Service    : Free, non-commercial, community notes platform for the students
+             of Satpuda College of Engineering and Polytechnic, Balaghat,
+             Madhya Pradesh, India.
+Version    : 1.1
+Effective  : 04 October 2026
+Last updated : 04 October 2026 (v1.1 — added No-Refunds and strict No-Responsibility clauses)
+================================================================================
+
+IMPORTANT NOTE
+--------------
+This folder contains the complete legal framework of the Notes Sathi platform.
+These documents are published in plain-text format so that every student and
+teacher can read them on any device, without any special software. They are
+written to be firm, fair and enforceable under the laws of India. In case of
+any conflict between a summary shown inside the app and the full text in this
+folder, THE FULL TEXT IN THIS FOLDER SHALL PREVAIL.
+
+Nothing in this folder creates an attorney-client relationship. The documents
+are standard, good-faith legal protections for a free educational community
+platform and may be reviewed by a qualified advocate at any time.
+
+
+DOCUMENTS IN THIS FOLDER
+------------------------
+00-INDEX.txt
+    This file. Overview, order of precedence and official contact points.
+
+01-TERMS-AND-CONDITIONS.txt
+    The master agreement between you and the platform. Covers the nature of
+    the service, eligibility, your obligations, intellectual property,
+    disclaimers, limitation of liability, indemnity, governing law and
+    jurisdiction.
+
+02-PRIVACY-POLICY.txt
+    Explains exactly what data the platform does and does NOT collect, what
+    is stored in your own browser, how the upload token is handled, the
+    public nature of the GitHub repository, and compliance with the Digital
+    Personal Data Protection Act, 2023.
+
+03-COPYRIGHT-POLICY-AND-TAKEDOWN-NOTICE.txt
+    The platform's copyright compliance framework: the educational fair-dealing
+    position under Section 52 of the Copyright Act, 1957, the notice-and-
+    takedown procedure, counter-notices, timelines and repeat-infringer policy.
+
+04-DISCLAIMER.txt
+    Clear statements that the platform is NOT an official publication of any
+    college, university or examination body, that content is contributed
+    "as is", and that trademarks belong to their respective owners.
+
+05-ACCEPTABLE-USE-POLICY.txt
+    What may and may not be uploaded, shared or done on the platform, and the
+    consequences of violation.
+
+06-GRIEVANCE-REDRESSAL-AND-FIRST-COMPLAINT-REPORT.txt
+    The official Grievance Redressal Mechanism, including the FIRST COMPLAINT
+    REPORT form (a ready-to-fill template for reporting any problem —
+    copyright, privacy, defamation, error or safety — for the first time),
+    response timelines and escalation paths.
+
+07-CONTENT-CONTRIBUTION-LICENSE.txt
+    The licence granted by every teacher / contributor to the platform when
+    they upload notes, together with the warranties they give about ownership
+    of the uploaded material.
+
+
+ORDER OF PRECEDENCE
+-------------------
+If any conflict arises between these documents, they rank in the following
+order (highest first):
+  1. 03-COPYRIGHT-POLICY-AND-TAKEDOWN-NOTICE.txt
+  2. 06-GRIEVANCE-REDRESSAL-AND-FIRST-COMPLAINT-REPORT.txt
+  3. 01-TERMS-AND-CONDITIONS.txt
+  4. 05-ACCEPTABLE-USE-POLICY.txt
+  5. 07-CONTENT-CONTRIBUTION-LICENSE.txt
+  6. 02-PRIVACY-POLICY.txt
+  7. 04-DISCLAIMER.txt
+
+
+OFFICIAL CONTACT FOR ALL LEGAL MATTERS
+--------------------------------------
+Grievance Officer : Vinay Soni (Founder / Developer)
+WhatsApp          : +91 89890 31351
+                    (also reachable through the in-app "Need help?" card)
+Instagram         : @vinay.sanjay.soni
+Written notices   : https://github.com/VinaySoni-IN/Notes-Sathi/issues
+                    (GitHub Issues — creates a permanent written record)
+Repository        : https://github.com/VinaySoni-IN/Notes-Sathi
+
+A dedicated e-mail address for legal notices may be published in a future
+revision of this index. Until such publication, written notices sent through
+GitHub Issues or WhatsApp shall be treated as validly delivered.
+
+Response commitments:
+  * Acknowledgment of any complaint / notice : within 48 hours
+  * Interim action on valid copyright notices : within 72 hours
+  * Final resolution of grievances             : within 15 days
+    (aligned with the Information Technology (Intermediary Guidelines and
+    Digital Media Ethics Code) Rules, 2021)
+
+
+GOVERNING LAW
+-------------
+All documents in this folder are governed by the laws of India. Subject to
+the exclusive jurisdiction of the competent courts at Balaghat, Madhya
+Pradesh, India.
+
+
+LANGUAGE
+--------
+The English text of these documents is the sole authentic version.
+================================================================================
+END OF INDEX
+================================================================================

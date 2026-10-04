@@ -1,0 +1,156 @@
+================================================================================
+     NOTES SATHI — GRIEVANCE REDRESSAL MECHANISM AND FIRST COMPLAINT REPORT
+================================================================================
+Version    : 1.0
+Effective  : 04 October 2026
+Platform   : https://vinaysoni-in.github.io/Notes-Sathi/
+Repository : https://github.com/VinaySoni-IN/Notes-Sathi
+================================================================================
+
+PART A — GRIEVANCE REDRESSAL MECHANISM
+================================================================================
+
+1. GRIEVANCE OFFICER
+--------------------------------------------------------------------------------
+1.1  In line with the spirit of the Information Technology (Intermediary
+     Guidelines and Digital Media Ethics Code) Rules, 2021, the Platform
+     designates:
+
+     Name         : Vinay Soni
+     Role         : Grievance Officer (also Founder / Developer)
+     WhatsApp     : +91 89890 31351
+     Instagram    : @vinay.sanjay.soni
+     Written      : https://github.com/VinaySoni-IN/Notes-Sathi/issues
+     Hours        : 10:00 AM – 8:00 PM IST, Mon–Sat
+
+1.2  A dedicated e-mail address for formal legal notices may be published in
+     a future revision. Until then, a GitHub Issue, or a WhatsApp message
+     clearly marked "LEGAL NOTICE" or "GRIEVANCE", constitutes valid written
+     notice.
+
+2. WHAT YOU CAN COMPLAIN ABOUT
+--------------------------------------------------------------------------------
+2.1  Any problem with the Platform or its Content, including:
+     (a)  Copyright infringement;
+     (b)  Privacy concerns (including anything concerning a minor);
+     (c)  Defamatory, abusive, obscene or hateful material;
+     (d)  Suspicion of leaked / confidential exam material;
+     (e)  Factual errors in notes;
+     (f)  Broken links, wrong subject/semester classification, file
+          problems;
+     (g)  Any other unlawful or improper content or conduct.
+
+3. TIMELINES (BINDING COMMITMENTS)
+--------------------------------------------------------------------------------
+3.1  Acknowledgment of receipt         : within 48 hours
+3.2  Interim action where the material is prima facie unlawful
+     (e.g. removal/disablement of the file)             : within 72 hours
+3.3  Final, reasoned decision on the grievance           : within 15 days
+3.4  Matters involving the safety of children or exam integrity receive
+     PRIORITY handling — action is attempted the same day.
+
+4. PROCESS
+--------------------------------------------------------------------------------
+4.1  Step 1 — File the FIRST COMPLAINT REPORT (Part B below) through any
+     official channel.
+4.2  Step 2 — You receive an acknowledgment with a reference number.
+4.3  Step 3 — The Grievance Officer examines the complaint, may seek
+     clarifications or the concerned Contributor's response, and takes
+     action (removal, correction, rejection of complaint with reasons).
+4.4  Step 4 — You are informed of the outcome in writing.
+4.5  Step 5 — If you are not satisfied, you may escalate (Part C).
+
+5. RECORDS
+--------------------------------------------------------------------------------
+5.1  Complaints received via GitHub Issues are inherently time-stamped and
+     public. WhatsApp complaints are retained on the Officer's phone solely
+     for handling the grievance, and deleted once the retention need ends.
+
+================================================================================
+PART B — FIRST COMPLAINT REPORT (COPY, FILL AND SEND)
+================================================================================
+Use this form the FIRST time you report any problem. Copy everything
+between the lines, fill it in, and send it via WhatsApp, Instagram or a
+GitHub Issue.
+
+--------------------------------------------------------------------------------
+FIRST COMPLAINT REPORT — NOTES SATHI
+--------------------------------------------------------------------------------
+1.  Date of complaint          : ____/____/20____
+
+2.  Your name                  : ____________________________
+    (optional for anonymous reports)
+
+3.  Your contact (phone/e-mail): ____________________________
+    (needed only if you want a reply)
+
+4.  Are you complaining on
+    behalf of someone else?    : Yes / No
+    If yes, whose?             : ____________________________
+
+5.  Category (tick one)        :
+    [ ] Copyright infringement
+    [ ] Privacy concern
+    [ ] Defamatory / abusive / obscene content
+    [ ] Suspected leaked exam material
+    [ ] Error in the notes' content
+    [ ] Technical problem (link/file/label)
+    [ ] Other: ____________________________
+
+6.  The EXACT file or page
+    the problem is in          :
+    (e.g. "notes/Polytechnic/Civil Engineering/Sem 3/Building
+    Construction/example.pdf", or the tab + subject + note title)
+    : ________________________________________________
+
+7.  What is the problem?
+    (Describe clearly — what the content says, why it is wrong/unlawful,
+    and what you want done)
+    : ________________________________________________
+    : ________________________________________________
+    : ________________________________________________
+
+8.  Evidence attached?         : Yes / No
+    (screenshot, original publication link, ownership proof etc.)
+
+9.  DECLARATION (required):
+    I state that the information given above is true and correct to the
+    best of my knowledge and belief, and that this complaint is made in
+    good faith.
+
+    Signature (typed full name): ____________________________
+--------------------------------------------------------------------------------
+
+================================================================================
+PART C — ESCALATION IF UNSATISFIED
+================================================================================
+
+1.  If the Grievance Officer's decision does not satisfy you, or the
+     timelines are not met, you may:
+
+     (a)  Request a review by the Owner (same channels) with the reference
+          number of your complaint;
+
+     (b)  Approach the National Cyber Crime Reporting Portal:
+          https://cybercrime.gov.in
+          (or the cyber-crime helpline 1930 for online fraud);
+
+     (c)  Approach the competent court of law at Balaghat, Madhya Pradesh,
+          or any other forum with lawful jurisdiction;
+
+     (d)  For copyright matters, follow the full procedure in
+          legal/03-COPYRIGHT-POLICY-AND-TAKEDOWN-NOTICE.txt, including the
+          counter-notice route.
+
+2.  Nothing in this document obliges you to exhaust these channels before
+     approaching a court or authority where the law otherwise permits.
+
+================================================================================
+PART D — GOVERNING LAW
+================================================================================
+This mechanism is governed by the laws of India, including the Information
+Technology Act, 2000 and the rules made thereunder. Courts at Balaghat,
+Madhya Pradesh shall have exclusive jurisdiction.
+================================================================================
+END OF GRIEVANCE REDRESSAL DOCUMENT
+================================================================================

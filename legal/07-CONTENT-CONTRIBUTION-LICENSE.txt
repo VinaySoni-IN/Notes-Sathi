@@ -1,0 +1,108 @@
+================================================================================
+                 NOTES SATHI — CONTENT CONTRIBUTION LICENSE
+================================================================================
+Version    : 1.0
+Effective  : 04 October 2026
+Platform   : https://vinaysoni-in.github.io/Notes-Sathi/
+Repository : https://github.com/VinaySoni-IN/Notes-Sathi
+Licensor   : Each individual Contributor (as defined below)
+Licensee   : Notes Sathi, operated by Vinay Soni ("Owner")
+================================================================================
+
+1. HOW THIS LICENSE WORKS
+--------------------------------------------------------------------------------
+1.1  This document is a standard, non-exclusive licence that takes effect
+     automatically the moment any person ("Contributor" / "Licensor")
+     uploads or publishes any study material ("Content") to the Platform —
+     whether through the in-app Upload Dashboard or directly through the
+     GitHub repository.
+
+1.2  The licence exists so that the Platform may lawfully host, display and
+     distribute the Contributor's Content to students, free of charge. It
+     is deliberately narrow: the Contributor keeps full ownership.
+
+2. GRANT OF LICENCE
+--------------------------------------------------------------------------------
+2.1  Subject to the terms below, each Contributor grants to the Platform a
+     worldwide, royalty-free, non-exclusive, non-transferable (except as
+     inherent in running GitHub) licence to:
+     (a)  host, store, reproduce and display the Content on the Platform
+          and the public GitHub repository;
+     (b)  make the Content available for reading and download by Users, at
+          no cost, in the Platform's existing interface (feed, Files,
+          search, stories, PYQ's sheet and the PDF viewer);
+     (c)  make reasonable technical adaptations of the Content (e.g.
+          serving it as part of the website, caching, indexing) without
+          altering its substance.
+
+2.2  NO OTHER RIGHTS ARE GRANTED. In particular, this licence does NOT:
+     (a)  transfer copyright, ownership or moral rights in any way;
+     (b)  permit the Platform to sell, rent, pay-wall or advertise against
+          the Content (the Platform is and remains non-commercial);
+     (c)  permit the Platform to modify the academic substance of the
+          Content.
+
+2.3  The licence is perpetual unless revoked as per Clause 5.
+
+3. CONTRIBUTOR WARRANTIES
+--------------------------------------------------------------------------------
+3.1  By uploading, the Contributor personally represents and warrants that:
+     (a)  they are the sole author/owner of the Content, OR hold every
+          permission necessary (from co-authors, employers or
+          rights-holders) to publish it on the Platform;
+     (b)  the Content does not infringe the copyright, trade mark, privacy,
+          confidentiality or any other right of any person;
+     (c)  the Content does not contain any Prohibited Content listed in
+          legal/05-ACCEPTABLE-USE-POLICY.txt (in particular, scanned
+          textbooks, paid coaching material or leaked exam papers);
+     (d)  if the Content includes material from other sources (e.g.
+          standard formulas, diagrams, previous year question papers), its
+          publication on a free educational platform is within lawful
+          fair dealing under Section 52 of the Copyright Act, 1957, or
+          otherwise permitted.
+
+3.2  The Contributor agrees to indemnify the Owner against claims arising
+     from any breach of these warranties, to the extent permitted by law,
+     in accordance with Clause 13 of the Terms and Conditions.
+
+4. ATTRIBUTION
+--------------------------------------------------------------------------------
+4.1  The Platform credits each Contributor wherever possible — the app
+     shows contributor names based on the public GitHub account that
+     uploaded each file, and maintains the "Contributed Teachers" section.
+
+4.2  Contributors who prefer a different display name may inform the
+     Grievance Officer; reasonable requests are honoured.
+
+5. REVOCATION / REMOVAL
+--------------------------------------------------------------------------------
+5.1  A Contributor may revoke this licence in respect of any Content at any
+     time by requesting removal through the Grievance channels
+     (WhatsApp +91 89890 31351 or a GitHub Issue). Removal from the live
+     app and the current repository state is carried out within 72 hours.
+
+5.2  Revocation does not apply retroactively to copies lawfully downloaded
+     by Students before removal, nor to technical necessities of git
+     hosting (the Owner will use GitHub's official channels where complete
+     history deletion is genuinely required).
+
+6. NO COMPENSATION
+--------------------------------------------------------------------------------
+6.1  The Platform is free and non-commercial; no payment, royalty or
+     consideration of any kind is or will be payable to Contributors for
+     hosting their Content.
+
+7. PLATFORM RIGHTS
+--------------------------------------------------------------------------------
+7.1  The Owner may remove, re-classify, or decline any Content at any time
+     (including for legal, accuracy or policy reasons), and may discontinue
+     hosting any Content as infrastructure changes, without liability.
+
+8. GOVERNING LAW AND JURISDICTION
+--------------------------------------------------------------------------------
+8.1  This licence is governed by the laws of India, particularly the
+     Copyright Act, 1957. Courts at Balaghat, Madhya Pradesh shall have
+     exclusive jurisdiction.
+================================================================================
+END OF CONTENT CONTRIBUTION LICENSE
+================================================================================

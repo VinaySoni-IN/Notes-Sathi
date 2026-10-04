@@ -1,0 +1,289 @@
+================================================================================
+                    NOTES SATHI — TERMS AND CONDITIONS
+================================================================================
+Version     : 1.1
+Effective   : 04 October 2026
+Applies to  : Every visitor, reader, student and contributor of the Notes
+              Sathi platform (the "Platform"), hosted at
+              https://vinaysoni-in.github.io/Notes-Sathi/ and operated from
+              the public GitHub repository
+              https://github.com/VinaySoni-IN/Notes-Sathi
+Operator    : Vinay Soni ("Owner", "we", "us", "our")
+================================================================================
+
+1. DEFINITIONS
+--------------------------------------------------------------------------------
+1.1  "Platform" means the Notes Sathi web application, its source code,
+     content, layout and all related services offered free of charge.
+
+1.2  "Content" means any note, PDF, image, scan, question paper or other
+     material uploaded, published or displayed on or through the Platform.
+
+1.3  "Contributor" means any teacher, student or any other person who uploads
+     or publishes Content on the Platform, including through the in-app
+     Upload Dashboard or directly through GitHub.
+
+1.4  "User" means any person who accesses, browses, reads, downloads or
+     otherwise uses the Platform in any manner.
+
+1.5  "Upload Dashboard" means the in-app facility through which Contributors
+     publish Content using their own GitHub access token.
+
+1.6  "App Acknowledgment" means the terms-acceptance checkbox presented to a
+     User on first use of the Platform.
+
+2. ABOUT THE SERVICE
+--------------------------------------------------------------------------------
+2.1  The Platform is a free, non-commercial, community-driven repository of
+     study notes intended for the students of Satpuda College of Engineering
+     and Polytechnic, Balaghat, Madhya Pradesh, and any other learner who
+     wishes to use it.
+
+2.2  The Platform is a broadcast medium: Contributors publish; Users read.
+     The Platform does not sell, rent, meter, pay-wall or monetise Content
+     in any way, and does not carry advertisements.
+
+2.3  The Platform is hosted on GitHub Pages. Availability depends on GitHub's
+     infrastructure and is provided on a best-effort basis.
+
+3. ACCEPTANCE OF TERMS
+--------------------------------------------------------------------------------
+3.1  By accessing or using the Platform, you agree to be bound by these
+     Terms and Conditions, the Privacy Policy, the Disclaimer, the
+     Acceptable Use Policy and all other documents listed in
+     legal/00-INDEX.txt (collectively, the "Legal Terms").
+
+3.2  The App Acknowledgment is a summary of these Legal Terms. Accepting it
+     in the app, or simply using the Platform, constitutes full acceptance
+     of the Legal Terms. If you do not agree, you must stop using the
+     Platform immediately.
+
+3.3  These Legal Terms may be updated from time to time. The version
+     published in the repository's legal/ folder at the time of your use
+     applies. Material changes will be highlighted in the app. Continued
+     use after publication of changes constitutes acceptance.
+
+4. ELIGIBILITY AND MINORS
+--------------------------------------------------------------------------------
+4.1  The Platform is intended for students and teachers. There are no
+     accounts; no registration is required to read.
+
+4.2  Users who are minors (under 18 years of age) may use the Platform for
+     reading and studying, since the Platform collects no personal data
+     whatsoever from any User (see the Privacy Policy). Parents and
+     guardians concerned about a minor's usage may contact the Grievance
+     Officer; the Platform will extend full cooperation.
+
+4.3  Contributors must be adults (18 years or older), or must upload only
+     under the supervision and responsibility of an adult staff member.
+
+5. PLATFORM / INTERMEDIARY NATURE
+--------------------------------------------------------------------------------
+5.1  The Platform functions as an INTERMEDIARY within the meaning of
+     Section 2(1)(w) of the Information Technology Act, 2000: it provides
+     the technical means by which Contributors publish Content for Users.
+
+5.2  Save for Content authored and uploaded by the Owner himself, the
+     Platform does not create, select, commission, edit or pre-review
+     Content. Content is published automatically when a Contributor
+     uploads it.
+
+5.3  The Platform claims the protection of Section 79 of the Information
+     Technology Act, 2000 and observes the due-diligence obligations under
+     the Information Technology (Intermediary Guidelines and Digital Media
+     Ethics Code) Rules, 2021, including the Grievance Redressal Mechanism
+     described in legal/06-GRIEVANCE-REDRESSAL-AND-FIRST-COMPLAINT-REPORT.txt.
+
+5.4  Upon receiving actual knowledge of unlawful Content — by court order or
+     by a valid notice through the Grievance channels — the Platform shall
+     disable or remove such Content within the timelines stated in the
+     Grievance Redressal document.
+
+6. YOUR OBLIGATIONS AS A USER
+--------------------------------------------------------------------------------
+6.1  You may access, read and download Content strictly for your personal,
+     private study and educational use.
+
+6.2  You shall NOT:
+     (a)  sell, sub-license, pay-wall or commercially exploit any Content;
+     (b)  redistribute Content as your own work or remove any attribution;
+     (c)  mass-scrape, data-mine or create commercial datasets from the
+          Platform;
+     (d)  interfere with, overload or attempt to gain unauthorised access to
+          the Platform, the repository or its hosting;
+     (e)  misrepresent yourself as the Owner, as college staff, or as any
+          person you are not;
+     (f)  use the Platform for any activity that is an offence under the
+          laws of India, including the Information Technology Act, 2000 and
+          the Bharatiya Nyaya Sanhita, 2023.
+
+6.3  Fair dealing for the purposes of private or personal use, criticism,
+     review and teaching remains fully permitted under Section 52(1) of the
+     Copyright Act, 1957, nothing in Clause 6.2 restricts it.
+
+7. UPLOAD DASHBOARD AND CONTRIBUTOR TOKENS
+--------------------------------------------------------------------------------
+7.1  Contributors use their own GitHub credentials / fine-grained personal
+     access token ("Token") to publish Content through the Upload Dashboard.
+
+7.2  The Token is created, stored and used entirely within the Contributor's
+     own browser and is transmitted only to GitHub's official API endpoints.
+     The Platform and the Owner never receive, see, store or log the Token
+     on any server.
+
+7.3  The Contributor is solely responsible for keeping the Token secure and
+     for all activity performed with it, and shall sign out on shared
+     devices.
+
+8. INTELLECTUAL PROPERTY
+--------------------------------------------------------------------------------
+8.1  PLATFORM CODE AND DESIGN: The application source code, layout, design,
+     naming and all original programming of Notes Sathi are the intellectual
+     property of Vinay Soni. All rights reserved.
+
+8.2  CONTENT: All rights in each item of Content remain with its respective
+     author(s) / Contributor(s). By uploading, a Contributor grants the
+     Platform only the non-exclusive licence described in
+     legal/07-CONTENT-CONTRIBUTION-LICENSE.txt. The Platform asserts NO
+     ownership over Contributor Content.
+
+8.3  THIRD-PARTY COMPONENTS: The Platform embeds PDF.js (Mozilla), licensed
+     under the Apache License 2.0, and links to third-party services
+     (GitHub, WhatsApp, Instagram, the college website). All third-party
+     trademarks and materials belong to their respective owners.
+
+8.4  No course of dealing or usage of trade shall be construed as a transfer
+     of any intellectual property right.
+
+9. THIRD-PARTY LINKS
+--------------------------------------------------------------------------------
+9.1  The Platform contains links to external websites (including the college
+     website, social-media profiles and GitHub). Such links are provided for
+     convenience only. The Platform does not control and is not responsible
+     for the content, availability or practices of those websites.
+
+10. AVAILABILITY AND MODIFICATIONS
+--------------------------------------------------------------------------------
+10.1 The Platform is provided free of charge. The Owner does not guarantee
+     uninterrupted availability, any specific uptime, or the permanence of
+     any Content, and may modify, suspend, discontinue or delete any part of
+     the Platform or any Content at any time, for any reason, without
+     liability.
+
+11. DISCLAIMERS
+--------------------------------------------------------------------------------
+11.1 The Platform and all Content are provided strictly on an "AS IS" and
+     "AS AVAILABLE" basis, without warranties of any kind, express or
+     implied, including but not limited to warranties of accuracy,
+     completeness, merchantability, fitness for a particular purpose and
+     non-infringement.
+
+11.2 Without limiting the foregoing, the express disclaimers in
+     legal/04-DISCLAIMER.txt are incorporated into these Terms by reference.
+
+11.3 FOR THE AVOIDANCE OF DOUBT: THE PLATFORM, ITS CONTENT AND ALL RELATED
+     SERVICES ARE PROVIDED STRICTLY "AS IS" AND "AS AVAILABLE" WITH NO
+     WARRANTY OF ANY KIND WHATSOEVER — EXPRESS, IMPLIED, STATUTORY OR
+     OTHERWISE. THE ENTIRE RISK OF USING THE PLATFORM AND ITS CONTENT IS
+     BORNE BY THE USER ALONE.
+
+12. LIMITATION OF LIABILITY
+--------------------------------------------------------------------------------
+12.1 To the maximum extent permitted by law, neither the Owner, nor any
+     Contributor, nor any other person associated with the Platform shall be
+     liable for any direct, indirect, incidental, special, exemplary,
+     consequential or punitive damages, or any loss of data, profits, marks,
+     opportunity, reputation or goodwill, arising out of or in connection
+     with the use of, or inability to use, the Platform or any Content —
+     including any errors in notes relied upon for study or examinations.
+
+12.2 The Platform is a free, non-commercial service provided in good faith
+     without any consideration. In any event where liability cannot be
+     excluded by law, the aggregate liability of the Owner in respect of all
+     claims arising in any academic year shall not exceed INR 500 (Rupees
+     Five Hundred) or the cost of the service provided to the claimant —
+     which is zero — whichever the court deems appropriate, given the free
+     nature of the service.
+
+12.3 STRICT NO-RESPONSIBILITY: To the maximum extent permitted by law,
+     the Owner accepts NO responsibility whatsoever for any act,
+     omission, content, error, loss, damage or consequence connected with
+     the Platform. Use of the Platform is entirely at the User's own
+     risk, and the User assumes full and sole responsibility for all
+     outcomes of using or relying on the Platform or its Content.
+
+12.4 No duty of care toward any examination performance, academic result,
+     mark, career decision or any other consequence is accepted or owed
+     by the Owner or any Contributor.
+
+12.5 Nothing in these Terms excludes or limits liability that cannot be
+     excluded or limited under applicable law.
+
+12A. NO CHARGES, NO PAYMENTS, NO REFUNDS
+--------------------------------------------------------------------------------
+12A.1 The Platform is completely free. No fee, subscription, deposit,
+     payment or consideration of any kind is ever charged for reading,
+     downloading, uploading or using the Platform, in whole or in part.
+
+12A.2 Since nothing is ever charged, there is nothing to refund. NO REFUND
+     CLAIM of any nature lies or shall be deemed to lie against the Owner
+     or the Platform, under any circumstances whatsoever.
+
+12A.3 Any cost a User incurs in using the Platform — internet data
+     charges, device costs, printing, electricity or otherwise — is the
+     User's own expense, is entirely outside the Platform's
+     responsibility, and is non-refundable by the Platform.
+
+12A.4 The Platform commits to remaining free for every student, always.
+     Accordingly, this strict no-charge, no-refund position is permanent.
+
+13. INDEMNITY
+--------------------------------------------------------------------------------
+13.1 You agree to indemnify and hold harmless the Owner, the Contributors
+     and any persons acting on their behalf from and against any claims,
+     demands, losses, damages, costs (including reasonable legal costs) and
+     expenses arising out of: (a) Content you upload; (b) your breach of the
+     Legal Terms; or (c) your violation of any applicable law or the rights
+     of any third party.
+
+14. SUSPENSION, REMOVAL AND TERMINATION
+--------------------------------------------------------------------------------
+14.1 The Owner reserves the right to remove any Content, decline any
+     publication, and bar any person from the community of Contributors,
+     where the Legal Terms, the Acceptable Use Policy or any law is, or
+     appears to be, breached — without prejudice to any other remedy
+     available in law.
+
+14.2 Since reading requires no account, "termination" of a reader is simply
+     cessation of use. You may stop using the Platform at any time.
+
+15. GOVERNING LAW AND JURISDICTION
+--------------------------------------------------------------------------------
+15.1 These Terms and all Legal Terms are governed by and construed in
+     accordance with the laws of India.
+
+15.2 Subject to the exclusive jurisdiction of the competent courts at
+     Balaghat, Madhya Pradesh, India, the parties first attempt good-faith
+     resolution through the Grievance Redressal Mechanism before
+     approaching any court.
+
+16. SEVERABILITY, WAIVER AND ENTIRE AGREEMENT
+--------------------------------------------------------------------------------
+16.1 If any provision of these Terms is held invalid or unenforceable, the
+     remaining provisions shall continue in full force and effect.
+
+16.2 No failure or delay in exercising any right shall operate as a waiver
+     of that right.
+
+16.3 These Legal Terms, together with the App Acknowledgment, constitute the
+     entire agreement between you and the Owner concerning the Platform.
+
+17. CONTACT
+--------------------------------------------------------------------------------
+Vinay Soni (Founder / Developer & Grievance Officer)
+WhatsApp : +91 89890 31351
+Instagram: @vinay.sanjay.soni
+Written  : https://github.com/VinaySoni-IN/Notes-Sathi/issues
+================================================================================
+END OF TERMS AND CONDITIONS
+================================================================================

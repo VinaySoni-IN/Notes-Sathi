@@ -1,0 +1,144 @@
+================================================================================
+        NOTES SATHI — COPYRIGHT POLICY AND TAKEDOWN NOTICE PROCEDURE
+================================================================================
+Version    : 1.0
+Effective  : 04 October 2026
+Operator   : Vinay Soni ("Owner")
+Platform   : https://vinaysoni-in.github.io/Notes-Sathi/
+Repository : https://github.com/VinaySoni-IN/Notes-Sathi
+================================================================================
+
+1. OUR POSITION ON COPYRIGHT
+--------------------------------------------------------------------------------
+1.1  The Platform respects intellectual property rights. The purpose of
+     Notes Sathi is genuinely educational: free, non-commercial sharing of
+     teacher-created study material with students.
+
+1.2  The Platform is an INTERMEDIARY under Section 2(1)(w) of the
+     Information Technology Act, 2000. Except for material uploaded by the
+     Owner himself, the Platform does not create or select Content; it only
+     provides the technical means of publication. The Platform therefore
+     claims the safe-harbour protection of Section 79 of the said Act,
+     having complied with the due-diligence requirements of the Information
+     Technology (Intermediary Guidelines and Digital Media Ethics Code)
+     Rules, 2021, including the notice-based takedown mechanism below.
+
+1.3  Nothing in this policy limits the rights of any copyright owner.
+
+2. THE EDUCATIONAL CONTEXT
+--------------------------------------------------------------------------------
+2.1  Section 52(1)(i) of the Copyright Act, 1957 permits the reproduction of
+     any work by a teacher or a pupil in the course of instruction. A
+     substantial part of the Platform's Content consists of material shared
+     by teachers with their own pupils for the course of instruction.
+
+2.2  Section 52(1)(a) of the Copyright Act, 1957 also permits fair dealing
+     with any work for the purposes of private or personal use, including
+     research, and for criticism or review.
+
+2.3  The Platform is completely free of charge, carries no advertising and
+     earns no revenue of any kind — facts consistent with the
+     educational-fair-dealing position.
+
+2.4  Nevertheless, if any Content on the Platform infringes copyright, the
+     Owner will remove it promptly upon a valid notice, without requiring
+     the copyright owner to first obtain a court order.
+
+3. WHAT CONTRIBUTORS PROMISE
+--------------------------------------------------------------------------------
+3.1  Every Contributor, by uploading, warrants that they own the rights to
+     the material or are otherwise permitted (by the author, co-authors or
+     licence) to publish it, as set out in
+     legal/07-CONTENT-CONTRIBUTION-LICENSE.txt.
+
+3.2  Contributors must NOT upload scanned or copied commercial textbooks,
+     coaching-institute materials, paid question banks or any other
+     third-party material they do not control. See the Acceptable Use
+     Policy (legal/05-ACCEPTABLE-USE-POLICY.txt).
+
+4. HOW TO FILE A COPYRIGHT / TAKEDOWN NOTICE
+--------------------------------------------------------------------------------
+4.1  If you believe any Content on the Platform infringes your copyright or
+     that of a person you are authorised to represent, send a written
+     notice containing ALL of the following:
+
+     (a)  Identification of the copyrighted work claimed to be infringed
+          (title, author/owner, and where the original is published, if
+          applicable);
+     (b)  Identification of the infringing Content on the Platform — the
+          exact file name and its path (e.g. "notes/Polytechnic/Civil
+          Engineering/Sem 3/Building Construction/example.pdf") or the
+          exact page/screen where it appears;
+     (c)  Your full name, address, telephone number and e-mail;
+     (d)  A statement that you have a good-faith belief that the use of the
+          Content is not authorised by the copyright owner, its agent, or
+          the law;
+     (e)  A statement, under penalty of perjury / misrepresentation, that
+          the information in the notice is accurate and that you are the
+          copyright owner or authorised to act on the owner's behalf;
+     (f)  Your physical or electronic signature (a typed full legal name
+          suffices for electronic notices).
+
+4.2  Send the notice through ANY of these official channels:
+
+     WhatsApp : +91 89890 31351 (Grievance Officer: Vinay Soni)
+     Instagram: @vinay.sanjay.soni
+     Written  : https://github.com/VinaySoni-IN/Notes-Sathi/issues
+                (a GitHub Issue titled "Copyright Notice — <file name>"
+                creates a permanent, time-stamped record — recommended)
+
+4.3  RESPONSE TIMELINES:
+     (a)  Acknowledgment      : within 48 hours of receipt;
+     (b)  Interim action      : the impugned Content is disabled or removed
+                                from the Platform within 72 hours of a
+                                facially valid notice, pending verification;
+     (c)  Final decision      : a reasoned decision within 7 days; if the
+                                notice is found invalid (e.g. the use is
+                                protected fair dealing), a written
+                                explanation will be provided;
+     (d)  Grievance closure   : within 15 days in accordance with the
+                                Grievance Redressal Mechanism
+                                (legal/06-GRIEVANCE-REDRESSAL-AND-FIRST-
+                                COMPLAINT-REPORT.txt).
+
+5. COUNTER-NOTICE BY THE CONTRIBUTOR
+--------------------------------------------------------------------------------
+5.1  A Contributor whose Content was removed may submit a counter-notice
+     with the same particulars as Clause 4.1, stating under penalty of
+     perjury that the removal was a mistake or misidentification, and
+     consenting to the jurisdiction of the courts at Balaghat, Madhya
+     Pradesh.
+
+5.2  The Platform will restore the Content within 10 (ten) business days of
+     the counter-notice unless it receives a copy of a court / police
+     complaint or order obtained by the original complainant within that
+     period, or unless the Content is independently found unlawful.
+
+6. REPEAT INFRINGERS
+--------------------------------------------------------------------------------
+6.1  Contributors who are the subject of two or more upheld infringement
+     notices will be permanently removed from the list of "Contributed
+     Teachers" and their future contributions declined.
+
+7. FALSE AND MALICIOUS NOTICES
+--------------------------------------------------------------------------------
+7.1  Any person who knowingly sends false or misleading takedown notices may
+    face liability under Section 66 of the Information Technology Act, 2000
+    (computer-related offences) and other applicable laws, including for
+    the costs incurred by the Platform and the Contributor.
+
+8. PLATFORM'S OWN MATERIAL
+--------------------------------------------------------------------------------
+8.1  The Notes Sathi application code, design and brand are the property of
+    Vinay Soni. The PDF.js viewer is Mozilla's open-source software under
+    the Apache License 2.0. No part of the Platform's own material may be
+    copied and republished under another name.
+
+9. GOVERNING LAW AND JURISDICTION
+--------------------------------------------------------------------------------
+9.1  This policy is governed by the laws of India, particularly the
+     Copyright Act, 1957 and the Information Technology Act, 2000. Courts at
+     Balaghat, Madhya Pradesh shall have exclusive jurisdiction.
+================================================================================
+END OF COPYRIGHT POLICY
+================================================================================

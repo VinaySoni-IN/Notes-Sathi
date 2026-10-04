@@ -1,0 +1,162 @@
+================================================================================
+                    NOTES SATHI — PRIVACY POLICY
+================================================================================
+Version    : 1.0
+Effective  : 04 October 2026
+Operator   : Vinay Soni ("Owner", "we", "us", "our")
+Platform   : https://vinaysoni-in.github.io/Notes-Sathi/
+Repository : https://github.com/VinaySoni-IN/Notes-Sathi
+================================================================================
+
+1. THE SHORT VERSION (PLAIN SUMMARY)
+--------------------------------------------------------------------------------
+Notes Sathi collects NO personal data. There are:
+  * NO accounts and NO sign-ups for reading;
+  * NO advertisements;
+  * NO analytics or tracking of any kind;
+  * NO cookies that follow you around;
+  * NO sale, sharing or transfer of your data to anyone — ever.
+Everything the app remembers about you (your theme, your branch, your
+semester, your bookmarks) is saved ONLY in your own browser, on your own
+device, and never leaves it.
+
+This policy explains the details, and is made in compliance with the Digital
+Personal Data Protection Act, 2023 (India).
+
+2. DEFINITIONS
+--------------------------------------------------------------------------------
+2.1  "Personal Data" has the meaning given in the Digital Personal Data
+     Protection Act, 2023 ("DPDP Act").
+2.2  "Local Storage" means the browser technology (window.localStorage) used
+     by the app to save preferences on your device.
+2.3  "Contributor" means a teacher / person who publishes notes using the
+     Upload Dashboard.
+
+3. WHAT WE DO NOT COLLECT
+--------------------------------------------------------------------------------
+3.1  The Platform does not collect, store, process, transmit, share, sell or
+     otherwise handle ANY Personal Data of its readers. Specifically, the
+     Platform does NOT operate:
+     (a)  any user account system;
+     (b)  any analytics, telemetry, crash-reporting or fingerprinting service;
+     (c)  any advertising or ad-network SDK;
+     (d)  any third-party tracker, pixel or tag;
+     (e)  any server or database of its own — the entire site is static
+          hosting on GitHub Pages.
+
+3.2  Because no Personal Data is collected, no consent is required from any
+     User under the DPDP Act for the mere reading of notes.
+
+4. WHAT IS STORED, AND WHERE
+--------------------------------------------------------------------------------
+4.1  The app uses Local Storage in YOUR browser only. At any time you can
+     erase everything by clearing your browser's site data. The items are:
+     (a)  Theme preference (light / dark mode);
+     (b)  Your chosen Program, Branch and Semester (e.g. Polytechnic /
+          Civil / Semester 3);
+     (c)  Bookmarked (saved) notes — a list of note identifiers;
+     (d)  "Seen" markers that power the NEW badge and story rings;
+     (e)  Acknowledgment that you accepted the terms;
+     (f)  For Contributors ONLY: the "remembered" GitHub sign-in state
+          described in Clause 6.
+     None of these items contain your name, phone number, e-mail, or any
+     identifier that can identify you as a natural person.
+
+4.2  This data never leaves your device. The app contains no code that
+     transmits Local Storage contents anywhere.
+
+5. PUBLIC NATURE OF THE REPOSITORY
+--------------------------------------------------------------------------------
+5.1  The notes themselves live in a PUBLIC GitHub repository. Everything a
+     Contributor uploads is, by design, publicly visible at
+     https://github.com/VinaySoni-IN/Notes-Sathi, including the file name,
+     file size, upload date and the public GitHub identity of the account
+     that uploaded it. This is an inherent, disclosed feature of the
+     Platform — Contributors should upload only material they are happy to
+     host publicly.
+
+5.2  GitHub, as the host, may process standard server logs (IP addresses,
+     request times) under its own privacy policy available at
+     https://github.com/site/privacy. The Owner has no access to, and no
+     control over, GitHub's logs.
+
+6. CONTRIBUTOR TOKENS (UPLOAD DASHBOARD)
+--------------------------------------------------------------------------------
+6.1  A Contributor signs in with a GitHub fine-grained personal access token
+     ("Token") that the Contributor creates personally on github.com.
+
+6.2  If "Remember on this device" is ticked, the Token is stored in the
+     Contributor's own browser's Local Storage; otherwise it is kept only in
+     memory for the session. The Token is transmitted only to GitHub's
+     official API (api.github.com) over HTTPS, and only from the
+     Contributor's own device.
+
+6.3  The Owner NEVER receives, views, stores or logs any Token. Contributors
+     are advised to use a fine-grained Token limited to this repository with
+     Contents read/write permission only, and to sign out on shared
+     computers.
+
+7. CHILDREN AND STUDENTS WHO ARE MINORS
+--------------------------------------------------------------------------------
+7.1  Many users of the Platform are students who may be under 18. The
+     Platform does not knowingly collect any Personal Data from anyone,
+     including children, and therefore processes no children's data
+     whatsoever.
+
+7.2  Parents or guardians who become aware of any material concerning a
+     child may raise it through the Grievance channels in Clause 10; such
+     reports receive the highest priority.
+
+8. YOUR RIGHTS
+--------------------------------------------------------------------------------
+8.1  Under the DPDP Act, data principals have rights such as access,
+     correction, erasure and grievance redressal. Since the Platform holds
+     no Personal Data of readers, there is nothing to access, correct or
+     erase on our side — everything is already in your hands:
+     (a)  To "erase" all your data: clear the site's data in your browser
+          settings, or use your browser's private/incognito mode;
+     (b)  To withdraw the terms acknowledgment: clear site data;
+     (c)  For anything else, write to the Grievance Officer (Clause 10).
+
+8.2  Contributors who wish to have their uploaded content (and the public
+     record of their GitHub identity next to it) removed may request removal
+     under the takedown and grievance procedures in
+     legal/03-COPYRIGHT-POLICY-AND-TAKEDOWN-NOTICE.txt and
+     legal/06-GRIEVANCE-REDRESSAL-AND-FIRST-COMPLAINT-REPORT.txt. Note that
+     prior git history on GitHub may retain older commits; the Owner will
+     use GitHub's support channels where complete history erasure is
+     genuinely required.
+
+9. EXTERNAL LINKS
+--------------------------------------------------------------------------------
+9.1  The app links to external services — the college website, WhatsApp,
+     Instagram and GitHub. If you contact the Owner through WhatsApp or
+     Instagram, their respective privacy policies apply to that
+     conversation, not this one. This policy covers only the Notes Sathi
+     app and repository.
+
+10. GRIEVANCE OFFICER AND CONTACT
+--------------------------------------------------------------------------------
+10.1 Grievance Officer: Vinay Soni (Founder / Developer)
+     WhatsApp : +91 89890 31351
+     Instagram: @vinay.sanjay.soni
+     Written  : https://github.com/VinaySoni-IN/Notes-Sathi/issues
+10.2 Privacy complaints are acknowledged within 48 hours and resolved within
+     15 days, in line with the timelines in
+     legal/06-GRIEVANCE-REDRESSAL-AND-FIRST-COMPLAINT-REPORT.txt.
+
+11. CHANGES TO THIS POLICY
+--------------------------------------------------------------------------------
+11.1 This policy may be updated by publishing a new version in the legal/
+     folder of the repository. The "Last updated" date above will change.
+     Material changes will be highlighted in the app.
+
+12. GOVERNING LAW AND JURISDICTION
+--------------------------------------------------------------------------------
+12.1 This policy is governed by the laws of India, including the Digital
+     Personal Data Protection Act, 2023 and the Information Technology Act,
+     2000. Courts at Balaghat, Madhya Pradesh shall have exclusive
+     jurisdiction.
+================================================================================
+END OF PRIVACY POLICY
+================================================================================

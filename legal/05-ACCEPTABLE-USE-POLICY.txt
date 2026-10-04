@@ -1,0 +1,123 @@
+================================================================================
+                    NOTES SATHI — ACCEPTABLE USE POLICY
+================================================================================
+Version    : 1.0
+Effective  : 04 October 2026
+Platform   : https://vinaysoni-in.github.io/Notes-Sathi/
+Repository : https://github.com/VinaySoni-IN/Notes-Sathi
+Operator   : Vinay Soni ("Owner")
+================================================================================
+
+1. WHO THIS POLICY APPLIES TO
+--------------------------------------------------------------------------------
+1.1  This Acceptable Use Policy ("AUP") applies to every User and
+     Contributor of the Platform. By using the Platform you accept this
+     AUP. It supplements (and is part of) the Terms and Conditions in
+     legal/01-TERMS-AND-CONDITIONS.txt.
+
+2. WHAT THE PLATFORM IS FOR
+--------------------------------------------------------------------------------
+2.1  The Platform exists for one purpose: free sharing of legitimate study
+     material (class notes, unit notes, practical records guidance, previous
+     year question papers and similar educational material) with students,
+     in English and Hindi.
+
+3. PROHIBITED CONTENT — NEVER UPLOAD
+--------------------------------------------------------------------------------
+3.1  No Contributor shall upload, and no User shall attempt to introduce,
+     any of the following ("Prohibited Content"):
+
+     (a)  COPYRIGHT INFRINGEMENT: any material the Contributor does not own
+          or hold rights/licence to publish — including scanned or
+          photo-copied commercial textbooks, guides, coaching-institute
+          packets, paid test series, and material taken from other
+          websites, apps or persons without written permission;
+
+     (b)  LEAKED OR CONFIDENTIAL EXAM MATERIAL: unreleased question papers,
+          answer keys, internal assessment documents or any material whose
+          disclosure is an offence;
+
+     (c)  OBSCENE MATERIAL: anything obscene or lascivious within the
+          meaning of Section 67 of the Information Technology Act, 2000;
+
+     (d)  DEFAMATORY OR ABUSIVE MATERIAL: statements harming the reputation
+          of any person (including students, teachers or staff), abusive,
+          harassing, threatening or hateful content targeting any
+          individual or community (including content offensive on grounds
+          of religion, race, caste, sex, gender identity or nationality);
+
+     (e)  HARMFUL CODE: malware, viruses, scripts, exploits or any file
+          designed to harm devices or deceive Users;
+
+     (f)  PERSONAL DATA OF OTHERS: phone numbers, addresses, marks, photos
+          or any private information of any person without that person's
+          consent — including "fun" or "expose" pages;
+
+     (g)  IMPERSONATION: any material that misrepresents the uploader as
+          another person, teacher or authority;
+
+     (h)  POLITICAL / FUNDRAISING / COMMERCIAL PROMOTION: advertisements,
+          paid promotions, fee-collecting forms, betting links, donation
+          drives or any commercial material;
+
+     (i)  ANYTHING UNLAWFUL: any material the publication of which
+          constitutes an offence under any law in force in India.
+
+4. UPLOADER RESPONSIBILITIES
+--------------------------------------------------------------------------------
+4.1  A Contributor is the publisher of their own Content. Before uploading,
+     they must confirm that:
+     (a)  they authored the material themselves, or have the explicit
+          permission of every co-author / rights-holder;
+     (b)  the material is genuinely course-related study material;
+     (c)  the file does not contain Prohibited Content;
+     (d)  the file name and language label (English / Hindi) are correct,
+          so students are not misled.
+
+4.2  By uploading, Contributors grant the licence and give the warranties
+     set out in legal/07-CONTENT-CONTRIBUTION-LICENSE.txt.
+
+5. PROHIBITED USE OF THE PLATFORM ITSELF
+--------------------------------------------------------------------------------
+5.1  No person shall:
+     (a)  attempt to gain unauthorised access to the repository, the
+          hosting, or any account/token of another person;
+     (b)  overload, flood, scrape or disrupt the Platform or GitHub's
+          services;
+     (c)  copy the entire Platform (code, design, name) and republish it as
+          another project in a manner that misleads Users;
+     (d)  use the Platform's name or the Owner's identity to solicit
+          students for money, tuitions or anything else without written
+          permission.
+
+6. ENFORCEMENT
+--------------------------------------------------------------------------------
+6.1  The Owner may, without notice and without prejudice to other remedies:
+     (a)  remove or disable any Content that violates this AUP;
+     (b)  decline future contributions from a violating Contributor and
+          remove them from the "Contributed Teachers" list;
+     (c)  preserve evidence and report serious violations (exam leaks,
+          obscene material, harassment) to the college authorities and/or
+          law-enforcement agencies, including through the National Cyber
+          Crime Reporting Portal (cybercrime.gov.in).
+
+6.2  Violations may also attract penalties under the Information Technology
+     Act, 2000 (including Sections 43, 66, 66C, 66D and 67), the Copyright
+     Act, 1957 (Sections 51 and 63) and the Bharatiya Nyaya Sanhita, 2023.
+
+7. HOW TO REPORT A VIOLATION
+--------------------------------------------------------------------------------
+7.1  Report promptly through the First Complaint Report form in
+     legal/06-GRIEVANCE-REDRESSAL-AND-FIRST-COMPLAINT-REPORT.txt to:
+     WhatsApp : +91 89890 31351
+     Instagram: @vinay.sanjay.soni
+     Written  : https://github.com/VinaySoni-IN/Notes-Sathi/issues
+     Reports can be made anonymously; named reports enable follow-up.
+
+8. GOVERNING LAW AND JURISDICTION
+--------------------------------------------------------------------------------
+8.1  This AUP is governed by the laws of India. Courts at Balaghat,
+     Madhya Pradesh shall have exclusive jurisdiction.
+================================================================================
+END OF ACCEPTABLE USE POLICY
+================================================================================

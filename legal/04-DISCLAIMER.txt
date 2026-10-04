@@ -1,0 +1,125 @@
+================================================================================
+                         NOTES SATHI — DISCLAIMER
+================================================================================
+Version    : 1.1
+Effective  : 04 October 2026
+Platform   : https://vinaysoni-in.github.io/Notes-Sathi/
+Operator   : Vinay Soni (individual, in personal capacity)
+================================================================================
+
+1. EDUCATIONAL PURPOSE ONLY
+--------------------------------------------------------------------------------
+1.1  Notes Sathi is a free, community-driven collection of study notes
+     shared by teachers and contributors for the convenience of students.
+     All Content is provided for general educational and study purposes
+     only.
+
+2. NO OFFICIAL STATUS — PLEASE READ CAREFULLY
+--------------------------------------------------------------------------------
+2.1  Notes Sathi is an INDEPENDENT, UNOFFICIAL project. It is NOT an
+     official publication, organ, website or service of:
+     (a)  Satpuda College of Engineering and Polytechnic, Balaghat;
+     (b)  Maharana Pratap Shikshan Samiti;
+     (c)  Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal;
+     (d)  the All India Council for Technical Education (AICTE);
+     (e)  the Directorate of Technical Education, Government of
+          Madhya Pradesh;
+     (f)  any school, college, university, board, examination body,
+          government or public authority whatsoever.
+
+2.2  The Platform is not affiliated with, endorsed by, sponsored by,
+     approved by or in any way officially connected with any of the above.
+     Any statement to the contrary would be untrue.
+
+2.3  TRADEMARKS: The names, logos, crests and marks of the college,
+     university and other institutions belong exclusively to their
+     respective owners. Where such names appear on the Platform, they are
+     used only in a good-faith, descriptive, identification-only manner
+     (nominative fair use) — to tell students which community the notes
+     relate to — and not to suggest any affiliation or endorsement
+     (Sections 30(1) and 35 of the Trade Marks Act, 1999). The Platform
+     uses its own separate name and icon.
+
+3. ACCURACY OF CONTENT
+--------------------------------------------------------------------------------
+3.1  All notes and papers are contributed by human contributors "AS IS".
+     The Owner does not write, verify, moderate or vet the academic
+     contents of the notes before publication.
+
+3.2  Notes may contain errors, omissions, outdated syllabus references,
+     incomplete topics, or opinions of the contributing teacher. The
+     Platform makes NO warranty of accuracy, completeness, currency or
+     reliability.
+
+3.3  ALWAYS VERIFY: Students must cross-check every note against the
+     official syllabus, prescribed textbooks, class-room teaching and their
+     own teachers before relying on it — particularly for examinations,
+     submissions, viva-voce and practical records. Marks obtained, or not
+     obtained, are never the responsibility of the Platform.
+
+4. PREVIOUS YEAR QUESTION PAPERS (PYQ's)
+--------------------------------------------------------------------------------
+4.1  The PYQ section merely reproduces question papers as contributed by
+     teachers for revision purposes. The Platform does not claim any rights
+     over such papers. If any examination body or any other rights-holder
+     objects to the hosting of any paper, it will be removed promptly on
+     notice under legal/03-COPYRIGHT-POLICY-AND-TAKEDOWN-NOTICE.txt.
+
+4.2  The Platform does NOT host, and strictly prohibits, leaked,
+     confidential or unreleased examination material of any kind. Any
+     suspicion of such material must be reported immediately through the
+     Grievance channels.
+
+5. NO PROFESSIONAL ADVICE
+--------------------------------------------------------------------------------
+5.1  Nothing on the Platform constitutes legal, medical, financial,
+     career, academic or any other professional advice. Educational
+     decisions (admissions, subject selection, exam strategy) remain the
+     sole responsibility of the student and their guardians.
+
+6. EXTERNAL LINKS
+--------------------------------------------------------------------------------
+6.1  Links to the college website, WhatsApp, Instagram, GitHub or any other
+     external site are for convenience only. The Platform is not
+     responsible for the content or availability of third-party websites,
+     and does not endorse them.
+
+7. AVAILABILITY
+--------------------------------------------------------------------------------
+7.1  The Platform is hosted on GitHub Pages free of charge. There is no
+     commitment to uptime, support, or preservation of any Content. The
+     service may be modified or discontinued at any time without notice.
+
+8. LIMITATION OF LIABILITY
+--------------------------------------------------------------------------------
+8.1  To the fullest extent permitted by law, neither the Owner nor any
+     Contributor is liable for any loss or damage of any kind arising from
+     the use of, or reliance upon, the Platform or its Content. This
+     Disclaimer should be read together with Clauses 11, 12 and 13 of the
+     Terms and Conditions (legal/01-TERMS-AND-CONDITIONS.txt).
+
+8A. NO WARRANTY — NO LIABILITY — NO REFUNDS
+--------------------------------------------------------------------------------
+8A.1 The Platform is provided strictly "AS IS" with NO WARRANTY of any
+     kind, as detailed in Clause 11 of the Terms and Conditions
+     (legal/01-TERMS-AND-CONDITIONS.txt).
+
+8A.2 The service is free of cost. No charges exist and NO REFUNDS are
+     applicable under any circumstances, as detailed in Clause 12A of the
+     Terms and Conditions.
+
+8A.3 STRICT NO-RESPONSIBILITY: To the maximum extent permitted by law,
+     neither the Owner nor any Contributor accepts any responsibility for
+     any loss, damage or consequence of any kind arising from the use of,
+     or reliance upon, the Platform or its Content. This document is the
+     Platform's formal NO LIABILITY statement.
+
+9. CONTACT
+--------------------------------------------------------------------------------
+9.1  Corrections, error reports and objections:
+     WhatsApp : +91 89890 31351 (Vinay Soni)
+     Instagram: @vinay.sanjay.soni
+     Written  : https://github.com/VinaySoni-IN/Notes-Sathi/issues
+================================================================================
+END OF DISCLAIMER
+================================================================================
