@@ -58,6 +58,7 @@ It is built for classroom workflows: the teacher uploads, every student receives
 
 | | |
 |---|---|
+| 📤 **Upload dashboard** | Teachers publish from inside the app — sign in once with a GitHub token, pick semester + subject, drag & drop PDFs; the dashboard uploads to the repo directly (with progress, EN/हिंदी tagging and overwrite handling) |
 | 📰 **Broadcast feed** | Every uploaded PDF becomes a blog post — newest first, grouped by month |
 | 🌀 **Stories (24h)** | Fresh uploads appear as Instagram-style story rings; watching turns them grey; they fade after 72h |
 | 🆕 **NEW tags (24h)** | Posts uploaded within 24 hours carry a pulsing NEW badge — it expires automatically |
@@ -84,14 +85,14 @@ It is built for classroom workflows: the teacher uploads, every student receives
 
 <table>
 <tr>
-<td align="center"><img src="screenshots/screen1.png" width="220"><br><sub>Semester onboarding</sub></td>
-<td align="center"><img src="screenshots/screen2.png" width="220"><br><sub>Home — stories & feed</sub></td>
-<td align="center"><img src="screenshots/screen3.png" width="220"><br><sub>PYQ's sheet</sub></td>
+<td align="center"><img src="screenshots/screen1.jpg" width="220"><br><sub>Semester onboarding</sub></td>
+<td align="center"><img src="screenshots/screen2.jpg" width="220"><br><sub>Home — stories & feed</sub></td>
+<td align="center"><img src="screenshots/screen3.jpg" width="220"><br><sub>PYQ's sheet</sub></td>
 </tr>
 <tr>
-<td align="center"><img src="screenshots/screen4.png" width="220"><br><sub>Embedded PDF viewer</sub></td>
-<td align="center"><img src="screenshots/screen5.png" width="220"><br><sub>Files by subject</sub></td>
-<td align="center"><img src="screenshots/screen6.png" width="220"><br><sub>Profile & help</sub></td>
+<td align="center"><img src="screenshots/screen4.jpg" width="220"><br><sub>Embedded PDF viewer</sub></td>
+<td align="center"><img src="screenshots/screen5.jpg" width="220"><br><sub>Files by subject</sub></td>
+<td align="center"><img src="screenshots/screen6.jpg" width="220"><br><sub>Profile & help</sub></td>
 </tr>
 </table>
 
@@ -118,9 +119,14 @@ Notes-Sathi/
 ├── .github/workflows/generate-tree.yml   # Regenerates tree.json on every upload
 ├── notes/
 │   ├── config.json                 # Site config: title, names, story URLs, emojis
-│   ├── Sem 3/Physics/…             # Semester → subject → notes
-│   ├── Sem 5/PYQ/…                 # Per-semester question papers
-│   └── PYQ/…                        # Common PYQ's (shown to everyone)
+│   └── Polytechnic/                # Program (Diploma) — B.Tech coming soon
+│       ├── Computer Science and Engineering/   # RGPV scheme · Sem 1–6 · all subject folders
+│       ├── Electrical Engineering/              # RGPV scheme · Sem 1–6 · all subject folders
+│       ├── Civil Engineering/                   # RGPV scheme · Sem 1–6 · all subject folders
+│       └── Mechanical Engineering/              # RGPV scheme · Sem 1–6 · all subject folders
+│           └── e.g. Sem 3/Thermal Engineering-I/Unit-1.pdf + Unit-1.hi.pdf
+│               (every subject folder already exists with a .gitkeep placeholder —
+│                drop PDFs inside; the placeholder is harmless and can stay)
 └── README.md                       # This file
 ```
 
@@ -187,27 +193,40 @@ flowchart LR
     CDN[CDN fallback<br/>PDF engine] -.optional.-> W
 ```
 
-## 📝 Publishing Notes (teachers — no code, ever)
+## 📤 Upload Dashboard (easiest way)
+
+Open the **Upload** tab in the app → sign in once with a GitHub **fine-grained personal access token** (*Settings → Developer settings → Fine-grained tokens → Generate*; repository access: **only this repo**; permissions: **Contents: Read and write**) → then publishing is just:
+
+1. Pick **program** (Polytechnic — B.Tech coming soon), **branch**, **semester** and **subject** — all required, so uploads always land in `notes/Polytechnic/[Branch]/Sem N/[Subject]/` (never the notes root). The **Subject dropdown updates automatically** with the folders that already exist under the picked Branch + Semester — and if none exist yet, it offers every subject so the teacher can create the first one
+2. **Drag & drop** your PDFs — English and हिंदी versions are auto-tagged (toggle per file if needed)
+3. Tap **Upload all** — live progress, and if a file already exists it's **updated** automatically
+4. Students see the notes within ~1 minute
+
+The token stays in the teacher's browser only and can be remembered per device (optional) — sign out on shared computers.
+
+## 📝 Publishing Notes (manual alternative)
 
 **Upload = publish.** Add files via *Add file → Upload files* into the right folder:
 
 | Upload into | Students see |
 |---|---|
-| `notes/Physics/Unit-1.pdf` | A post in the Physics subject |
-| `notes/Physics/Unit-1.hi.pdf` | The same post with a हिंदी switch |
-| `notes/Sem 3/Physics/…` | Only Semester-3 students |
-| `notes/Sem 3/PYQ/…` | PYQ's sheet for Semester-3 students |
-| `notes/PYQ/…` | PYQ's sheet for everyone |
+| `notes/Polytechnic/Civil Engineering/Sem 3/Building Construction/Unit-1.pdf` | Only **Civil** Semester-3 students — Building Construction subject |
+| `notes/Polytechnic/Civil Engineering/Sem 3/Building Construction/Unit-1.hi.pdf` | The same post with a 📕 हिंदी switch |
+| `notes/Polytechnic/Civil Engineering/Sem 3/PYQ/…` | PYQ's sheet for Civil Semester-3 students (never in the feed or subject chips) |
+| `notes/Sem 3/Physics/…` (legacy) | College-wide — every branch, Semester 3 |
+| `notes/Any-File.pdf` (legacy root) | College-wide — every branch, every semester |
 
 ```mermaid
 flowchart LR
-    A[Create folder<br/>notes/Sem 3/Physics/] --> B[Upload PDF<br/>+ optional .hi.pdf]
+    A[Create folder<br/>notes/Polytechnic/Civil/Sem 3/Physics/] --> B[Upload PDF<br/>+ optional .hi.pdf]
     B --> C[GitHub Action<br/>regenerates tree.json]
     C --> D[Every student sees it<br/>within ~1 minute]
     D --> E[Story ring + NEW tag<br/>for the next 24h]
 ```
 
-*Site name, teacher name, college, permanent-story links and subject emojis are configured in `notes/config.json`.*
+**Programs & branches:** students first pick **Polytechnic** (B.Tech shows *Coming soon*) and then their branch — Civil, Mechanical, Electrical, Mining & Mine Surveying, or Computer Science. Every page (feed, Files, search, stories, PYQ's, uploads) follows that choice. The **full RGPV diploma scheme is built in**: 205 subject folders across the 4 branches (Sem 1–6) are pre-created in the repo, and the Upload Dashboard lists exactly those subjects for the picked branch + semester. Folder names are matched forgivingly (`civil engineering`, `CSE`, `Mining & Mine Surveying` all work).
+
+*Site name, teacher name, college, permanent-story links and subject emojis are configured in `notes/config.json`. Subject chips and group labels always show the clean subject name (e.g. **Physics**) — semester folders and PYQ folders are never displayed as subjects. Language badges: 📘 English · 📕 हिंदी.*
 
 ## 🚧 Production Status
 
