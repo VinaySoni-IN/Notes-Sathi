@@ -223,10 +223,18 @@
   .sem-agree{ display:flex; flex-direction:column; gap:10px; }
   .tc-box{
     background:var(--card-2); border:1px solid var(--line-soft); border-radius:13px;
-    padding:12px 14px; max-height:180px; overflow-y:auto;
+    padding:12px 14px; max-height:230px; overflow-y:auto;
   }
   .tc-box b{ font-size:12px; display:block; margin-bottom:6px; }
   .tc-box p{ margin:0; font-size:12px; line-height:1.75; color:var(--ink-soft); }
+  .tc-box .tc-new{
+    display:inline-block; font-size:9.5px; font-weight:800; color:#fff; background:var(--brand);
+    padding:2px 8px; border-radius:999px; margin-left:6px; vertical-align:1px;
+    letter-spacing:.3px; text-transform:uppercase;
+  }
+  .tc-links{ margin-top:8px !important; }
+  .tc-links a{ color:var(--brand); font-weight:800; text-decoration:none; }
+  .tc-links a:active{ opacity:.7; }
   .ack-row{
     display:flex; gap:10px; align-items:flex-start; cursor:pointer;
     background:var(--brand-soft); border:1.5px solid var(--brand); border-radius:13px; padding:11px 13px;
@@ -1275,12 +1283,13 @@
 
     <div class="sem-agree" id="semAgree">
       <div class="tc-box" id="tcBox">
-        <b>📜 Terms &amp; Conditions and Privacy Policy</b>
-        <p>Notes Sathi is a free educational notes platform provided as-is, with no warranties of any kind. All notes are contributed by teachers and contributors for study purposes only. By using this app you agree that: (1) the content is not an official publication of any school, college, university or examination body — always verify with your official syllabus, textbooks and teachers; (2) the owner, contributors and publishers of this app shall have no liability whatsoever for any errors, omissions, inaccuracies or consequences resulting from the use of this content; (3) the notes are shared for personal study only and may not be sold or redistributed without the respective author's permission. <b>Privacy:</b> we do not collect, track, store or sell any personal data — no accounts, no ads, no analytics. Your theme, semester, bookmarks and reading history are saved only in your own browser, on your own device, and never leave it. The app simply reads notes from a public GitHub repository. By continuing you accept these terms in full.</p>
+        <b>📜 Terms &amp; Conditions and Privacy Policy <span class="tc-new">Updated 04 Oct 2026</span></b>
+        <p>Notes Sathi is a free educational notes platform provided strictly <b>as-is, with no warranty of any kind</b>. All notes are contributed by teachers and contributors for study purposes only. By using this app you agree that: (1) the content is NOT an official publication of any school, college, university or examination body — always verify with your official syllabus, textbooks and teachers; (2) the service is completely free — <b>no charges, no payments and no refunds</b> ever apply; (3) the owner, contributors and publishers of this app hold <b>no liability whatsoever</b> for any errors, omissions, inaccuracies, losses or consequences resulting from the use of this content — use is strictly at your own risk; (4) the notes are shared for personal study only and may not be sold or redistributed without the respective author's permission. <b>Privacy:</b> we do not collect, track, store or sell any personal data — no accounts, no ads, no analytics. Your theme, branch, semester, bookmarks and reading history are saved only in your own browser, on your own device, and never leave it. The app simply reads notes from a public GitHub repository. <b>Grievances:</b> any problem can be reported to the Grievance Officer — vinay.sanjaysoni@gmail.com — acknowledged within 48 hours. By continuing you accept these terms in full.</p>
+        <p class="tc-links">Full documents: <a href="legal/01-TERMS-AND-CONDITIONS.txt" target="_blank" rel="noopener">Terms &amp; Conditions</a> · <a href="legal/02-PRIVACY-POLICY.txt" target="_blank" rel="noopener">Privacy Policy</a> · <a href="legal/04-DISCLAIMER.txt" target="_blank" rel="noopener">Disclaimer</a> · <a href="legal/06-GRIEVANCE-REDRESSAL-AND-FIRST-COMPLAINT-REPORT.txt" target="_blank" rel="noopener">Report a Problem</a></p>
       </div>
       <label class="ack-row" for="ackCheck">
         <input type="checkbox" id="ackCheck">
-        <span><b>I acknowledge</b> that Notes Sathi is not an official source of information, and the owner and contributors hold no liability for the accuracy, completeness or use of the content.</span>
+        <span><b>I acknowledge</b> that Notes Sathi is not an official source of information, is provided free of cost with no warranty and no refunds, and the owner and contributors hold no liability for the accuracy, completeness or use of the content.</span>
       </label>
     </div>
 
@@ -2942,7 +2951,9 @@ post.files.forEach(function(f){
   });
 
   /* ============ SEMESTER (onboarding + settings) ============ */
-  var LS_SEM = "ns_sem_v1", LS_ACK = "ns_ack_v1", LS_PROG = "ns_prog_v1", LS_BRANCH = "ns_branch_v1";
+  var LS_SEM = "ns_sem_v1", LS_ACK = "ns_ack_v2", LS_PROG = "ns_prog_v1", LS_BRANCH = "ns_branch_v1";
+  /* ns_ack_v2: terms materially updated 04 Oct 2026 (no warranty / no refunds /
+     no responsibility + grievance e-mail) — every user re-accepts once */
   var mySem = null, semSel = null, semSettingsMode = false;
   var myProgram = null, myBranch = null;
   var wizStep = 1, wizProgram = null, wizBranch = null;
