@@ -961,7 +961,8 @@
     #searchResults .empty{ grid-column:1 / -1; }
 
     /* About: hero full width, cards in two columns */
-    #aboutTab{ display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:start; }
+    /* .active scope REQUIRED: a bare #aboutTab selector would override .tab-panel{display:none} */
+    #aboutTab.active{ display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:start; }
     #aboutTab > .profile-card{ grid-column:1 / -1; }
 
     /* ============ ROUNDED DOCK (bottom navigation) ============ */
