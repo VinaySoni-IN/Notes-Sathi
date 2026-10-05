@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-05T03:29:48.962861Z",
+ "generatedAt": "2026-10-05T03:31:16.085368Z",
  "files": [
   {
    "path": "notes/Polytechnic/Civil Engineering/Sem 1/Applied Physics-I/.gitkeep",
@@ -765,6 +765,76 @@
    "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Scripting Languages/Python-01.pdf",
    "size": 5032157,
    "date": "2026-10-05T08:59:34+05:30",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "Vinay Sanjay Soni",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Scripting Languages/Python-02.pdf",
+   "size": 4450171,
+   "date": "2026-10-05T09:00:10+05:30",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "Vinay Sanjay Soni",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Scripting Languages/Python-03.pdf",
+   "size": 526564,
+   "date": "2026-10-05T09:00:17+05:30",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "Vinay Sanjay Soni",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Scripting Languages/Python-04.pdf",
+   "size": 1165524,
+   "date": "2026-10-05T09:00:28+05:30",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "Vinay Sanjay Soni",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Scripting Languages/Python-05.pdf",
+   "size": 993450,
+   "date": "2026-10-05T09:00:37+05:30",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "Vinay Sanjay Soni",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Scripting Languages/Python-06.pdf",
+   "size": 871443,
+   "date": "2026-10-05T09:00:45+05:30",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "Vinay Sanjay Soni",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Scripting Languages/Python-07.pdf",
+   "size": 556531,
+   "date": "2026-10-05T09:00:52+05:30",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "Vinay Sanjay Soni",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Scripting Languages/Python-08.pdf",
+   "size": 855994,
+   "date": "2026-10-05T09:01:00+05:30",
    "author": {
     "login": "VinaySoni-IN",
     "name": "Vinay Sanjay Soni",
