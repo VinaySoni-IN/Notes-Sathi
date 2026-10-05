@@ -1031,7 +1031,7 @@
 
     <!-- ============ SEARCH TAB ============ -->
     <section class="tab-panel" id="searchTab">
-      <input type="text" class="search-input" id="searchInput" placeholder="Search notes, subjects, files…">
+      <input type="text" class="search-input" id="searchTabInput" placeholder="Search notes, subjects, files…">
       <div class="schips">
         <button class="chip-pill active" data-stype="all">All</button>
         <button class="chip-pill" data-stype="pdf">📄 PDF</button>
@@ -2871,7 +2871,7 @@ post.files.forEach(function(f){
   /* ================================================================
      SEARCH TAB
      ================================================================ */
-  var searchInput = document.getElementById("searchInput");
+  var searchInput = document.getElementById("searchTabInput");
   var searchResults = document.getElementById("searchResults");
   var searchType = "all";
   document.querySelectorAll(".schips .chip-pill").forEach(function(chip){
@@ -3948,6 +3948,64 @@ post.files.forEach(function(f){
       renderAll();
     });
   }
+
+  /* ============ ANDROID BACK BUTTON (PWA) ============
+     The app is a single page with no history entries, so Android's back
+     button would instantly close the site. This guard gives back a natural
+     meaning instead: close the open screen first -> return to Home ->
+     only then leave the app. */
+  function nsOpenOverlayId(){
+    var ids = ["viewerOverlay", "pyqOverlay", "semOverlay"];
+    for(var i = 0; i < ids.length; i++){
+      var el = document.getElementById(ids[i]);
+      if(el && el.classList.contains("open")) return ids[i];
+    }
+    return null;
+  }
+  function nsHandleBack(){
+    var ov = nsOpenOverlayId();
+    if(ov === "viewerOverlay"){ closeViewer(); return true; }
+    if(ov === "pyqOverlay"){ closePyqSheet(); return true; }
+    if(ov === "semOverlay"){
+      /* settings / change-selection modal: close it */
+      if(semAccepted()){ closeSemModal(); return true; }
+      return false;   /* first-time welcome: do not trap — back may leave */
+    }
+    /* active search in the Search tab: clear it first */
+    if(currentTab === "searchTab"){
+      var stInput = document.getElementById("searchTabInput");
+      if(stInput && stInput.value.trim()){
+        stInput.value = "";
+        try{ stInput.dispatchEvent(new Event("input", { bubbles:true })); }catch(e){}
+        return true;
+      }
+    }
+    /* active search on Home: clear it first */
+    var sInput = document.getElementById("searchInput");
+    if(searchQ && sInput && sInput.value){
+      sInput.value = "";
+      try{ sInput.dispatchEvent(new Event("input", { bubbles:true })); }catch(e){}
+      return true;
+    }
+    /* any other tab: go back to Home */
+    if(currentTab !== "homeTab"){
+      activateTab("homeTab");
+      try{ window.scrollTo({ top:0 }); }catch(e){}
+      return true;
+    }
+    return false;   /* Home + nothing open -> this press leaves the app */
+  }
+  function nsArmBackGuard(){
+    try{ history.pushState({ nsGuard:true }, ""); }catch(e){}
+  }
+  window.addEventListener("popstate", function(){
+    if(nsHandleBack()){
+      nsArmBackGuard();   /* consumed by the app - re-arm for the next press */
+    } else {
+      try{ history.back(); }catch(e){}   /* nothing to handle - leave now */
+    }
+  });
+  nsArmBackGuard();
 
   boot();
 
