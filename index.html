@@ -202,6 +202,10 @@
     padding:11px 4px; border-radius:12px; cursor:pointer; transition:.13s ease; text-align:center;
   }
   .sem-pill:active{ transform:scale(.96); }
+  .sem-pill.dis{
+    opacity:.4; filter:grayscale(1);
+    cursor:not-allowed; pointer-events:none;
+  }
   .pick-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:14px 0; }
   .pick-card{
     position:relative; border:1.5px solid var(--line); background:var(--card-2); color:var(--ink);
@@ -1229,7 +1233,7 @@
                 <option value="Sem 1">Sem 1</option><option value="Sem 2">Sem 2</option>
                 <option value="Sem 3">Sem 3</option><option value="Sem 4">Sem 4</option>
                 <option value="Sem 5">Sem 5</option><option value="Sem 6">Sem 6</option>
-                <option value="Sem 7">Sem 7</option><option value="Sem 8">Sem 8</option>
+                <option value="Sem 7" disabled>Sem 7 · B.Tech only</option><option value="Sem 8" disabled>Sem 8 · B.Tech only</option>
               </select>
             </div>
             <div class="up-field">
@@ -3357,13 +3361,19 @@ post.files.forEach(function(f){
 
   function buildSemGrid(){
     var grid = document.getElementById("semGrid");
+    /* Polytechnic (Diploma) runs Sem 1-6 only; Sem 7-8 belong to B.Tech.
+       They stay VISIBLE but disabled (black & white) until B.Tech opens. */
+    var maxSem = (wizProgram === "B.Tech") ? 8 : 6;
     var html = "";
     for(var i = 1; i <= 8; i++){
-      html += '<button class="sem-pill' + (semSel === i ? " sel" : "") + '" data-sem="' + i +
-        '" role="radio" aria-checked="' + (semSel === i ? "true" : "false") + '">Sem ' + i + "</button>";
+      var dis = i > maxSem;
+      html += '<button class="sem-pill' + (semSel === i ? " sel" : "") + (dis ? " dis" : "") + '" data-sem="' + i +
+        '" role="radio" aria-checked="' + (semSel === i ? "true" : "false") + '"' +
+        (dis ? " disabled title=\"B.Tech only\"" : "") + '>Sem ' + i + "</button>";
     }
     grid.innerHTML = html;
     grid.querySelectorAll(".sem-pill").forEach(function(btn){
+      if(btn.disabled) return;
       btn.addEventListener("click", function(){
         semSel = parseInt(btn.getAttribute("data-sem"), 10);
         buildSemGrid(); updateSemStart();
