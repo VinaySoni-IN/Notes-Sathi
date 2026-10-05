@@ -944,6 +944,52 @@
     body{ background:var(--bg); }
     .app{ box-shadow:0 0 40px rgba(15,23,42,.06); }
   }
+
+  /* ================================================================
+     DESKTOP ENVIRONMENT — detected by viewport width (>= 900px):
+     wider stage, magazine grids, and the bottom tab bar becomes a
+     floating ROUNDED DOCK in the centre.
+     ================================================================ */
+  @media (min-width:900px){
+    :root{ --app-max:1040px; }                    /* wider stage */
+    main{ padding:20px 28px 132px; }              /* breathing room + dock clearance */
+    header{ padding-left:28px; padding-right:28px; }
+
+    /* feed + search results: two-column magazine grid */
+    #feed, #searchResults{ display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:start; }
+    #feed .month-label, #feed .empty,
+    #searchResults .empty{ grid-column:1 / -1; }
+
+    /* About: hero full width, cards in two columns */
+    #aboutTab{ display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:start; }
+    #aboutTab > .profile-card{ grid-column:1 / -1; }
+
+    /* ============ ROUNDED DOCK (bottom navigation) ============ */
+    nav.tabbar{
+      left:50%; right:auto; bottom:20px; width:auto; max-width:none;
+      transform:translateX(-50%);
+      border:1px solid var(--line-soft); border-radius:26px;
+      padding:7px 10px; box-shadow:var(--shadow-lg);
+    }
+    .tabbtn{
+      flex:0 0 auto; flex-direction:row; gap:8px;
+      padding:10px 18px; border-radius:17px; font-size:12.5px;
+    }
+    .tabbtn svg{ width:19px; height:19px; }
+    .tabbtn:hover{ background:var(--card-2); color:var(--ink); }
+    .tabbtn.active:hover{ background:var(--brand-soft); color:var(--brand); }
+
+    /* floating bits clear the dock */
+    .pyq-fab{ right:28px; bottom:calc(104px + env(safe-area-inset-bottom,0px)); }
+    .toast{ bottom:104px; }
+
+    /* PYQ sheet: centred floating card instead of a bottom sheet */
+    .pyq-overlay{ align-items:center; padding:20px; }
+    .pyq-sheet{
+      max-width:640px; border-radius:22px; border:1px solid var(--line);
+      padding-bottom:18px; animation:slideup .25s ease;
+    }
+  }
 </style>
 </head>
 <body>
@@ -4006,6 +4052,19 @@ post.files.forEach(function(f){
     }
   });
   nsArmBackGuard();
+
+  /* ---------- desktop detection hook ---------- */
+  function nsDetectDesktop(){
+    try{
+      document.body.classList.toggle("ns-desktop",
+        !!(window.matchMedia && window.matchMedia("(min-width: 900px)").matches));
+    }catch(e){}
+  }
+  nsDetectDesktop();
+  try{
+    var nsMq = window.matchMedia && window.matchMedia("(min-width: 900px)");
+    if(nsMq && nsMq.addEventListener) nsMq.addEventListener("change", nsDetectDesktop);
+  }catch(e){}
 
   boot();
 
