@@ -59,6 +59,19 @@ Close the app fully → reopen → **Login** → your profile shows:
 
 ---
 
+## Optional — Enable "Continue with Google" (~1 min)
+
+Students can also sign in with their Google account (works alongside
+email + password; free on the Spark plan):
+
+1. Console → **Build → Authentication** → **Sign-in method** tab
+2. Click **Google** → toggle **Enable** → pick your e-mail as the
+   support e-mail → **Save**
+
+That's it — the app already contains the button. First-time Google
+users are asked for their name + phone ("Finish your account") before
+they appear in your pending list.
+
 ## If something looks different
 
 - No **Build** menu? → You may be in a different project — check the

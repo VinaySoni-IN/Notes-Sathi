@@ -5,10 +5,8 @@ rules_version = '2';
    Paste into: Firebase Console -> Firestore Database -> Rules
    -> Publish.
 
-   BEFORE publishing, replace ADMIN_UID (one place, in isAdmin()
-   below) with your own UID: Console -> Authentication -> Users ->
-   your account's UID. Do this AFTER creating your admin account
-   (see ACCOUNTS-GO-LIVE-GUIDE.md, Part D).
+   READY TO PASTE — the admin UID (GJegsOwwcWWLDyofT14AMPyioh02)
+   is already filled in below. Nothing to replace.
 
    What these rules enforce (server-side — tamper-proof):
    1. A student can CREATE their profile exactly once, with
@@ -78,7 +76,7 @@ service cloud.firestore {
 
     /* ---------------- helpers ---------------- */
     function isAdmin(){
-      return request.auth != null && request.auth.uid == "ADMIN_UID";
+      return request.auth != null && request.auth.uid == "GJegsOwwcWWLDyofT14AMPyioh02";
     }
     function isApproved(){
       return request.auth != null

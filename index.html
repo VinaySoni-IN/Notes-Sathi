@@ -146,6 +146,17 @@
     #nsUserBtn.ns-login-pill{ animation:none; }
   }
 
+  /* "Continue with Google" — white brand button */
+  .g-btn{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    width:100%; padding:11px 14px; border-radius:12px; cursor:pointer;
+    border:1px solid var(--line-soft); background:#fff; color:#1F2937;
+    font-weight:700; font-size:14px; font-family:inherit;
+    box-shadow:0 1px 3px rgba(0,0,0,.08);
+  }
+  .g-btn:active{ transform:scale(.98); }
+  .g-btn svg{ width:18px; height:18px; flex:none; }
+
   main{ flex:1; padding:16px 16px 40px; }
 
   /* ============ TAB PANELS (only the active tab is visible) ============ */
@@ -4240,6 +4251,25 @@ post.files.forEach(function(f){
         nsFb.setUserStatus = function(uid, status){
           return mods[1].setDoc(mods[1].doc(db, "users", uid), { status:status }, { merge:true });
         };
+        nsFb.googleSignIn = function(){
+          var prov = new mods[0].GoogleAuthProvider();
+          return mods[0].signInWithPopup(auth, prov).catch(function(e){
+            var c = e && e.code;
+            /* popups get blocked in some browsers/PWAs — fall back to a full-page redirect */
+            if(c === "auth/popup-blocked" || c === "auth/operation-not-supported-in-this-environment" || c === "auth/cancelled-popup-request"){
+              return mods[0].signInWithRedirect(auth, prov);
+            }
+            throw e;
+          });
+        };
+        nsFb.saveGoogleProfile = function(name, phone){
+          var u = auth.currentUser;
+          if(!u) return Promise.reject(new Error("no-user"));
+          return mods[1].setDoc(mods[1].doc(db, "users", u.uid), {
+            name:name, email:u.email || "", phone:phone,
+            status:"pending", createdAt:new Date().toISOString()
+          });
+        };
         mods[0].onAuthStateChanged(auth, function(u){
           if(u){
             /* profile + reactions in PARALLEL — one round-trip, faster sign-in */
@@ -4254,7 +4284,8 @@ post.files.forEach(function(f){
               /* profile unreadable (e.g. rules not published yet): stay signed in
                  with the basics from the login itself — reading never breaks */
               nsUser = { name:(u.displayName || (u.email || "").split("@")[0] || "Student"),
-                         email:u.email, phone:"", status:"pending", provisional:true };
+                         email:u.email, phone:"", status:"pending", provisional:true,
+                         viaGoogle:(u.providerData || []).some(function(p){ return p && p.providerId === "google.com"; }) };
               nsMyReact = {};
               nsOnUserChanged();
               showToast("\u26A0\uFE0F Signed in, but the profile couldn\u2019t load" +
@@ -4268,6 +4299,8 @@ post.files.forEach(function(f){
         nsUpdateUserBtn();
         if(document.getElementById("nsAuthOverlay").classList.contains("open")) nsRenderAuth();
       });
+        /* completes the redirect-based Google sign-in (popup-blocked browsers) */
+        try{ mods[0].getRedirectResult(auth).catch(function(){}); }catch(e){}
     });
     /* flaky networks can leave a dynamic import hanging forever — race it with
        a 15s timeout so the user always lands on the retry state instead of a
@@ -4450,7 +4483,9 @@ post.files.forEach(function(f){
        (e.g. a late auth event while the user is typing), do NOT rebuild:
        rebuilding would wipe the half-typed email/password */
     var sig = (nsFb.ready ? "1" : "0") + "|" + (nsFb.loading ? "1" : "0") + "|" +
-      (nsUser ? (nsUser.email || "") + "|" + (nsUser.status || "") + "|" + (nsUser.role || "") : "guest") + "|" + nsAuthMode;
+      (nsUser ? (nsUser.email || "") + "|" + (nsUser.status || "") + "|" + (nsUser.role || "") +
+        (nsUser.provisional ? "|prov" : "") + (nsUser.viaGoogle ? "|g" : "") + (nsUser.phone ? "|ph" : "")
+        : "guest") + "|" + nsAuthMode;
     if(sig === nsAuthRendered) return;
     nsAuthRendered = sig;
     var nsStash = nsStashAuthForm();   /* typed details survive every rebuild */
@@ -4465,6 +4500,33 @@ post.files.forEach(function(f){
     /* while nsFb.loading: the real form renders below with a disabled submit —
        the user can already type their email & password while the SDK downloads */
     if(nsUser){
+      /* ---- Google first-timers: finish the account (Google has no phone) ---- */
+      if(nsUser.provisional && nsUser.viaGoogle && !nsUser.phone){
+        card.innerHTML =
+          '<div class="ns-head"><div class="ns-emoji">🎯</div><div class="ns-title">Finish your account</div></div>' +
+          '<div class="ns-note" style="text-align:center;">Signed in with Google as <b>' + esc(nsUser.email || "") + '</b> — add your name & phone to join.</div>' +
+          '<div class="ns-field"><label>Display name *</label><input class="up-input" id="gName" value="' + esc(nsUser.name || "") + '" autocomplete="name"></div>' +
+          '<div class="ns-field"><label>Phone number * (10 digits)</label><input class="up-input" id="gPhone" placeholder="Your 10-digit mobile number" inputmode="tel" autocomplete="tel"></div>' +
+          '<label class="ack-row" for="gConsent" style="margin-bottom:12px;"><input type="checkbox" id="gConsent"><span>I agree to the <b>Privacy Policy</b> — my name, email, phone and reactions are stored to run the community, and I can request deletion anytime.</span></label>' +
+          '<button class="btn btn-primary btn-block" id="gSaveBtn">Save &amp; send for approval ⏳</button>';
+        document.getElementById("gSaveBtn").addEventListener("click", function(){
+          var nm = (document.getElementById("gName").value || "").trim();
+          var ph = (document.getElementById("gPhone").value || "").trim();
+          if(nm.length < 2){ showToast("⚠️ Enter your name (min 2 letters)"); return; }
+          if(!nsValidPhone(ph)){ showToast("⚠️ Enter a valid 10-digit phone number"); return; }
+          if(!document.getElementById("gConsent").checked){ showToast("⚠️ Please accept the Privacy Policy"); return; }
+          var b = this; b.disabled = true; b.textContent = "Saving…";
+          Promise.resolve(nsFb.saveGoogleProfile(nm, ph)).then(function(){
+            nsUser = { name:nm, email:nsUser.email, phone:ph, status:"pending" };
+            nsOnUserChanged();
+            showToast("⏳ Account sent for approval. Reading is already unlocked!");
+          }).catch(function(){
+            b.disabled = false; b.textContent = "Save & send for approval ⏳";
+            showToast("⚠️ Couldn\u2019t save — check internet and try again");
+          });
+        });
+        return;
+      }
       /* ---- signed-in profile ---- */
       var st = nsUser.status === "approved";
       var reads = 0;
@@ -4518,11 +4580,22 @@ post.files.forEach(function(f){
         ? '<div class="ns-note" style="text-align:center;">Accounts are loading in the background — you can already type your details.</div>'
         : '<div class="ns-note" style="text-align:center;">\uD83D\uDD12 Password is encrypted (hashed) by Google Firebase \u2014 we can never see or recover it. New accounts need approval before reacting.</div>') +
       '<div style="display:flex; align-items:center; gap:10px; margin:14px 0 10px;"><span style="flex:1; height:1px; background:var(--line-soft);"></span><span style="font-size:10.5px; font-weight:800; color:var(--ink-soft);">OR</span><span style="flex:1; height:1px; background:var(--line-soft);"></span></div>' +
-      '<button class="btn btn-ghost btn-block" id="nsWaSubmitBtn">📤 Have notes? Send on WhatsApp <small style="font-weight:600; color:var(--ink-soft);">— no account needed</small></button>';
+      '<button class="g-btn" id="nsGoogleBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.3h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.2-2 3.7-5 3.7-8.8z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.7-2.9c-1 .7-2.4 1.2-4.2 1.2-3.2 0-5.9-2.1-6.9-5.1l-3.8 2.9C3.3 21.3 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.1 14.3c-.3-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3l-3.8-3C.5 8.3 0 10.1 0 12s.5 3.7 1.3 5.3l3.8-3z"/><path fill="#EA4335" d="M12 4.7c2.3 0 3.9 1 4.7 1.8l3.4-3.3C18.1 1.1 15.2 0 12 0 7.3 0 3.3 2.7 1.3 6.7l3.8 3c1-3 3.7-4.9 6.9-5z"/></svg>Continue with Google</button>' +
+      '<button class="btn btn-ghost btn-block" id="nsWaSubmitBtn" style="margin-top:8px;">📤 Have notes? Send on WhatsApp <small style="font-weight:600; color:var(--ink-soft);">— no account needed</small></button>';
     document.getElementById("nsTabIn").addEventListener("click", function(){ nsAuthMode = "signin"; nsRenderAuth(); });
     document.getElementById("nsTabUp").addEventListener("click", function(){ nsAuthMode = "signup"; nsRenderAuth(); });
     document.getElementById("nsSubmit").addEventListener("click", nsAuthSubmit);
     document.getElementById("nsWaSubmitBtn").addEventListener("click", nsOpenSubmitNote);
+    document.getElementById("nsGoogleBtn").addEventListener("click", function(){
+      if(!nsFb.ready){ showToast(nsFb.loading ? "⏳ Accounts still loading — one moment!" : "⚠️ Accounts not loaded — tap Login again"); return; }
+      Promise.resolve(nsFb.googleSignIn ? nsFb.googleSignIn() : Promise.reject(new Error("no-method"))).catch(function(e){
+        var c = e && e.code;
+        if(c === "auth/account-exists-with-different-credential") showToast("⚠️ This email already has a password account — use the Sign in tab above");
+        else if(c === "auth/popup-closed-by-user") showToast("⚠️ Google sign-in cancelled");
+        else if(c === "auth/network-request-failed") showToast("⚠️ No internet — check your connection");
+        else showToast("⚠️ Google sign-in failed — try again");
+      });
+    });
     nsRestoreAuthForm(nsStash);   /* never lose typed details across rebuilds */
   }
 
