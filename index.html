@@ -13,10 +13,18 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
+<!-- accounts (Firebase) gets top loading priority -->
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://firebaseinstallations.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossorigin>
+<link rel="modulepreload" href="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js" crossorigin>
+<link rel="modulepreload" href="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js" crossorigin>
+<link rel="modulepreload" href="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="pdf.min.js"></script>
+<script src="pdf.min.js" defer></script>
 <style>
   /* ============ TOKENS ============ */
   :root{
@@ -2774,11 +2782,16 @@ post.files.forEach(function(f){
      instead — and the service worker caches them, so offline still works. */
   function ensurePdfJs(cb){
     if(window.pdfjsLib) return cb(true);
-    var s = document.createElement("script");
-    s.src = PDFJS_CDN + "/pdf.min.js";
-    s.onload = function(){ cb(!!window.pdfjsLib); };
-    s.onerror = function(){ cb(false); };
-    document.head.appendChild(s);
+    /* local copy first (it loads deferred at boot), CDN as fallback */
+    var trySrc = function(list){
+      if(!list.length) return cb(false);
+      var s = document.createElement("script");
+      s.src = list[0];
+      s.onload = function(){ window.pdfjsLib ? cb(true) : trySrc(list.slice(1)); };
+      s.onerror = function(){ trySrc(list.slice(1)); };
+      document.head.appendChild(s);
+    };
+    trySrc(["pdf.min.js", PDFJS_CDN + "/pdf.min.js"]);
   }
   function headOk(u){
     return fetch(u, { method:"HEAD" }).then(function(r){ return r.ok; }).catch(function(){ return false; });
@@ -4150,8 +4163,10 @@ post.files.forEach(function(f){
   function nsNoteKey(id){ return String(id || "").replace(/[^a-zA-Z0-9._-]/g, "_").slice(0, 90); }
 
   function nsFbInit(){
-    if(!FB_CONFIG || nsFb.ready) return;
-    import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js").then(function(appMod){
+    if(!FB_CONFIG || nsFb.ready || nsFb.loading) return;
+    nsFb.loading = true;
+    nsUpdateUserBtn();
+    var nsFbLoaded = import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js").then(function(appMod){
       return Promise.all([
         import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"),
         import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js")
@@ -4159,7 +4174,7 @@ post.files.forEach(function(f){
         var app = appMod.initializeApp(FB_CONFIG);
         var auth = mods[0].getAuth(app);
         var db = mods[1].getFirestore(app);
-        nsFb.ready = true;
+        nsFb.ready = true; nsFb.loading = false;
         nsFb.signUp = function(name, email, phone, pwd){
           return mods[0].createUserWithEmailAndPassword(auth, email, pwd).then(function(cred){
             return mods[0].updateProfile(cred.user, { displayName:name }).then(function(){
@@ -4227,34 +4242,73 @@ post.files.forEach(function(f){
         };
         mods[0].onAuthStateChanged(auth, function(u){
           if(u){
-            nsFb.loadMe(u.uid).then(function(prof){
-              nsUser = prof || { name:u.displayName || "Student", email:u.email, phone:"", status:"pending" };
-              return nsFb.loadMyReacts(u.uid);
-            }).then(function(m){
-              nsMyReact = m || {};
+            /* profile + reactions in PARALLEL — one round-trip, faster sign-in */
+            Promise.all([
+              nsFb.loadMe(u.uid),
+              nsFb.loadMyReacts(u.uid)
+            ]).then(function(res){
+              nsUser = res[0] || { name:u.displayName || "Student", email:u.email, phone:"", status:"pending" };
+              nsMyReact = res[1] || {};
               nsOnUserChanged();
-            }).catch(function(){ nsUser = null; nsMyReact = {}; nsOnUserChanged(); });
+            }).catch(function(err){
+              /* profile unreadable (e.g. rules not published yet): stay signed in
+                 with the basics from the login itself — reading never breaks */
+              nsUser = { name:(u.displayName || (u.email || "").split("@")[0] || "Student"),
+                         email:u.email, phone:"", status:"pending", provisional:true };
+              nsMyReact = {};
+              nsOnUserChanged();
+              showToast("\u26A0\uFE0F Signed in, but the profile couldn\u2019t load" +
+                ((err && err.code === "permission-denied") ? " \u2014 accounts setup is incomplete" : ""));
+            });
           } else {
             nsUser = null; nsMyReact = {};
             nsOnUserChanged();
           }
         });
         nsUpdateUserBtn();
+        if(document.getElementById("nsAuthOverlay").classList.contains("open")) nsRenderAuth();
       });
-    }).catch(function(e){
+    });
+    /* flaky networks can leave a dynamic import hanging forever — race it with
+       a 15s timeout so the user always lands on the retry state instead of a
+       stuck "Loading accounts…" screen */
+    Promise.race([
+      nsFbLoaded,
+      new Promise(function(_, rej){ setTimeout(function(){ rej(new Error("firebase-load-timeout")); }, 15000); })
+    ]).catch(function(e){
+      if(nsFb.ready || !nsFb.loading) return;   /* loaded (or reset) meanwhile */
+      nsFb.loading = false;
       try{ console.warn("Notes Sathi: accounts unavailable", e); }catch(x){}
+      nsUpdateUserBtn();
+      if(document.getElementById("nsAuthOverlay").classList.contains("open")) nsRenderAuth();
     });
   }
 
+  var nsRowsShown = false;   /* do rendered cards currently contain react rows? */
+  function nsRefreshReactRows(){
+    document.querySelectorAll(".react-row").forEach(function(row){
+      var mine = nsMyReact[row.getAttribute("data-key")] || {};
+      var r = row.querySelector(".readR"), l = row.querySelector(".loveR");
+      if(r) r.classList.toggle("on", !!mine.read);
+      if(l) l.classList.toggle("on", !!mine.love);
+    });
+  }
   function nsOnUserChanged(){
     nsUpdateUserBtn();
-    try{ renderAll(); }catch(e){}
+    /* full re-render ONLY when react rows appear/disappear — otherwise a light
+       refresh keeps the feed perfectly still (no flash, no scroll jump) */
+    if(!!nsFb.ready !== nsRowsShown){
+      nsRowsShown = !!nsFb.ready;
+      try{ renderAll(); }catch(e){}
+    } else {
+      nsRefreshReactRows();
+    }
     if(document.getElementById("nsAuthOverlay").classList.contains("open")) nsRenderAuth();
   }
   function nsUpdateUserBtn(){
     var b = document.getElementById("nsUserBtn");
     if(!b) return;
-    b.style.display = nsFb.ready ? "" : "none";
+    b.style.display = FB_CONFIG ? "" : "none";   /* instant — never wait for the SDK */
     if(nsUser && nsUser.name){
       b.classList.remove("ns-login-pill");
       b.innerHTML = avatarSpan({ name:nsUser.name }, 26);
@@ -4268,6 +4322,7 @@ post.files.forEach(function(f){
 
   function nsOpenAuth(mode){
     nsAuthMode = mode || "signin";
+    if(FB_CONFIG && !nsFb.ready && !nsFb.loading) nsFbInit();   /* auto-retry */
     nsRenderAuth();
     document.getElementById("nsAuthOverlay").classList.add("open");
   }
@@ -4373,13 +4428,42 @@ post.files.forEach(function(f){
     }catch(e){ showToast("⚠️ Could not open WhatsApp"); }
   }
 
+  function nsStashAuthForm(){
+    var ids = ["nsEmail","nsPass","nsName","nsPhone"], out = {};
+    ids.forEach(function(id){ var el = document.getElementById(id); if(el) out[id] = el.value || ""; });
+    var c = document.getElementById("nsConsent"); if(c) out.nsConsent = c.checked;
+    return out;
+  }
+  function nsRestoreAuthForm(st){
+    if(!st) return;
+    Object.keys(st).forEach(function(id){
+      var el = document.getElementById(id);
+      if(!el) return;
+      if(id === "nsConsent") el.checked = !!st[id];
+      else el.value = st[id];
+    });
+  }
+  var nsAuthRendered = "";
   function nsRenderAuth(){
     var card = document.getElementById("nsAuthCard");
-    if(!nsFb.ready){
-      card.innerHTML = '<div class="ns-head"><div class="ns-emoji">\uD83D\uDC64</div><div class="ns-title">Accounts coming soon</div></div>' +
-        '<div class="ns-note" style="text-align:center;">Student accounts are not enabled yet. You can read all notes without an account.</div>';
+    /* signature of what the card currently shows — if nothing relevant changed
+       (e.g. a late auth event while the user is typing), do NOT rebuild:
+       rebuilding would wipe the half-typed email/password */
+    var sig = (nsFb.ready ? "1" : "0") + "|" + (nsFb.loading ? "1" : "0") + "|" +
+      (nsUser ? (nsUser.email || "") + "|" + (nsUser.status || "") + "|" + (nsUser.role || "") : "guest") + "|" + nsAuthMode;
+    if(sig === nsAuthRendered) return;
+    nsAuthRendered = sig;
+    var nsStash = nsStashAuthForm();   /* typed details survive every rebuild */
+    if(!nsFb.ready && !nsFb.loading){
+      card.innerHTML = '<div class="ns-head"><div class="ns-emoji">📡</div><div class="ns-title">Accounts couldn\u2019t load</div></div>' +
+        '<div class="ns-note" style="text-align:center;">Weak connection maybe — reading notes works perfectly. Try again in a moment.</div>' +
+        '<button class="btn btn-primary btn-block" id="nsRetryFbBtn" style="margin-top:12px;">🔁 Try again</button>';
+      var rb = document.getElementById("nsRetryFbBtn");
+      if(rb) rb.addEventListener("click", function(){ nsFbInit(); nsRenderAuth(); });
       return;
     }
+    /* while nsFb.loading: the real form renders below with a disabled submit —
+       the user can already type their email & password while the SDK downloads */
     if(nsUser){
       /* ---- signed-in profile ---- */
       var st = nsUser.status === "approved";
@@ -4412,6 +4496,7 @@ post.files.forEach(function(f){
     }
     /* ---- signed-out: sign in / create account ---- */
     var up = nsAuthMode === "signup";
+    var ld = !nsFb.ready;   /* still loading? form works, submit waits */
     card.innerHTML =
       '<div class="ns-head"><div class="ns-emoji">' + (up ? "\uD83D\uDC65" : "\uD83D\uDC64") + "</div>" +
       '<div class="ns-title">' + (up ? "Create student account" : "Welcome back") + "</div>" +
@@ -4422,25 +4507,33 @@ post.files.forEach(function(f){
       "</div>" +
       (up
         ? '<div class="ns-field"><label>Display name *</label><input class="up-input" id="nsName" placeholder="e.g. Priya Sharma" autocomplete="name"></div>' +
-          '<div class="ns-field"><label>Phone number * (10 digits)</label><input class="up-input" id="nsPhone" placeholder="e.g. 98765 43210" inputmode="tel" autocomplete="tel"></div>'
+          '<div class="ns-field"><label>Phone number * (10 digits)</label><input class="up-input" id="nsPhone" placeholder="Your 10-digit mobile number" inputmode="tel" autocomplete="tel"></div>'
         : "") +
       '<div class="ns-field"><label>Email *</label><input class="up-input" id="nsEmail" type="email" placeholder="you@example.com" autocomplete="email"></div>' +
       '<div class="ns-field"><label>Password' + (up ? " * (min 8 characters)" : "") + '</label><input class="up-input" id="nsPass" type="password" placeholder="\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022" autocomplete="' + (up ? "new-password" : "current-password") + '"></div>' +
       (up ? '<label class="ack-row" for="nsConsent" style="margin-bottom:12px;"><input type="checkbox" id="nsConsent"><span>I agree to the <b>Privacy Policy</b> \u2014 my name, email, phone and reactions are stored to run the community, and I can request deletion anytime.</span></label>' : "") +
-      '<button class="btn btn-primary btn-block" id="nsSubmit">' + (up ? "Create account \uD83D\uDE80" : "Sign in") + "</button>" +
-      '<div class="ns-note" style="text-align:center;">\uD83D\uDD12 Password is encrypted (hashed) by Google Firebase \u2014 we can never see or recover it. New accounts need approval before reacting.</div>' +
+      '<button class="btn btn-primary btn-block" id="nsSubmit"' + (ld ? " disabled" : "") + ">" +
+        (ld ? "⏳ Preparing…" : (up ? "Create account \uD83D\uDE80" : "Sign in")) + "</button>" +
+      (ld
+        ? '<div class="ns-note" style="text-align:center;">Accounts are loading in the background — you can already type your details.</div>'
+        : '<div class="ns-note" style="text-align:center;">\uD83D\uDD12 Password is encrypted (hashed) by Google Firebase \u2014 we can never see or recover it. New accounts need approval before reacting.</div>') +
       '<div style="display:flex; align-items:center; gap:10px; margin:14px 0 10px;"><span style="flex:1; height:1px; background:var(--line-soft);"></span><span style="font-size:10.5px; font-weight:800; color:var(--ink-soft);">OR</span><span style="flex:1; height:1px; background:var(--line-soft);"></span></div>' +
       '<button class="btn btn-ghost btn-block" id="nsWaSubmitBtn">📤 Have notes? Send on WhatsApp <small style="font-weight:600; color:var(--ink-soft);">— no account needed</small></button>';
     document.getElementById("nsTabIn").addEventListener("click", function(){ nsAuthMode = "signin"; nsRenderAuth(); });
     document.getElementById("nsTabUp").addEventListener("click", function(){ nsAuthMode = "signup"; nsRenderAuth(); });
     document.getElementById("nsSubmit").addEventListener("click", nsAuthSubmit);
     document.getElementById("nsWaSubmitBtn").addEventListener("click", nsOpenSubmitNote);
+    nsRestoreAuthForm(nsStash);   /* never lose typed details across rebuilds */
   }
 
   function nsValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
   function nsValidPhone(v){ return /^\+?[0-9][0-9\s-]{8,14}$/.test(v); }
 
   function nsAuthSubmit(){
+    if(!nsFb.ready){
+      showToast(nsFb.loading ? "⏳ Accounts still loading — one moment!" : "⚠️ Accounts not loaded — tap Login again");
+      return;
+    }
     var email = (document.getElementById("nsEmail").value || "").trim();
     var pass = document.getElementById("nsPass").value || "";
     if(nsAuthMode === "signup"){
@@ -4458,7 +4551,14 @@ post.files.forEach(function(f){
         showToast("\u23F3 Account created \u2014 sent for approval. Reading is already unlocked!");
       }).catch(function(e){
         btn.disabled = false; btn.textContent = "Create account \uD83D\uDE80";
-        showToast("\u26A0\uFE0F " + ((e && e.code === "auth/email-already-in-use") ? "This email already has an account" : "Couldn\u2019t create account \u2014 try again"));
+        var c = e && e.code;
+        showToast("\u26A0\uFE0F " + (
+          c === "auth/email-already-in-use" ? "This email already has an account" :
+          c === "auth/weak-password" ? "Password needs at least 8 characters" :
+          c === "auth/invalid-email" ? "Enter a valid email" :
+          c === "auth/network-request-failed" ? "No internet \u2014 check your connection" :
+          c === "permission-denied" ? "Accounts setup incomplete \u2014 the owner must publish the Firestore rules first" :
+          "Couldn\u2019t create account \u2014 try again"));
       });
     } else {
       if(!nsValidEmail(email) || !pass){ showToast("\u26A0\uFE0F Enter your email and password"); return; }
@@ -4467,9 +4567,9 @@ post.files.forEach(function(f){
       Promise.resolve(nsFb.signIn(email, pass)).then(function(){
         nsCloseAuth();
         showToast("\uD83D\uDC4B Welcome back!");
-      }).catch(function(){
+      }).catch(function(e){
         b2.disabled = false; b2.textContent = "Sign in";
-        showToast("\u26A0\uFE0F Wrong email or password");
+        showToast("\u26A0\uFE0F " + ((e && e.code === "auth/network-request-failed") ? "No internet \u2014 check your connection" : "Wrong email or password"));
       });
     }
   }
