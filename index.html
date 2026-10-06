@@ -119,6 +119,25 @@
   .iconbtn:active{ transform:scale(.92); }
   .iconbtn svg{ width:18px; height:18px; }
 
+  /* "Login" pill — animated gradient (signed-out state of the account button) */
+  #nsUserBtn.ns-login-pill{
+    width:auto; height:36px; padding:0 15px; border-radius:999px;
+    color:#fff; font-weight:800; font-size:12.5px; letter-spacing:.3px;
+    background:linear-gradient(-45deg,#6366F1,#8B5CF6,#EC4899,#6366F1);
+    background-size:400% 400%;
+    animation:nsGrad 6s ease infinite;
+    box-shadow:0 2px 12px rgba(139,92,246,.35);
+  }
+  #nsUserBtn.ns-login-pill:active{ transform:scale(.94); }
+  @keyframes nsGrad{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    #nsUserBtn.ns-login-pill{ animation:none; }
+  }
+
   main{ flex:1; padding:16px 16px 40px; }
 
   /* ============ TAB PANELS (only the active tab is visible) ============ */
@@ -1061,9 +1080,7 @@
         <div class="hdr-sub" id="hdrSub">College notes, beautifully organized</div>
       </div>
       <div class="hdr-actions">
-        <button class="iconbtn" id="nsUserBtn" aria-label="Student account" title="Student account" style="display:none;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </button>
+        <button class="iconbtn ns-login-pill" id="nsUserBtn" aria-label="Login" title="Login — student account" style="display:none;">Login</button>
         <button class="iconbtn" id="semBtn" aria-label="Change program, branch and semester" title="Program · Branch · Semester">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
         </button>
@@ -4233,10 +4250,15 @@ post.files.forEach(function(f){
     var b = document.getElementById("nsUserBtn");
     if(!b) return;
     b.style.display = nsFb.ready ? "" : "none";
-    b.innerHTML = (nsUser && nsUser.name)
-      ? avatarSpan({ name:nsUser.name }, 26)
-      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
-    b.title = nsUser ? (nsUser.name + " \u00b7 " + (nsUser.status === "approved" ? "Approved" : "Pending approval")) : "Student account";
+    if(nsUser && nsUser.name){
+      b.classList.remove("ns-login-pill");
+      b.innerHTML = avatarSpan({ name:nsUser.name }, 26);
+      b.title = nsUser.name + " \u00b7 " + (nsUser.status === "approved" ? "Approved" : "Pending approval");
+    }else{
+      b.classList.add("ns-login-pill");
+      b.innerHTML = "Login";
+      b.title = "Login \u2014 student account";
+    }
   }
 
   function nsOpenAuth(mode){
