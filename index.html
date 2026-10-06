@@ -1186,13 +1186,6 @@
         <p class="legal-note">Full legal documents of Notes Sathi — plain text, readable on any device. Problems are acknowledged within 48 hours (see 📝 Report a Problem).</p>
       </div>
 
-      <div class="about-card" id="submitNoteCard">
-        <h4>📤 Submit your notes</h4>
-        <p class="help-sub">Made notes that helped you study? Send them in — published with a golden <b>✍️ By Your Name</b> badge, free for everyone.</p>
-        <button class="btn btn-primary btn-block" id="submitNoteBtn" style="margin-bottom:8px;">📤 Send on WhatsApp</button>
-        <p class="help-sub" style="font-size:11px;">Opens WhatsApp with your details pre-filled — just attach the PDF and send.</p>
-      </div>
-
       <div class="about-card" id="helpCard">
         <h4>🙋 Need help?</h4>
         <p class="help-sub">Questions, notes requests or suggestions — reach out directly.</p>
@@ -4363,6 +4356,23 @@ post.files.forEach(function(f){
     });
   }
 
+  /* student note submission (Plan A): WhatsApp draft with pre-filled fields */
+  function nsOpenSubmitNote(){
+    var nm = (nsUser && nsUser.name) ? nsUser.name : "";
+    var msg = "📤 Notes Sathi — Note Submission\n\n" +
+      "Name: " + (nm || "(your name)") + "\n" +
+      "Program: " + (myProgram || "-") + "\n" +
+      "Branch: " + (myBranch || "-") + "\n" +
+      "Semester: " + (mySem ? String(mySem) : "-") + "\n" +
+      "Subject: (subject name)\n" +
+      "Note title: (note title)\n\n" +
+      "I am attaching the note as PDF 📄 — please publish it with my name credit ✍️\n" +
+      "Thank you! 🙏";
+    try{
+      window.open("https://wa.me/918989031351?text=" + encodeURIComponent(msg), "_blank", "noopener");
+    }catch(e){ showToast("⚠️ Could not open WhatsApp"); }
+  }
+
   function nsRenderAuth(){
     var card = document.getElementById("nsAuthCard");
     if(!nsFb.ready){
@@ -4383,10 +4393,13 @@ post.files.forEach(function(f){
         '<div class="ns-kv"><span>Phone</span><b>' + esc(nsUser.phone || "") + "</b></div>" +
         '<div class="ns-kv"><span>\uD83D\uDCD6 Notes read</span><b>' + reads + "</b></div>" +
         (st ? "" : '<div class="ns-note">\u23F3 Your account is waiting for approval. You can read all notes meanwhile \u2014 reactions unlock once approved.</div>') +
+        '<button class="btn btn-primary btn-block" id="nsSubmitNoteBtn" style="margin-top:14px;">📤 Submit your notes</button>' +
+        '<div class="ns-note" style="text-align:center;">Made notes? Send the PDF on WhatsApp — published with a golden ✍️ By Your Name badge.</div>' +
         (nsUser.role === "admin"
           ? '<button class="btn btn-ghost btn-block" id="nsAdminBtn" style="margin-top:12px;border:1px solid var(--brand);color:var(--brand);font-weight:800;">⏳ Pending approvals</button>'
           : "") +
         '<button class="btn btn-ghost btn-block" id="nsSignOutBtn" style="margin-top:12px;">Sign out</button>';
+      document.getElementById("nsSubmitNoteBtn").addEventListener("click", nsOpenSubmitNote);
       var abtn = document.getElementById("nsAdminBtn");
       if(abtn) abtn.addEventListener("click", function(){ nsOpenAdmin(); });
       document.getElementById("nsSignOutBtn").addEventListener("click", function(){
@@ -4415,10 +4428,13 @@ post.files.forEach(function(f){
       '<div class="ns-field"><label>Password' + (up ? " * (min 8 characters)" : "") + '</label><input class="up-input" id="nsPass" type="password" placeholder="\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022" autocomplete="' + (up ? "new-password" : "current-password") + '"></div>' +
       (up ? '<label class="ack-row" for="nsConsent" style="margin-bottom:12px;"><input type="checkbox" id="nsConsent"><span>I agree to the <b>Privacy Policy</b> \u2014 my name, email, phone and reactions are stored to run the community, and I can request deletion anytime.</span></label>' : "") +
       '<button class="btn btn-primary btn-block" id="nsSubmit">' + (up ? "Create account \uD83D\uDE80" : "Sign in") + "</button>" +
-      '<div class="ns-note" style="text-align:center;">\uD83D\uDD12 Password is encrypted (hashed) by Google Firebase \u2014 we can never see or recover it. New accounts need approval before reacting.</div>';
+      '<div class="ns-note" style="text-align:center;">\uD83D\uDD12 Password is encrypted (hashed) by Google Firebase \u2014 we can never see or recover it. New accounts need approval before reacting.</div>' +
+      '<div style="display:flex; align-items:center; gap:10px; margin:14px 0 10px;"><span style="flex:1; height:1px; background:var(--line-soft);"></span><span style="font-size:10.5px; font-weight:800; color:var(--ink-soft);">OR</span><span style="flex:1; height:1px; background:var(--line-soft);"></span></div>' +
+      '<button class="btn btn-ghost btn-block" id="nsWaSubmitBtn">📤 Have notes? Send on WhatsApp <small style="font-weight:600; color:var(--ink-soft);">— no account needed</small></button>';
     document.getElementById("nsTabIn").addEventListener("click", function(){ nsAuthMode = "signin"; nsRenderAuth(); });
     document.getElementById("nsTabUp").addEventListener("click", function(){ nsAuthMode = "signup"; nsRenderAuth(); });
     document.getElementById("nsSubmit").addEventListener("click", nsAuthSubmit);
+    document.getElementById("nsWaSubmitBtn").addEventListener("click", nsOpenSubmitNote);
   }
 
   function nsValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
@@ -4527,23 +4543,6 @@ post.files.forEach(function(f){
   openViewer = function(id, preferLang){ _openViewer(id, preferLang); nsMarkRead(id); };
 
   document.getElementById("nsUserBtn").addEventListener("click", function(){ nsOpenAuth(); });
-
-  /* student note submission (Plan A): WhatsApp draft with pre-filled fields */
-  document.getElementById("submitNoteBtn").addEventListener("click", function(){
-    var nm = (nsUser && nsUser.name) ? nsUser.name : "";
-    var msg = "\uD83D\uDCE4 Notes Sathi \u2014 Note Submission\n\n" +
-      "Name: " + (nm || "(your name)") + "\n" +
-      "Program: " + (myProgram || "-") + "\n" +
-      "Branch: " + (myBranch || "-") + "\n" +
-      "Semester: " + (mySem ? String(mySem) : "-") + "\n" +
-      "Subject: (subject name)\n" +
-      "Note title: (note title)\n\n" +
-      "I am attaching the note as PDF \uD83D\uDCC4 \u2014 please publish it with my name credit \u270D\uFE0F\n" +
-      "Thank you! \uD83D\uDE4F";
-    try{
-      window.open("https://wa.me/918989031351?text=" + encodeURIComponent(msg), "_blank", "noopener");
-    }catch(e){ showToast("\u26A0\uFE0F Could not open WhatsApp"); }
-  });
   document.getElementById("nsAuthOverlay").addEventListener("click", function(e){ if(e.target === this) nsCloseAuth(); });
   document.getElementById("nsWhoOverlay").addEventListener("click", function(e){ if(e.target === this) nsCloseWho(); });
   document.getElementById("nsAdminOverlay").addEventListener("click", function(e){ if(e.target === this) nsCloseAdmin(); });
