@@ -4,7 +4,7 @@
 <td>
 
 # Notes Sathi
-Broadcast notes blog — teacher uploads PDFs, students read them. English + हिंदी, stories, PYQ's — free for every student.
+Broadcast notes blog — teacher uploads PDFs, students read them. English + हिंदी, stories, PYQ's, optional student accounts with ✅ read-ticks & ❤️ reactions — free for every student.
 
 </td>
 </tr>
@@ -16,12 +16,12 @@ Broadcast notes blog — teacher uploads PDFs, students read them. English + ह
   <img src="https://img.shields.io/badge/status-live-1F7A33?style=flat-square">
 </p>
 
-A free app for every student of **Satpuda College of Engineering and Polytechnic** — teachers publish notes by simply uploading PDFs to a GitHub repository; the app turns them into a beautiful, social-media-style notes blog. No login, no server — notes stay free for every student, always.
+A free app for every student of **Satpuda College of Engineering and Polytechnic** — teachers publish notes by simply uploading PDFs to a GitHub repository; the app turns them into a beautiful, social-media-style notes blog. Reading needs no login, ever — an optional student account (name, e-mail, phone → admin-approved) additionally unlocks ✅ read-ticks, ❤️ reactions and "who read" lists on Firebase's free tier. Notes stay free for every student, always.
 
 ---
 > **Simple • Broadcast • Free Forever • Notes Management**
 
-Notes Sathi is a lightweight, mobile-first notes platform with **Instagram-style stories for fresh uploads (24h)**, a fully **embedded PDF viewer** (pages, pinch-zoom, download), a **file manager**, **live search**, **semester onboarding**, a **PYQ's quick-access sheet**, **bookmarks**, **WhatsApp sharing**, and **English + हिंदी** versions of every note — installable as an app and readable offline.
+Notes Sathi is a lightweight, mobile-first notes platform with **Instagram-style stories for fresh uploads (24h)**, a fully **embedded PDF viewer** (pages, pinch-zoom, download), a **file manager**, **live search**, **semester onboarding**, a **PYQ's quick-access sheet**, **bookmarks**, **WhatsApp sharing**, **optional student accounts** (✅ read-ticks, ❤️ helpful reactions, who-read sheets, two-letter avatars), and **English + हिंदी** versions of every note — installable as an app and readable offline.
 
 It is built for classroom workflows: the teacher uploads, every student receives — publishing requires no code, ever.
 
@@ -49,7 +49,7 @@ It is built for classroom workflows: the teacher uploads, every student receives
 </p>
 
 <p align="center">
-  <sub>Notes • PDF • English + हिंदी • Stories • PYQ's • Semester • Offline</sub>
+  <sub>Notes • PDF • English + हिंदी • Stories • PYQ's • Semester • Accounts • Offline</sub>
 </p>
 
 ---
@@ -70,6 +70,9 @@ It is built for classroom workflows: the teacher uploads, every student receives
 | 🗂 **Files tab** | Every file grouped by subject, newest uploads at the top; switch to flat 🕒 Newest or 🔤 A–Z |
 | 🔖 **Bookmarks** | Save any note for quick revision — stored on the device |
 | ✍️ **Contributors** | Everyone who uploads gets a card with their contributed notes and GitHub avatar |
+| 👤 **Student accounts (optional)** | Sign up with name, e-mail & phone + DPDP consent → admin approves → community unlocks; passwords hashed by Google Firebase, never visible to anyone; reading always stays login-free |
+| ✅ **Read-ticks & reactions** | Opening a note auto-ticks it (permanent, cross-device); ❤️ mark notes helpful; "who read" lists with two-letter avatars in name-hashed colours |
+| 🏅 **Student credit badges** | Student-submitted notes (WhatsApp → teacher publishes `Unit-1.Priya Sharma.pdf`) automatically get a golden **✍️ By Priya Sharma** badge |
 | 🌓 **Dark mode** | One tap, remembered |
 | 💬 **WhatsApp sharing** | Share any note straight to a chat |
 | 🙋 **Need help?** | Instagram + WhatsApp contact buttons below the profile |
@@ -100,7 +103,7 @@ It is built for classroom workflows: the teacher uploads, every student receives
 
 Plain HTML, CSS & JavaScript — no framework required.
 
-`GitHub Pages` · `GitHub Actions` · `GitHub Trees API` · Service Worker · Web App Manifest · PDF rendering by [Mozilla's PDF.js](https://github.com/mozilla/pdf.js) (Apache 2.0) · `localStorage`
+`GitHub Pages` · `GitHub Actions` · `GitHub Trees API` · Service Worker · Web App Manifest · PDF rendering by [Mozilla's PDF.js](https://github.com/mozilla/pdf.js) (Apache 2.0) · `localStorage` · optional accounts: `Firebase` (Auth + Firestore, Spark free tier)
 
 ## 🗂️ File Structure
 
@@ -112,6 +115,10 @@ Notes-Sathi/
 ├── sw.js                           # Service worker (installable + offline)
 ├── tree.json                       # Auto-generated note manifest (GitHub Action)
 ├── icon-192.png / icon-512.png     # App icons
+├── legal/                          # Terms, Privacy Policy & grievance docs (.txt, DPDP-aligned)
+├── firestore.rules                 # Firestore security rules — approval gating, own-data-only writes
+├── firebase-setup-guide.md         # ~10-minute Firebase console setup (₹0, no card)
+├── ACCOUNTS-GO-LIVE-GUIDE.md       # Activation, admin UID, testing, daily approvals & rollback
 ├── images/                         # Permanent story logos (square images)
 ├── screenshots/                    # README screenshots
 ├── pdf.min.js / pdf.worker.min.js  # Embedded PDF viewer engine (optional — CDN fallback built in)
@@ -191,6 +198,7 @@ flowchart LR
     W --> OFF[Offline reading<br/>Service Worker]
     W --> API[GitHub API<br/>profile · contributors]
     CDN[CDN fallback<br/>PDF engine] -.optional.-> W
+    FB[Firebase<br/>optional accounts<br/>Auth + Firestore] -.optional.-> W
 ```
 
 ## 📤 Upload Dashboard (easiest way)
@@ -212,6 +220,7 @@ The token stays in the teacher's browser only and can be remembered per device (
 |---|---|
 | `notes/Polytechnic/Civil Engineering/Sem 3/Building Construction/Unit-1.pdf` | Only **Civil** Semester-3 students — Building Construction subject |
 | `notes/Polytechnic/Civil Engineering/Sem 3/Building Construction/Unit-1.hi.pdf` | The same post with a 📕 हिंदी switch |
+| `notes/Polytechnic/.../Unit-1.Priya Sharma.pdf` | The post gets a golden **✍️ By Priya Sharma** badge — student credit (works with `.hi.pdf` too) |
 | `notes/Polytechnic/Civil Engineering/Sem 3/PYQ/…` | PYQ's sheet for Civil Semester-3 students (never in the feed or subject chips) |
 | `notes/Sem 3/Physics/…` (legacy) | College-wide — every branch, Semester 3 |
 | `notes/Any-File.pdf` (legacy root) | College-wide — every branch, every semester |
@@ -228,22 +237,29 @@ flowchart LR
 
 *Site name, teacher name, college, permanent-story links and subject emojis are configured in `notes/config.json`. Subject chips and group labels always show the clean subject name (e.g. **Physics**) — semester folders and PYQ folders are never displayed as subjects. Language badges: 📘 English · 📕 हिंदी.*
 
+## 🔐 Student Accounts (optional)
+
+Reading is — and always will be — **100% login-free**. Students who want the community features can optionally create an account:
+
+1. **Sign up** in the app: display name, e-mail, phone, password (8+ chars) + DPDP consent
+2. **Admin approval** — new accounts start `pending`; the owner approves them in the Firebase Console (~30 seconds each)
+3. **Unlocked:** ✅ read-ticks (automatic, permanent, cross-device) · ❤️ helpful reactions · "who read" lists with two-letter avatars · a small profile sheet
+
+Data stored per student: **name, e-mail, phone, reactions — nothing else** (see `legal/02-PRIVACY-POLICY.txt`). Passwords are hashed by Google Firebase and can never be seen or recovered by anyone, including the owner. Everything runs on the **Firebase Spark free tier** (50K reads / 20K writes per day) — ₹0/month, no credit card — and the Firestore security rules (`firestore.rules`) make self-approval and writing other students' data impossible, server-side. `FB_CONFIG = null` in `index.html` switches the entire system off again.
+
 ## 🚧 Production Status
 
 **Live** — in daily use by students of Satpuda College of Engineering and Polytechnic.
 
-**Ready:** broadcast feed · stories + NEW tags · embedded PDF viewer (all devices) · semester onboarding & filtering · PYQ's sheet · search · files manager · bookmarks · offline PWA · permanent quick links
+**Ready:** broadcast feed · stories + NEW tags · embedded PDF viewer (all devices) · semester onboarding & filtering · PYQ's sheet · search · files manager · bookmarks · offline PWA · permanent quick links · optional student accounts (approval-gated reactions & read-ticks) · golden student-credit badges
 **Optional:** self-hosted PDF engine (works from CDN today) · richer analytics-free theming
 
 > Students should always verify content with the official syllabus and their teachers — Notes Sathi is a study aid, not an official source.
 
 ## 🗺️ Roadmap
 
-- [ ] Text search inside PDFs
-- [ ] Per-subject offline download (ZIP)
-- [ ] Notice board section (repo-driven announcements)
-- [ ] Timetable & syllabus quick-cards
-- [ ] More colleges / classes on one install
+- [ ] **Notice board section & announcements**
+- [ ] **Timetable & syllabus**
 
 ## 🤝 Contribution Flow
 
@@ -260,7 +276,7 @@ flowchart LR
 
 <p align="center">
 <sub>
-Notes Sathi is provided "as is" without warranty of any kind — the owner and contributors are not liable for the accuracy, completeness or consequences of its content. Notes are not an official publication of any institution — always verify with your official syllabus and teachers. Notes are served directly from the institution's public GitHub repository; student preferences (semester, theme, bookmarks) are stored only in each student's own browser. This project is proprietary software — © 2026 Vinay Soni, all rights reserved; copying or redistributing the app is not permitted. Notes stay free for every student, always.
+Notes Sathi is provided "as is" without warranty of any kind — the owner and contributors are not liable for the accuracy, completeness or consequences of its content. Notes are not an official publication of any institution — always verify with your official syllabus and teachers. Notes are served directly from the institution's public GitHub repository; student preferences (semester, theme, bookmarks) are stored only in each student's own browser, and optional account data (name, e-mail, phone, reactions) is stored with Google Firebase as described in `legal/02-PRIVACY-POLICY.txt`. This project is proprietary software — © 2026 Vinay Soni, all rights reserved; copying or redistributing the app is not permitted. Notes stay free for every student, always.
 </sub>
 </p>
 

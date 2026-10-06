@@ -7,9 +7,9 @@ Founder    : Vinay Soni ("Owner")
 Service    : Free, non-commercial, community notes platform for the students
              of Satpuda College of Engineering and Polytechnic, Balaghat,
              Madhya Pradesh, India.
-Version    : 1.2
+Version    : 1.3
 Effective  : 04 October 2026
-Last updated : 04 October 2026 (v1.2 — Grievance Officer e-mail published)
+Last updated : 06 October 2026 (v1.3 — Privacy Policy v2.0 & Terms v1.3: optional student accounts with Firebase disclosed; minors' parental-consent rule added)
 ================================================================================
 
 IMPORTANT NOTE

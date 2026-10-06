@@ -239,6 +239,38 @@
   .tc-links{ margin-top:8px !important; }
   .tc-links a{ color:var(--brand); font-weight:800; text-decoration:none; }
   .tc-links a:active{ opacity:.7; }
+
+  /* ============ STUDENT ACCOUNTS / REACTIONS ============ */
+  .ns-auth-overlay{ align-items:center; justify-content:center; padding:16px; z-index:75; }
+  .ns-card{
+    width:100%; max-width:400px; max-height:calc(100dvh - 40px); overflow-y:auto;
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    box-shadow:var(--shadow); padding:20px 18px; animation:slideup .25s ease;
+  }
+  .ns-head{ text-align:center; margin-bottom:12px; }
+  .ns-emoji{ font-size:32px; }
+  .ns-title{ font-size:19px; font-weight:800; font-family:var(--font-display); margin-top:4px; letter-spacing:-.3px; }
+  .ns-sub{ font-size:12px; color:var(--ink-soft); margin-top:4px; line-height:1.6; }
+  .ns-field{ margin-bottom:10px; }
+  .ns-field label{ display:block; font-size:11px; font-weight:800; margin-bottom:4px; color:var(--ink-soft); }
+  .ns-status{ display:inline-flex; gap:6px; align-items:center; font-size:11px; font-weight:800; padding:4px 12px; border-radius:999px; margin-top:6px; }
+  .ns-status.pending{ background:rgba(245,158,11,.15); color:#B45309; }
+  .ns-status.approved{ background:var(--good-soft); color:var(--good); }
+  .ns-note{ font-size:10.5px; color:var(--ink-faint); line-height:1.6; margin-top:8px; }
+  .ns-kv{ display:flex; justify-content:space-between; gap:10px; font-size:12px; padding:8px 0; border-bottom:1px solid var(--line-soft); }
+  .ns-kv b{ font-weight:800; }
+  .react-row{ display:flex; align-items:center; gap:8px; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line-soft); }
+  .react-btn{
+    border:1.5px solid var(--line); background:var(--card-2); color:var(--ink-soft);
+    font-family:var(--font); font-size:11px; font-weight:800;
+    padding:6px 12px; border-radius:999px; cursor:pointer; transition:.14s ease;
+  }
+  .react-btn.on{ border-color:var(--brand); background:var(--brand-soft); color:var(--brand); }
+  .react-btn:active{ transform:scale(.95); }
+  .who-link{ margin-left:auto; background:none; border:none; color:var(--ink-faint); font-size:11px; font-weight:800; cursor:pointer; font-family:var(--font); padding:4px; }
+  .who-row{ display:flex; align-items:center; gap:10px; padding:9px 2px; border-bottom:1px solid var(--line-soft); }
+  .who-name{ font-size:13px; font-weight:700; }
+  .who-types{ margin-left:auto; font-size:12px; }
   .ack-row{
     display:flex; gap:10px; align-items:flex-start; cursor:pointer;
     background:var(--brand-soft); border:1.5px solid var(--brand); border-radius:13px; padding:11px 13px;
@@ -395,6 +427,13 @@
   .lbadge.hi{ background:rgba(245,158,11,.14); color:#B45309; }
   [data-theme="dark"] .lbadge.hi{ color:#FBBF24; }
   .lbadge.ext{ background:var(--card-2); color:var(--ink-soft); }
+  .lbadge.by{
+    background:linear-gradient(135deg,#FDE68A,#F59E0B); color:#78350F;
+    border:1px solid #D97706;
+  }
+  [data-theme="dark"] .lbadge.by{
+    background:linear-gradient(135deg,#78350F,#B45309); color:#FDE68A; border-color:#F59E0B;
+  }
   .post-acts{
     display:flex; align-items:center; gap:4px; margin-top:12px;
     border-top:1px solid var(--line-soft); padding-top:10px;
@@ -1011,6 +1050,9 @@
         <div class="hdr-sub" id="hdrSub">College notes, beautifully organized</div>
       </div>
       <div class="hdr-actions">
+        <button class="iconbtn" id="nsUserBtn" aria-label="Student account" title="Student account" style="display:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
         <button class="iconbtn" id="semBtn" aria-label="Change program, branch and semester" title="Program · Branch · Semester">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
         </button>
@@ -1141,7 +1183,7 @@
           <li>Tap <b>Upload all</b> → students see the notes within ~1 minute, with <b>stories</b> and a <b>NEW</b> badge for 24 hours.</li>
         </ol>
         <p style="margin:10px 0 0; font-size:11.5px; color:var(--ink-soft); line-height:1.7;">
-          <b>Prefer GitHub directly?</b> Upload into <span class="code-chip">notes/Polytechnic/Civil Engineering/Sem 3/Building Construction/</span> (English + Hindi pair: <span class="code-chip">Unit-1.pdf</span> + <span class="code-chip">Unit-1.hi.pdf</span>). PYQ papers go in <span class="code-chip">notes/Polytechnic/Civil Engineering/Sem 3/PYQ/</span> — they show up in the 📝 PYQ's sheet, not the feed.
+          <b>Prefer GitHub directly?</b> Upload into <span class="code-chip">notes/Polytechnic/Civil Engineering/Sem 3/Building Construction/</span> (English + Hindi pair: <span class="code-chip">Unit-1.pdf</span> + <span class="code-chip">Unit-1.hi.pdf</span>). Student-submitted note? End the file name with the student's name — <span class="code-chip">Unit-1.Priya Sharma.pdf</span> — and the post gets a golden ✍️ By Priya Sharma badge. PYQ papers go in <span class="code-chip">notes/Polytechnic/Civil Engineering/Sem 3/PYQ/</span> — they show up in the 📝 PYQ's sheet, not the feed.
         </p>
       </div>
 
@@ -1335,7 +1377,7 @@
     <div class="sem-agree" id="semAgree">
       <div class="tc-box" id="tcBox">
         <b>📜 Terms &amp; Conditions and Privacy Policy <span class="tc-new">Updated 04 Oct 2026</span></b>
-        <p>Notes Sathi is a free educational notes platform provided strictly <b>as-is, with no warranty of any kind</b>. All notes are contributed by teachers and contributors for study purposes only. By using this app you agree that: (1) the content is NOT an official publication of any school, college, university or examination body — always verify with your official syllabus, textbooks and teachers; (2) the service is completely free — <b>no charges, no payments and no refunds</b> ever apply; (3) the owner, contributors and publishers of this app hold <b>no liability whatsoever</b> for any errors, omissions, inaccuracies, losses or consequences resulting from the use of this content — use is strictly at your own risk; (4) the notes are shared for personal study only and may not be sold or redistributed without the respective author's permission. <b>Privacy:</b> we do not collect, track, store or sell any personal data — no accounts, no ads, no analytics. Your theme, branch, semester, bookmarks and reading history are saved only in your own browser, on your own device, and never leave it. The app simply reads notes from a public GitHub repository. <b>Grievances:</b> any problem can be reported to the Grievance Officer — vinay.sanjaysoni@gmail.com — acknowledged within 48 hours. By continuing you accept these terms in full.</p>
+        <p>Notes Sathi is a free educational notes platform provided strictly <b>as-is, with no warranty of any kind</b>. All notes are contributed by teachers and contributors for study purposes only. By using this app you agree that: (1) the content is NOT an official publication of any school, college, university or examination body — always verify with your official syllabus, textbooks and teachers; (2) the service is completely free — <b>no charges, no payments and no refunds</b> ever apply; (3) the owner, contributors and publishers of this app hold <b>no liability whatsoever</b> for any errors, omissions, inaccuracies, losses or consequences resulting from the use of this content — use is strictly at your own risk; (4) the notes are shared for personal study only and may not be sold or redistributed without the respective author's permission. <b>Privacy:</b> we do not collect, track, store or sell any personal data — no accounts, no ads, no analytics. Your theme, branch, semester, bookmarks and reading history are saved only in your own browser, on your own device, and never leave it. The app simply reads notes from a public GitHub repository. <b>Grievances:</b> any problem can be reported to the Grievance Officer — vinay.sanjaysoni@gmail.com — acknowledged within 48 hours. <b>Student accounts (optional):</b> signing up stores your name, email, phone number and reactions with Google Firebase to run read-ticks and the community — your name appears on notes you read or like, and you can request deletion anytime (Privacy Policy). By continuing you accept these terms in full.</p>
         <p class="tc-links">Full documents: <a href="legal/01-TERMS-AND-CONDITIONS.txt" target="_blank" rel="noopener">Terms &amp; Conditions</a> · <a href="legal/02-PRIVACY-POLICY.txt" target="_blank" rel="noopener">Privacy Policy</a> · <a href="legal/04-DISCLAIMER.txt" target="_blank" rel="noopener">Disclaimer</a> · <a href="legal/06-GRIEVANCE-REDRESSAL-AND-FIRST-COMPLAINT-REPORT.txt" target="_blank" rel="noopener">Report a Problem</a></p>
       </div>
       <label class="ack-row" for="ackCheck">
@@ -1347,6 +1389,14 @@
     <button class="btn btn-primary btn-block" id="semStart" disabled>Start reading 📚</button>
     <button class="btn btn-ghost btn-block" id="semCancel" style="display:none;">Cancel</button>
   </div>
+</div>
+
+<div class="overlay ns-auth-overlay" id="nsAuthOverlay" role="dialog" aria-modal="true" aria-label="Student account">
+  <div class="ns-card" id="nsAuthCard"></div>
+</div>
+
+<div class="overlay ns-auth-overlay" id="nsWhoOverlay" role="dialog" aria-modal="true" aria-label="Readers">
+  <div class="ns-card" id="nsWhoCard"></div>
 </div>
 
 <div class="overlay screen-overlay" id="viewerOverlay" role="dialog" aria-modal="true" aria-label="Read note">
@@ -1701,12 +1751,31 @@
   /* ================================================================
      PARSING — files → subjects → posts
      ================================================================ */
+  /* student credit: "Unit-1.Priya Sharma.pdf" (or .hi.pdf) credits Priya Sharma.
+     The FIRST dot separates title from student name; a name is letters/spaces
+     only (no digits/dashes) so dotted titles like "Version 1.2" never match. */
+  function splitStudent(base){
+    var d = base.indexOf(".");
+    if(d < 1) return { base:base, student:null };
+    var left = base.slice(0, d), right = base.slice(d + 1).trim();
+    if(left && right && /^[A-Za-z][A-Za-z .&]{1,39}$/.test(right) && /[A-Za-z]{2,}/.test(right)){
+      return { base:left, student:right.replace(/\s+/g, " ") };
+    }
+    return { base:base, student:null };
+  }
   function splitLang(nameNoExt){
     var m = nameNoExt.match(/^(.+?)[\s._-](hi|hindi)$/i);
-    if(m && m[1]) return { base:m[1], lang:"hi" };
+    if(m && m[1]){
+      var h = splitStudent(m[1]);
+      return { base:h.base, lang:"hi", student:h.student };
+    }
     var e = nameNoExt.match(/^(.+?)[\s._-]en$/i);
-    if(e && e[1]) return { base:e[1], lang:"en" };
-    return { base:nameNoExt, lang:"en" };
+    if(e && e[1]){
+      var v = splitStudent(e[1]);
+      return { base:v.base, lang:"en", student:v.student };
+    }
+    var s = splitStudent(nameNoExt);
+    return { base:s.base, lang:"en", student:s.student };
   }
 
   function emojiFor(rawSubject, prettyName){
@@ -1764,7 +1833,7 @@
         postMap.push(post);
       }
       post.files.push({
-        name:fileName, ext:ext, lang:sl.lang,
+        name:fileName, ext:ext, lang:sl.lang, student:sl.student || null,
         size:f.size || 0, date:f.date || null,
         url:f.url || fileUrl(p), demo:!!f.demo, author:f.author || null
       });
@@ -1794,8 +1863,10 @@
       post.subject = s;
       post.langs = [];
       post.authors = [];
+      post.students = [];
       var seenAuthor = {};
 post.files.forEach(function(f){
+        if(f.student && post.students.indexOf(f.student) < 0) post.students.push(f.student);
         if(post.langs.indexOf(f.lang) < 0) post.langs.push(f.lang);
         if(f.author){
           var ak = authorKey(f.author);
@@ -1817,8 +1888,12 @@ post.files.forEach(function(f){
   function authorKey(a){ return a ? (a.login || a.name || "unknown") : "unknown"; }
   function avatarSpan(a, sizePx){
     var label = String((a && (a.name || a.login)) || "?").trim() || "?";
-    var init = label.charAt(0).toUpperCase();
-    var fs = Math.max(9, Math.round(sizePx * 0.42));
+    /* two-letter DP: initials of first + last word (single word -> first two letters) */
+    var parts = label.split(/\s+/).filter(Boolean);
+    var init = (parts.length >= 2
+      ? parts[0].charAt(0) + parts[parts.length - 1].charAt(0)
+      : label.slice(0, 2)).toUpperCase();
+    var fs = Math.max(8, Math.round(sizePx * (init.length > 1 ? 0.36 : 0.42)));
     var img = (a && a.avatar) ? '<img src="' + esc(a.avatar) + '" alt="" loading="lazy" onerror="this.remove()">' : "";
     return '<span class="cavatar" style="width:' + sizePx + "px;height:" + sizePx + 'px;">' +
       '<span class="cinit" style="font-size:' + fs + 'px;">' + esc(init) + "</span>" + img + "</span>";
@@ -1948,6 +2023,10 @@ post.files.forEach(function(f){
     } else {
       badges += '<span class="lbadge en">📘 English</span>';
     }
+    if(p.students && p.students.length){
+      var names = p.students.slice(0, 2).join(" & ") + (p.students.length > 2 ? " +" + (p.students.length - 2) : "");
+      badges += '<span class="lbadge by" title="Student contribution">✍️ By ' + esc(names) + "</span>";
+    }
     var exts = [];
     p.files.forEach(function(f){ if(exts.indexOf(f.ext) < 0) exts.push(f.ext); });
     exts.forEach(function(x){ if(x !== "pdf") badges += '<span class="lbadge ext">' + esc(x.toUpperCase()) + "</span>"; });
@@ -1976,7 +2055,7 @@ post.files.forEach(function(f){
   function wirePostCards(rootEl){
     rootEl.querySelectorAll(".post").forEach(function(card){
       card.addEventListener("click", function(e){
-        if(e.target.closest(".waOp") || e.target.closest(".dlOp") || e.target.closest(".saveOp")) return;
+        if(e.target.closest(".waOp") || e.target.closest(".dlOp") || e.target.closest(".saveOp") || e.target.closest(".react-row")) return;
         openViewer(card.getAttribute("data-id"));
       });
     });
@@ -2817,7 +2896,10 @@ post.files.forEach(function(f){
       seg.style.display = "flex";
       seg.innerHTML = p.langs.map(function(l){
         return '<button data-lang="' + l + '" class="' + (l === viewerLang ? "active" : "") + '">' + (l === "hi" ? "📕 हिंदी" : "📘 English") + "</button>";
-      }).join("");
+      }).join("") +
+      ((p.students && p.students.length)
+        ? '<span class="lbadge by" style="align-self:center; cursor:default;">✍️ By ' + esc(p.students.slice(0, 2).join(" & ")) + (p.students.length > 2 ? " +" + (p.students.length - 2) : "") + "</span>"
+        : "");
       seg.querySelectorAll("button").forEach(function(b){
         b.addEventListener("click", function(){
           viewerLang = b.getAttribute("data-lang");
@@ -3002,9 +3084,9 @@ post.files.forEach(function(f){
   });
 
   /* ============ SEMESTER (onboarding + settings) ============ */
-  var LS_SEM = "ns_sem_v1", LS_ACK = "ns_ack_v2", LS_PROG = "ns_prog_v1", LS_BRANCH = "ns_branch_v1";
-  /* ns_ack_v2: terms materially updated 04 Oct 2026 (no warranty / no refunds /
-     no responsibility + grievance e-mail) — every user re-accepts once */
+  var LS_SEM = "ns_sem_v1", LS_ACK = "ns_ack_v3", LS_PROG = "ns_prog_v1", LS_BRANCH = "ns_branch_v1";
+  /* ns_ack_v3: terms updated 06 Oct 2026 — optional student accounts disclosed
+     (name, email, phone, reactions via Firebase) — every user re-accepts once */
   var mySem = null, semSel = null, semSettingsMode = false;
   var myProgram = null, myBranch = null;
   var wizStep = 1, wizProgram = null, wizBranch = null;
@@ -4006,13 +4088,338 @@ post.files.forEach(function(f){
     });
   }
 
+  /* ================================================================
+     STUDENT ACCOUNTS + REACTIONS + READ TICKS (Firebase)
+     INERT until a Firebase web config is pasted into FB_CONFIG below.
+     See firebase-setup-guide.md. When FB_CONFIG is null the app behaves
+     exactly as before (guest mode, no login UI anywhere).
+     ================================================================ */
+  /* Firebase web config — public by design; the Firestore security rules
+     (see firestore.rules) are the real lock. Set to null to switch the
+     whole account system off again. */
+  var FB_CONFIG = {
+    apiKey: "AIzaSyC7htZRuuDB7JnbWCfM9PfviHeVtV0RNpw",
+    authDomain: "notes-sathi-ae2e5.firebaseapp.com",
+    projectId: "notes-sathi-ae2e5",
+    storageBucket: "notes-sathi-ae2e5.firebasestorage.app",
+    messagingSenderId: "275840197118",
+    appId: "1:275840197118:web:3954a6835ac947b77b60af"
+  };
+  var nsUser = null;          /* { name, email, phone, status: pending|approved } */
+  var nsMyReact = {};         /* noteKey -> { read:true, love:true } */
+  var nsAuthMode = "signin";
+  var nsFb = { ready:false };
+
+  function nsNoteKey(id){ return String(id || "").replace(/[^a-zA-Z0-9._-]/g, "_").slice(0, 90); }
+
+  function nsFbInit(){
+    if(!FB_CONFIG || nsFb.ready) return;
+    import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js").then(function(appMod){
+      return Promise.all([
+        import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"),
+        import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js")
+      ]).then(function(mods){
+        var app = appMod.initializeApp(FB_CONFIG);
+        var auth = mods[0].getAuth(app);
+        var db = mods[1].getFirestore(app);
+        nsFb.ready = true;
+        nsFb.signUp = function(name, email, phone, pwd){
+          return mods[0].createUserWithEmailAndPassword(auth, email, pwd).then(function(cred){
+            return mods[0].updateProfile(cred.user, { displayName:name }).then(function(){
+              return mods[1].setDoc(mods[1].doc(db, "users", cred.user.uid), {
+                name:name, email:email, phone:phone,
+                status:"pending", createdAt:new Date().toISOString()
+              });
+            });
+          });
+        };
+        nsFb.signIn = function(email, pwd){ return mods[0].signInWithEmailAndPassword(auth, email, pwd); };
+        nsFb.signOutFb = function(){ return mods[0].signOut(auth); };
+        nsFb.loadMe = function(uid){
+          return mods[1].getDoc(mods[1].doc(db, "users", uid)).then(function(s){
+            return s.exists() ? s.data() : null;
+          });
+        };
+        nsFb.loadMyReacts = function(uid){
+          var q = mods[1].query(mods[1].collection(db, "reactions"), mods[1].where("uid", "==", uid));
+          return mods[1].getDocs(q).then(function(sn){
+            var m = {};
+            sn.forEach(function(d){ var v = d.data(); if(v && v.noteId) m[v.noteId] = v; });
+            return m;
+          });
+        };
+        nsFb.markRead = function(key){
+          var ref = mods[1].doc(db, "reactions", auth.currentUser.uid + "_" + key);
+          return mods[1].setDoc(ref, {
+            noteId:key, uid:auth.currentUser.uid,
+            name:(nsUser && nsUser.name) || auth.currentUser.displayName || "Student",
+            read:true, updatedAt:new Date().toISOString()
+          }, { merge:true });
+        };
+        nsFb.toggleLove = function(key, on){
+          var ref = mods[1].doc(db, "reactions", auth.currentUser.uid + "_" + key);
+          return mods[1].setDoc(ref, {
+            noteId:key, uid:auth.currentUser.uid,
+            name:(nsUser && nsUser.name) || auth.currentUser.displayName || "Student",
+            love:!!on, updatedAt:new Date().toISOString()
+          }, { merge:true });
+        };
+        nsFb.whoRead = function(key){
+          var q = mods[1].query(mods[1].collection(db, "reactions"),
+            mods[1].where("noteId", "==", key), mods[1].limit(30));
+          return mods[1].getDocs(q).then(function(sn){
+            var out = [];
+            sn.forEach(function(d){ out.push(d.data()); });
+            return out;
+          });
+        };
+        mods[0].onAuthStateChanged(auth, function(u){
+          if(u){
+            nsFb.loadMe(u.uid).then(function(prof){
+              nsUser = prof || { name:u.displayName || "Student", email:u.email, phone:"", status:"pending" };
+              return nsFb.loadMyReacts(u.uid);
+            }).then(function(m){
+              nsMyReact = m || {};
+              nsOnUserChanged();
+            }).catch(function(){ nsUser = null; nsMyReact = {}; nsOnUserChanged(); });
+          } else {
+            nsUser = null; nsMyReact = {};
+            nsOnUserChanged();
+          }
+        });
+        nsUpdateUserBtn();
+      });
+    }).catch(function(e){
+      try{ console.warn("Notes Sathi: accounts unavailable", e); }catch(x){}
+    });
+  }
+
+  function nsOnUserChanged(){
+    nsUpdateUserBtn();
+    try{ renderAll(); }catch(e){}
+    if(document.getElementById("nsAuthOverlay").classList.contains("open")) nsRenderAuth();
+  }
+  function nsUpdateUserBtn(){
+    var b = document.getElementById("nsUserBtn");
+    if(!b) return;
+    b.style.display = nsFb.ready ? "" : "none";
+    b.innerHTML = (nsUser && nsUser.name)
+      ? avatarSpan({ name:nsUser.name }, 26)
+      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+    b.title = nsUser ? (nsUser.name + " \u00b7 " + (nsUser.status === "approved" ? "Approved" : "Pending approval")) : "Student account";
+  }
+
+  function nsOpenAuth(mode){
+    nsAuthMode = mode || "signin";
+    nsRenderAuth();
+    document.getElementById("nsAuthOverlay").classList.add("open");
+  }
+  function nsCloseAuth(){ document.getElementById("nsAuthOverlay").classList.remove("open"); }
+  function nsOpenWho(key, title){
+    var card = document.getElementById("nsWhoCard");
+    card.innerHTML = '<div class="ns-head"><div class="ns-emoji">\uD83D\uDC41\uFE0F</div><div class="ns-title">Who read this</div></div>' +
+      '<div class="ns-note" style="text-align:center;">Loading\u2026</div>';
+    document.getElementById("nsWhoOverlay").classList.add("open");
+    var done = function(list){
+      var rows = list.map(function(r){
+        return '<div class="who-row">' + avatarSpan({ name:r.name || "Student" }, 30) +
+          '<span class="who-name">' + esc(r.name || "Student") + "</span>" +
+          '<span class="who-types">' + (r.read ? "\u2705 " : "") + (r.love ? "\u2764\uFE0F" : "") + "</span></div>";
+      }).join("");
+      card.innerHTML = '<div class="ns-head"><div class="ns-emoji">\uD83D\uDC41\uFE0F</div>' +
+        '<div class="ns-title">Read by ' + list.length + "</div></div>" +
+        (rows || '<div class="ns-note" style="text-align:center;">Nobody yet \u2014 be the first to read this note!</div>');
+    };
+    Promise.resolve(nsFb.whoRead ? nsFb.whoRead(key) : []).then(done).catch(function(){ done([]); });
+  }
+  function nsCloseWho(){ document.getElementById("nsWhoOverlay").classList.remove("open"); }
+
+  function nsRenderAuth(){
+    var card = document.getElementById("nsAuthCard");
+    if(!nsFb.ready){
+      card.innerHTML = '<div class="ns-head"><div class="ns-emoji">\uD83D\uDC64</div><div class="ns-title">Accounts coming soon</div></div>' +
+        '<div class="ns-note" style="text-align:center;">Student accounts are not enabled yet. You can read all notes without an account.</div>';
+      return;
+    }
+    if(nsUser){
+      /* ---- signed-in profile ---- */
+      var st = nsUser.status === "approved";
+      var reads = 0;
+      Object.keys(nsMyReact).forEach(function(k){ if(nsMyReact[k] && nsMyReact[k].read) reads++; });
+      card.innerHTML =
+        '<div class="ns-head">' + '<span style="display:block;width:74px;margin:0 auto 8px;">' + avatarSpan({ name:nsUser.name }, 74) + "</span>" +
+        '<div class="ns-title">' + esc(nsUser.name || "Student") + "</div>" +
+        '<span class="ns-status ' + (st ? "approved" : "pending") + '">' + (st ? "\u2705 Approved" : "\u23F3 Pending approval") + "</span></div>" +
+        '<div class="ns-kv"><span>Email</span><b>' + esc(nsUser.email || "") + "</b></div>" +
+        '<div class="ns-kv"><span>Phone</span><b>' + esc(nsUser.phone || "") + "</b></div>" +
+        '<div class="ns-kv"><span>\uD83D\uDCD6 Notes read</span><b>' + reads + "</b></div>" +
+        (st ? "" : '<div class="ns-note">\u23F3 Your account is waiting for approval. You can read all notes meanwhile \u2014 reactions unlock once approved.</div>') +
+        '<button class="btn btn-ghost btn-block" id="nsSignOutBtn" style="margin-top:12px;">Sign out</button>';
+      document.getElementById("nsSignOutBtn").addEventListener("click", function(){
+        try{ if(nsFb.signOutFb) nsFb.signOutFb(); }catch(e){}
+        nsUser = null; nsMyReact = {};
+        nsOnUserChanged(); nsRenderAuth();
+        showToast("Signed out \u2014 see you soon \uD83D\uDC4B");
+      });
+      return;
+    }
+    /* ---- signed-out: sign in / create account ---- */
+    var up = nsAuthMode === "signup";
+    card.innerHTML =
+      '<div class="ns-head"><div class="ns-emoji">' + (up ? "\uD83D\uDC65" : "\uD83D\uDC64") + "</div>" +
+      '<div class="ns-title">' + (up ? "Create student account" : "Welcome back") + "</div>" +
+      '<div class="ns-sub">' + (up ? "Read \u00b7 react \u00b7 share your notes \u2014 free, forever." : "Sign in to react, tick read notes and join the community.") + "</div></div>" +
+      '<div class="seg" style="margin-bottom:14px;">' +
+        '<button id="nsTabIn" class="' + (up ? "" : "active") + '">Sign in</button>' +
+        '<button id="nsTabUp" class="' + (up ? "active" : "") + '">Create account</button>' +
+      "</div>" +
+      (up
+        ? '<div class="ns-field"><label>Display name *</label><input class="up-input" id="nsName" placeholder="e.g. Priya Sharma" autocomplete="name"></div>' +
+          '<div class="ns-field"><label>Phone number * (10 digits)</label><input class="up-input" id="nsPhone" placeholder="e.g. 98765 43210" inputmode="tel" autocomplete="tel"></div>'
+        : "") +
+      '<div class="ns-field"><label>Email *</label><input class="up-input" id="nsEmail" type="email" placeholder="you@example.com" autocomplete="email"></div>' +
+      '<div class="ns-field"><label>Password' + (up ? " * (min 8 characters)" : "") + '</label><input class="up-input" id="nsPass" type="password" placeholder="\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022" autocomplete="' + (up ? "new-password" : "current-password") + '"></div>' +
+      (up ? '<label class="ack-row" for="nsConsent" style="margin-bottom:12px;"><input type="checkbox" id="nsConsent"><span>I agree to the <b>Privacy Policy</b> \u2014 my name, email, phone and reactions are stored to run the community, and I can request deletion anytime.</span></label>' : "") +
+      '<button class="btn btn-primary btn-block" id="nsSubmit">' + (up ? "Create account \uD83D\uDE80" : "Sign in") + "</button>" +
+      '<div class="ns-note" style="text-align:center;">\uD83D\uDD12 Password is encrypted (hashed) by Google Firebase \u2014 we can never see or recover it. New accounts need approval before reacting.</div>';
+    document.getElementById("nsTabIn").addEventListener("click", function(){ nsAuthMode = "signin"; nsRenderAuth(); });
+    document.getElementById("nsTabUp").addEventListener("click", function(){ nsAuthMode = "signup"; nsRenderAuth(); });
+    document.getElementById("nsSubmit").addEventListener("click", nsAuthSubmit);
+  }
+
+  function nsValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+  function nsValidPhone(v){ return /^\+?[0-9][0-9\s-]{8,14}$/.test(v); }
+
+  function nsAuthSubmit(){
+    var email = (document.getElementById("nsEmail").value || "").trim();
+    var pass = document.getElementById("nsPass").value || "";
+    if(nsAuthMode === "signup"){
+      var name = (document.getElementById("nsName").value || "").trim();
+      var phone = (document.getElementById("nsPhone").value || "").trim();
+      if(name.length < 2){ showToast("\u26A0\uFE0F Enter your name (min 2 letters)"); return; }
+      if(!nsValidEmail(email)){ showToast("\u26A0\uFE0F Enter a valid email"); return; }
+      if(!nsValidPhone(phone)){ showToast("\u26A0\uFE0F Enter a valid 10-digit phone number"); return; }
+      if(pass.length < 8){ showToast("\u26A0\uFE0F Password needs at least 8 characters"); return; }
+      if(!document.getElementById("nsConsent").checked){ showToast("\u26A0\uFE0F Please accept the Privacy Policy"); return; }
+      var btn = document.getElementById("nsSubmit");
+      btn.disabled = true; btn.textContent = "Creating\u2026";
+      Promise.resolve(nsFb.signUp(name, email, phone, pass)).then(function(){
+        nsCloseAuth();
+        showToast("\u23F3 Account created \u2014 sent for approval. Reading is already unlocked!");
+      }).catch(function(e){
+        btn.disabled = false; btn.textContent = "Create account \uD83D\uDE80";
+        showToast("\u26A0\uFE0F " + ((e && e.code === "auth/email-already-in-use") ? "This email already has an account" : "Couldn\u2019t create account \u2014 try again"));
+      });
+    } else {
+      if(!nsValidEmail(email) || !pass){ showToast("\u26A0\uFE0F Enter your email and password"); return; }
+      var b2 = document.getElementById("nsSubmit");
+      b2.disabled = true; b2.textContent = "Signing in\u2026";
+      Promise.resolve(nsFb.signIn(email, pass)).then(function(){
+        nsCloseAuth();
+        showToast("\uD83D\uDC4B Welcome back!");
+      }).catch(function(){
+        b2.disabled = false; b2.textContent = "Sign in";
+        showToast("\u26A0\uFE0F Wrong email or password");
+      });
+    }
+  }
+
+  function nsCanReact(){ return !!(nsFb.ready && nsUser && nsUser.status === "approved"); }
+
+  function nsReactRowHtml(p){
+    if(!nsFb.ready) return "";
+    var key = nsNoteKey(p.id);
+    var mine = nsMyReact[key] || {};
+    return '<div class="react-row" data-key="' + esc(key) + '" data-id="' + esc(p.id) + '">' +
+      '<button class="react-btn readR' + (mine.read ? " on" : "") + '" aria-label="Mark as read">\u2705 Read</button>' +
+      '<button class="react-btn loveR' + (mine.love ? " on" : "") + '" aria-label="Helpful">\u2764\uFE0F</button>' +
+      '<button class="who-link" aria-label="Who read this">who\u2026</button>' +
+      "</div>";
+  }
+  function nsWireReact(root){
+    root.querySelectorAll(".react-row").forEach(function(row){
+      var key = row.getAttribute("data-key"), id = row.getAttribute("data-id");
+      var guard = function(okFn){
+        if(!nsUser){ showToast("\uD83D\uDC81 Sign in to react \u2014 it takes 2 minutes"); nsOpenAuth(); return; }
+        if(nsUser.status !== "approved"){ showToast("\u23F3 Account pending approval \u2014 reactions unlock once approved"); return; }
+        okFn();
+      };
+      row.querySelector(".readR").addEventListener("click", function(e){
+        e.stopPropagation();
+        guard(function(){
+          if(!(nsMyReact[key] && nsMyReact[key].read)){
+            nsMyReact[key] = nsMyReact[key] || {};
+            nsMyReact[key].read = true;
+            row.querySelector(".readR").classList.add("on");
+            if(nsFb.markRead) nsFb.markRead(key);
+            showToast("\u2705 Marked as read");
+          }
+        });
+      });
+      row.querySelector(".loveR").addEventListener("click", function(e){
+        e.stopPropagation();
+        guard(function(){
+          var on = !(nsMyReact[key] && nsMyReact[key].love);
+          nsMyReact[key] = nsMyReact[key] || {};
+          nsMyReact[key].love = on;
+          row.querySelector(".loveR").classList.toggle("on", on);
+          if(nsFb.toggleLove) nsFb.toggleLove(key, on);
+        });
+      });
+      row.querySelector(".who-link").addEventListener("click", function(e){
+        e.stopPropagation();
+        nsOpenWho(key);
+      });
+    });
+  }
+
+  function nsMarkRead(id){
+    if(!nsCanReact()) return;
+    var key = nsNoteKey(id);
+    if(nsMyReact[key] && nsMyReact[key].read) return;
+    nsMyReact[key] = nsMyReact[key] || {};
+    nsMyReact[key].read = true;
+    if(nsFb.markRead) nsFb.markRead(key);
+    var row = document.querySelector('.react-row[data-key="' + key + '"]');
+    if(row) row.querySelector(".readR").classList.add("on");
+  }
+
+  /* ---- wrap existing renderers (single integration point each) ---- */
+  var _postCardHtml = postCardHtml;
+  postCardHtml = function(p){ return _postCardHtml(p).replace(/<\/article>$/, nsReactRowHtml(p) + "</article>"); };
+  var _wirePostCards = wirePostCards;
+  wirePostCards = function(root){ _wirePostCards(root); nsWireReact(root); };
+  var _openViewer = openViewer;
+  openViewer = function(id, preferLang){ _openViewer(id, preferLang); nsMarkRead(id); };
+
+  document.getElementById("nsUserBtn").addEventListener("click", function(){ nsOpenAuth(); });
+  document.getElementById("nsAuthOverlay").addEventListener("click", function(e){ if(e.target === this) nsCloseAuth(); });
+  document.getElementById("nsWhoOverlay").addEventListener("click", function(e){ if(e.target === this) nsCloseWho(); });
+
+  nsFbInit();
+
+  /* debug / test hook (tiny, read-write, no secrets) */
+  try{
+    window.__NS = {
+      fb:nsFb,
+      config:function(){ return FB_CONFIG; },
+      getUser:function(){ return nsUser; },
+      setUser:function(u){ nsUser = u; },
+      getMyReact:function(){ return nsMyReact; },
+      setMyReact:function(m){ nsMyReact = m || {}; },
+      refresh:nsOnUserChanged,
+      openAuth:nsOpenAuth,
+      avatar:avatarSpan
+    };
+  }catch(e){}
+
   /* ============ ANDROID BACK BUTTON (PWA) ============
      The app is a single page with no history entries, so Android's back
      button would instantly close the site. This guard gives back a natural
      meaning instead: close the open screen first -> return to Home ->
      only then leave the app. */
   function nsOpenOverlayId(){
-    var ids = ["viewerOverlay", "pyqOverlay", "semOverlay"];
+    var ids = ["nsWhoOverlay", "nsAuthOverlay", "viewerOverlay", "pyqOverlay", "semOverlay"];
     for(var i = 0; i < ids.length; i++){
       var el = document.getElementById(ids[i]);
       if(el && el.classList.contains("open")) return ids[i];
@@ -4021,6 +4428,8 @@ post.files.forEach(function(f){
   }
   function nsHandleBack(){
     var ov = nsOpenOverlayId();
+    if(ov === "nsWhoOverlay"){ nsCloseWho(); return true; }
+    if(ov === "nsAuthOverlay"){ nsCloseAuth(); return true; }
     if(ov === "viewerOverlay"){ closeViewer(); return true; }
     if(ov === "pyqOverlay"){ closePyqSheet(); return true; }
     if(ov === "semOverlay"){
