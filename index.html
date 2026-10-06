@@ -4277,7 +4277,18 @@ post.files.forEach(function(f){
               nsFb.loadMe(u.uid),
               nsFb.loadMyReacts(u.uid)
             ]).then(function(res){
-              nsUser = res[0] || { name:u.displayName || "Student", email:u.email, phone:"", status:"pending" };
+              if(res[0]){
+                nsUser = res[0];
+              } else {
+                /* NO profile doc yet = first-timer. Google gives no phone number,
+                   so Google users get the "Finish your account" card (name + phone)
+                   — without it they would never appear in the admin pending list */
+                nsUser = {
+                  name:u.displayName || (u.email || "").split("@")[0] || "Student",
+                  email:u.email, phone:"", status:"pending", provisional:true,
+                  viaGoogle:(u.providerData || []).some(function(p){ return p && p.providerId === "google.com"; })
+                };
+              }
               nsMyReact = res[1] || {};
               nsOnUserChanged();
             }).catch(function(err){
@@ -4567,6 +4578,8 @@ post.files.forEach(function(f){
         '<button id="nsTabIn" class="' + (up ? "" : "active") + '">Sign in</button>' +
         '<button id="nsTabUp" class="' + (up ? "active" : "") + '">Create account</button>' +
       "</div>" +
+      '<button class="g-btn" id="nsGoogleBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.3h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.2-2 3.7-5 3.7-8.8z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.7-2.9c-1 .7-2.4 1.2-4.2 1.2-3.2 0-5.9-2.1-6.9-5.1l-3.8 2.9C3.3 21.3 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.1 14.3c-.3-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3l-3.8-3C.5 8.3 0 10.1 0 12s.5 3.7 1.3 5.3l3.8-3z"/><path fill="#EA4335" d="M12 4.7c2.3 0 3.9 1 4.7 1.8l3.4-3.3C18.1 1.1 15.2 0 12 0 7.3 0 3.3 2.7 1.3 6.7l3.8 3c1-3 3.7-4.9 6.9-5z"/></svg>Continue with Google</button>' +
+      '<div style="display:flex; align-items:center; gap:10px; margin:12px 0 12px;"><span style="flex:1; height:1px; background:var(--line-soft);"></span><span style="font-size:10.5px; font-weight:800; color:var(--ink-soft);">OR with e-mail</span><span style="flex:1; height:1px; background:var(--line-soft);"></span></div>' +
       (up
         ? '<div class="ns-field"><label>Display name *</label><input class="up-input" id="nsName" placeholder="e.g. Priya Sharma" autocomplete="name"></div>' +
           '<div class="ns-field"><label>Phone number * (10 digits)</label><input class="up-input" id="nsPhone" placeholder="Your 10-digit mobile number" inputmode="tel" autocomplete="tel"></div>'
@@ -4579,9 +4592,7 @@ post.files.forEach(function(f){
       (ld
         ? '<div class="ns-note" style="text-align:center;">Accounts are loading in the background — you can already type your details.</div>'
         : '<div class="ns-note" style="text-align:center;">\uD83D\uDD12 Password is encrypted (hashed) by Google Firebase \u2014 we can never see or recover it. New accounts need approval before reacting.</div>') +
-      '<div style="display:flex; align-items:center; gap:10px; margin:14px 0 10px;"><span style="flex:1; height:1px; background:var(--line-soft);"></span><span style="font-size:10.5px; font-weight:800; color:var(--ink-soft);">OR</span><span style="flex:1; height:1px; background:var(--line-soft);"></span></div>' +
-      '<button class="g-btn" id="nsGoogleBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.3h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.2-2 3.7-5 3.7-8.8z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.7-2.9c-1 .7-2.4 1.2-4.2 1.2-3.2 0-5.9-2.1-6.9-5.1l-3.8 2.9C3.3 21.3 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.1 14.3c-.3-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3l-3.8-3C.5 8.3 0 10.1 0 12s.5 3.7 1.3 5.3l3.8-3z"/><path fill="#EA4335" d="M12 4.7c2.3 0 3.9 1 4.7 1.8l3.4-3.3C18.1 1.1 15.2 0 12 0 7.3 0 3.3 2.7 1.3 6.7l3.8 3c1-3 3.7-4.9 6.9-5z"/></svg>Continue with Google</button>' +
-      '<button class="btn btn-ghost btn-block" id="nsWaSubmitBtn" style="margin-top:8px;">📤 Have notes? Send on WhatsApp <small style="font-weight:600; color:var(--ink-soft);">— no account needed</small></button>';
+      '<button class="btn btn-ghost btn-block" id="nsWaSubmitBtn" style="margin-top:12px;">📤 Have notes? Send on WhatsApp <small style="font-weight:600; color:var(--ink-soft);">— no account needed</small></button>';
     document.getElementById("nsTabIn").addEventListener("click", function(){ nsAuthMode = "signin"; nsRenderAuth(); });
     document.getElementById("nsTabUp").addEventListener("click", function(){ nsAuthMode = "signup"; nsRenderAuth(); });
     document.getElementById("nsSubmit").addEventListener("click", nsAuthSubmit);
