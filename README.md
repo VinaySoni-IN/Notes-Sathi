@@ -4,7 +4,7 @@
 <td>
 
 # Notes Sathi
-Broadcast notes blog — teacher uploads PDFs, students read them. English + हिंदी, stories, PYQ's, optional student accounts with ✅ read-ticks & ❤️ reactions — free for every student.
+Broadcast notes blog — teacher uploads PDFs, students read them. English + हिंदी, stories, PYQ's, optional student accounts (Google one-tap or e-mail) with ✅ read-ticks & ❤️ reactions — free for every student.
 
 </td>
 </tr>
@@ -16,12 +16,12 @@ Broadcast notes blog — teacher uploads PDFs, students read them. English + ह
   <img src="https://img.shields.io/badge/status-live-1F7A33?style=flat-square">
 </p>
 
-A free app for every student of **Satpuda College of Engineering and Polytechnic** — teachers publish notes by simply uploading PDFs to a GitHub repository; the app turns them into a beautiful, social-media-style notes blog. Reading needs no login, ever — an optional student account (name, e-mail, phone → admin-approved) additionally unlocks ✅ read-ticks, ❤️ reactions and "who read" lists on Firebase's free tier. Notes stay free for every student, always.
+A free app for every student of **Satpuda College of Engineering and Polytechnic** — teachers publish notes by simply uploading PDFs to a GitHub repository; the app turns them into a beautiful, social-media-style notes blog. Reading needs no login, ever — an optional student account (one-tap Google or e-mail + password → admin-approved) additionally unlocks ✅ read-ticks, ❤️ reactions and "who read" lists on Firebase's free tier. Notes stay free for every student, always.
 
 ---
 > **Simple • Broadcast • Free Forever • Notes Management**
 
-Notes Sathi is a lightweight, mobile-first notes platform with **Instagram-style stories for fresh uploads (24h)**, a fully **embedded PDF viewer** (pages, pinch-zoom, download), a **file manager**, **live search**, **semester onboarding**, a **PYQ's quick-access sheet**, **bookmarks**, **WhatsApp sharing**, **optional student accounts** (✅ read-ticks, ❤️ helpful reactions, who-read sheets, two-letter avatars), and **English + हिंदी** versions of every note — installable as an app and readable offline.
+Notes Sathi is a lightweight, mobile-first notes platform with **Instagram-style stories for fresh uploads (24h)**, a fully **embedded PDF viewer** (pages, pinch-zoom, download), a **file manager**, **live search**, **semester onboarding**, a **PYQ's quick-access sheet**, **bookmarks**, **WhatsApp sharing**, **optional student accounts** (Google one-tap or e-mail → ✅ read-ticks, ❤️ helpful reactions, who-read sheets, two-letter avatars), and **English + हिंदी** versions of every note — installable as an app and readable offline.
 
 It is built for classroom workflows: the teacher uploads, every student receives — publishing requires no code, ever.
 
@@ -70,8 +70,11 @@ It is built for classroom workflows: the teacher uploads, every student receives
 | 🗂 **Files tab** | Every file grouped by subject, newest uploads at the top; switch to flat 🕒 Newest or 🔤 A–Z |
 | 🔖 **Bookmarks** | Save any note for quick revision — stored on the device |
 | ✍️ **Contributors** | Everyone who uploads gets a card with their contributed notes and GitHub avatar |
-| 👤 **Student accounts (optional)** | Sign up with name, e-mail & phone + DPDP consent → admin approves → community unlocks; passwords hashed by Google Firebase, never visible to anyone; reading always stays login-free |
+| 👤 **Student accounts (optional)** | Two ways to join: e-mail + password, or one-tap **Continue with Google** — then name, phone & DPDP consent → admin approves → community unlocks; passwords hashed by Google Firebase, never visible to anyone; reading always stays login-free |
 | ✅ **Read-ticks & reactions** | Opening a note auto-ticks it (permanent, cross-device); ❤️ mark notes helpful; "who read" lists with two-letter avatars in name-hashed colours |
+| 📤 **Student note submissions** | "Send on WhatsApp" button in the login window opens a pre-filled message (name, program, branch, semester) — the student just attaches the PDF; the teacher publishes it with the student's name |
+| ⏳ **In-app admin approvals** | The owner approves/rejects pending students right from the app — every sign-up listed with name, phone & e-mail, one-tap approve (double-tap reject) — no console needed |
+| ⚡ **Fast, unbreakable login** | Animated-gradient Login pill appears instantly; the form accepts typing while Firebase loads in the background; 15-second timeout with retry — smooth even on weak college networks |
 | 🏅 **Student credit badges** | Student-submitted notes (WhatsApp → teacher publishes `Unit-1.Priya Sharma.pdf`) automatically get a golden **✍️ By Priya Sharma** badge |
 | 🌓 **Dark mode** | One tap, remembered |
 | 💬 **WhatsApp sharing** | Share any note straight to a chat |
@@ -119,6 +122,7 @@ Notes-Sathi/
 ├── firestore.rules                 # Firestore security rules — approval gating, own-data-only writes
 ├── firebase-setup-guide.md         # ~10-minute Firebase console setup (₹0, no card)
 ├── ACCOUNTS-GO-LIVE-GUIDE.md       # Activation, admin UID, testing, daily approvals & rollback
+├── ADMIN-SETUP-STEPS.md            # Click-by-click admin setup + enabling Google sign-in
 ├── images/                         # Permanent story logos (square images)
 ├── screenshots/                    # README screenshots
 ├── pdf.min.js / pdf.worker.min.js  # Embedded PDF viewer engine (optional — CDN fallback built in)
@@ -239,19 +243,30 @@ flowchart LR
 
 ## 🔐 Student Accounts (optional)
 
-Reading is — and always will be — **100% login-free**. Students who want the community features can optionally create an account:
+Reading is — and always will be — **100% login-free**. Students who want the community features can optionally join — two ways:
 
-1. **Sign up** in the app: display name, e-mail, phone, password (8+ chars) + DPDP consent
-2. **Admin approval** — new accounts start `pending`; the owner approves them in the Firebase Console (~30 seconds each)
-3. **Unlocked:** ✅ read-ticks (automatic, permanent, cross-device) · ❤️ helpful reactions · "who read" lists with two-letter avatars · a small profile sheet
+- **E-mail + password** — display name, e-mail, phone, password (8+ chars) + DPDP consent
+- **Continue with Google** — one tap with their college Google account; since Google doesn't share phone numbers, first-timers complete a tiny "🎯 Finish your account" card (name pre-filled + phone + consent)
+
+Both paths then work identically:
+
+1. **Sign up** (either method) → account starts `pending`
+2. **Admin approval** — the owner approves from **inside the app** (⏳ Pending approvals: every student's name, phone & e-mail listed, one-tap approve) or from the Firebase Console
+3. **Unlocked:** ✅ read-ticks (automatic, permanent, cross-device) · ❤️ helpful reactions · 📖 "who read" lists (recent readers with two-letter avatars) · a small profile sheet
+
+📤 **Student note submissions** live in the same window: a "Send on WhatsApp" button opens a pre-filled message (name, program, branch, semester) — the student attaches the PDF, the teacher publishes it as `Unit-1.Priya Sharma.pdf`, and the post carries the golden **✍️ By Priya Sharma** badge. No storage bucket, no cost, full moderation.
+
+⚡ **Built for college networks:** the animated Login pill appears instantly, the form accepts typing while Firebase loads in the background, nothing ever hangs (15-second timeout + retry), and typed details are never lost.
 
 Data stored per student: **name, e-mail, phone, reactions — nothing else** (see `legal/02-PRIVACY-POLICY.txt`). Passwords are hashed by Google Firebase and can never be seen or recovered by anyone, including the owner. Everything runs on the **Firebase Spark free tier** (50K reads / 20K writes per day) — ₹0/month, no credit card — and the Firestore security rules (`firestore.rules`) make self-approval and writing other students' data impossible, server-side. `FB_CONFIG = null` in `index.html` switches the entire system off again.
+
+**Setup guides:** `firebase-setup-guide.md` (console basics) → `ACCOUNTS-GO-LIVE-GUIDE.md` (activation & testing) → `ADMIN-SETUP-STEPS.md` (click-by-click admin setup + enabling Google sign-in).
 
 ## 🚧 Production Status
 
 **Live** — in daily use by students of Satpuda College of Engineering and Polytechnic.
 
-**Ready:** broadcast feed · stories + NEW tags · embedded PDF viewer (all devices) · semester onboarding & filtering · PYQ's sheet · search · files manager · bookmarks · offline PWA · permanent quick links · optional student accounts (approval-gated reactions & read-ticks) · golden student-credit badges
+**Ready:** broadcast feed · stories + NEW tags · embedded PDF viewer (all devices) · semester onboarding & filtering · PYQ's sheet · search · files manager · bookmarks · offline PWA · permanent quick links · optional student accounts — e-mail + password & Google one-tap (approval-gated reactions & read-ticks) · in-app admin approvals · WhatsApp note submissions · golden student-credit badges
 **Optional:** self-hosted PDF engine (works from CDN today) · richer analytics-free theming
 
 > Students should always verify content with the official syllabus and their teachers — Notes Sathi is a study aid, not an official source.
