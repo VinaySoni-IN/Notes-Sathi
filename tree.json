@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-05T11:37:14.150409Z",
+ "generatedAt": "2026-10-06T10:32:32.314974Z",
  "files": [
   {
    "path": "notes/Polytechnic/Civil Engineering/Sem 1/Applied Physics-I/.gitkeep",
@@ -795,6 +795,16 @@
    "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Scripting Languages/Python-02.pdf",
    "size": 4450171,
    "date": "2026-10-05T09:00:10+05:30",
+   "author": {
+    "login": "VinaySoni-IN",
+    "name": "Vinay Sanjay Soni",
+    "avatar": "https://avatars.githubusercontent.com/u/220304358?v=4"
+   }
+  },
+  {
+   "path": "notes/Polytechnic/Computer Science and Engineering/Sem 3/Scripting Languages/Python-03.hi.pdf",
+   "size": 3776631,
+   "date": "2026-10-06T16:02:08+05:30",
    "author": {
     "login": "VinaySoni-IN",
     "name": "Vinay Sanjay Soni",
