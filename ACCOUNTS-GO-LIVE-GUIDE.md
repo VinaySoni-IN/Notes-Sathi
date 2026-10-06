@@ -80,7 +80,9 @@ the code (v3.x); it stays **invisible until you activate it**.
 3. Open **Firestore → Rules** → replace the one `"ADMIN_UID"` in the
    rules with your real UID (keep the quotes) → **Publish**.
 4. In **Firestore → users → [your uid]**: edit `status` from `pending`
-   to `approved` → Save. You're now the admin with full reaction access.
+   to `approved` **and add a field** `role` = `admin` (type: string) → Save.
+   You're now the admin with full reaction access — and your profile shows
+   the **⏳ Pending approvals** button (approve students from your phone!).
 
 ## Part E — Test before announcing (10 minutes)
 
@@ -101,7 +103,8 @@ Do this quietly with a friend's or a second email account:
 
 | Task | Where | How |
 |---|---|---|
-| **Approve a student** | Console → Firestore → `users` | open their doc → `status`: `pending` → `approved` → Save |
+| **Approve a student** | **In the app (easiest)** | 👤 → **⏳ Pending approvals** → every student's **name, phone & e-mail** is listed → **✅ Approve** (or ❌ reject — tap twice) |
+| Approve (console) | Console → Firestore → `users` | click a doc to see name/phone → `status`: `pending` → `approved` (tip: the **Table** tab lets you add name/phone/status as columns) |
 | Reject / remove | same place | set `rejected`, or delete the doc |
 | Rename an offensive name | `users` doc | edit `name` (their two-letter DP updates everywhere) |
 | Password reset | Authentication → Users → ⋮ | **Reset password** → Firebase emails them automatically |

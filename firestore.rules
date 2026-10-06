@@ -17,6 +17,9 @@ rules_version = '2';
    3. Only APPROVED students can write reactions, and only their
       own — pending or rejected accounts are blocked even if
       someone tampers with the app code.
+   4. The ADMIN can list all users — this powers the in-app
+      "Pending approvals" screen (name + phone + e-mail). Nobody
+      can assign themselves the admin role on signup.
    ============================================================ */
 
 service cloud.firestore {
@@ -26,7 +29,10 @@ service cloud.firestore {
        doc: users/{uid} = { name, email, phone, status, createdAt }
        status: pending (new) -> approved / rejected (set by admin) */
     match /users/{uid} {
-      allow read: if request.auth != null && request.auth.uid == uid;
+      /* a student reads only their own profile (get); the ADMIN can list
+         all users (list) — powers the in-app "Pending approvals" screen */
+      allow get: if request.auth != null && request.auth.uid == uid;
+      allow list: if isAdmin();
 
       allow create: if request.auth != null
                     && request.auth.uid == uid
@@ -37,7 +43,9 @@ service cloud.firestore {
                     && request.resource.data.name.size() <= 40
                     && request.resource.data.phone is string
                     && request.resource.data.phone.size() >= 10
-                    && request.resource.data.phone.size() <= 16;
+                    && request.resource.data.phone.size() <= 16
+                    /* nobody can self-assign the admin role */
+                    && !('role' in request.resource.data);
 
       allow update, delete: if isAdmin();
     }

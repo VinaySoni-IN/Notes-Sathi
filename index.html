@@ -269,6 +269,17 @@
   .react-btn:active{ transform:scale(.95); }
   .who-link{ margin-left:auto; background:none; border:none; color:var(--ink-faint); font-size:11px; font-weight:800; cursor:pointer; font-family:var(--font); padding:4px; }
   .who-row{ display:flex; align-items:center; gap:10px; padding:9px 2px; border-bottom:1px solid var(--line-soft); }
+  .adm-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 2px; border-bottom:1px solid var(--line-soft); }
+  .adm-info{ display:flex; align-items:center; gap:10px; min-width:0; }
+  .adm-txt{ display:flex; flex-direction:column; min-width:0; }
+  .adm-txt b{ font-size:14px; }
+  .adm-txt span{ font-size:12px; color:var(--ink-soft); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .adm-btns{ display:flex; gap:6px; flex-shrink:0; }
+  .adm-yes,.adm-no{ border:0; border-radius:10px; padding:8px 12px; font-weight:800; font-size:12px; cursor:pointer; font-family:inherit; }
+  .adm-yes{ background:#DCFCE7; color:#166534; }
+  .adm-no{ background:#FEE2E2; color:#991B1B; padding:8px 10px; }
+  [data-theme="dark"] .adm-yes{ background:rgba(22,101,52,.25); color:#86EFAC; }
+  [data-theme="dark"] .adm-no{ background:rgba(153,27,27,.25); color:#FCA5A5; }
   .who-name{ font-size:13px; font-weight:700; }
   .who-types{ margin-left:auto; font-size:12px; }
   .ack-row{
@@ -1397,6 +1408,10 @@
 
 <div class="overlay ns-auth-overlay" id="nsWhoOverlay" role="dialog" aria-modal="true" aria-label="Readers">
   <div class="ns-card" id="nsWhoCard"></div>
+</div>
+
+<div class="overlay ns-auth-overlay" id="nsAdminOverlay" role="dialog" aria-modal="true" aria-label="Pending approvals">
+  <div class="ns-card" id="nsAdminCard"></div>
 </div>
 
 <div class="overlay screen-overlay" id="viewerOverlay" role="dialog" aria-modal="true" aria-label="Read note">
@@ -4173,6 +4188,21 @@ post.files.forEach(function(f){
             return out;
           });
         };
+        nsFb.listPending = function(){
+          var q = mods[1].query(mods[1].collection(db, "users"),
+            mods[1].where("status", "==", "pending"), mods[1].limit(50));
+          return mods[1].getDocs(q).then(function(sn){
+            var out = [];
+            sn.forEach(function(d){
+              var dd = d.data() || {};
+              out.push({ uid:d.id, name:dd.name, email:dd.email, phone:dd.phone, createdAt:dd.createdAt });
+            });
+            return out;
+          });
+        };
+        nsFb.setUserStatus = function(uid, status){
+          return mods[1].setDoc(mods[1].doc(db, "users", uid), { status:status }, { merge:true });
+        };
         mods[0].onAuthStateChanged(auth, function(u){
           if(u){
             nsFb.loadMe(u.uid).then(function(prof){
@@ -4234,6 +4264,56 @@ post.files.forEach(function(f){
   }
   function nsCloseWho(){ document.getElementById("nsWhoOverlay").classList.remove("open"); }
 
+  /* ---- admin: pending approvals — names, phones & e-mails at a glance ---- */
+  function nsOpenAdmin(){
+    document.getElementById("nsAdminOverlay").classList.add("open");
+    nsRenderAdmin();
+  }
+  function nsCloseAdmin(){ document.getElementById("nsAdminOverlay").classList.remove("open"); }
+  function nsRenderAdmin(){
+    var card = document.getElementById("nsAdminCard");
+    var head = '<div class="ns-head"><div class="ns-emoji">⏳</div><div class="ns-title">Pending approvals</div></div>';
+    card.innerHTML = head + '<div class="ns-note" style="text-align:center;">Loading…</div>';
+    Promise.resolve(nsFb.listPending ? nsFb.listPending() : []).then(function(list){
+      if(!list.length){
+        card.innerHTML = head + '<div class="ns-note" style="text-align:center;">🎉 No pending students — all caught up!<br>New sign-ups appear here with their name, phone and e-mail.</div>';
+        return;
+      }
+      card.innerHTML = head + list.map(function(u){
+        return '<div class="adm-row">' +
+          '<div class="adm-info">' + avatarSpan({ name:u.name || "Student" }, 34) +
+            '<div class="adm-txt"><b>' + esc(u.name || "Student") + '</b>' +
+            '<span>☎ ' + esc(u.phone || "—") + '</span>' +
+            '<span>✉ ' + esc(u.email || "—") + '</span></div></div>' +
+          '<div class="adm-btns">' +
+            '<button class="adm-yes" data-uid="' + esc(u.uid || "") + '" data-name="' + esc(u.name || "Student") + '">✅ Approve</button>' +
+            '<button class="adm-no" data-uid="' + esc(u.uid || "") + '" data-name="' + esc(u.name || "Student") + '" title="Reject">❌</button>' +
+          '</div></div>';
+      }).join("");
+      card.querySelectorAll(".adm-yes").forEach(function(b){
+        b.addEventListener("click", function(){
+          b.disabled = true; b.textContent = "…";
+          Promise.resolve(nsFb.setUserStatus(b.getAttribute("data-uid"), "approved")).then(function(){
+            showToast("✅ " + b.getAttribute("data-name") + " approved — reactions unlocked!");
+            nsRenderAdmin();
+          }).catch(function(){ showToast("⚠️ Could not approve — check internet"); nsRenderAdmin(); });
+        });
+      });
+      card.querySelectorAll(".adm-no").forEach(function(b){
+        b.addEventListener("click", function(){
+          if(b.getAttribute("data-arm") !== "1"){ b.setAttribute("data-arm", "1"); b.textContent = "Sure?"; return; }
+          b.disabled = true; b.textContent = "…";
+          Promise.resolve(nsFb.setUserStatus(b.getAttribute("data-uid"), "rejected")).then(function(){
+            showToast("❌ " + b.getAttribute("data-name") + " rejected");
+            nsRenderAdmin();
+          }).catch(function(){ showToast("⚠️ Could not reject — check internet"); nsRenderAdmin(); });
+        });
+      });
+    }).catch(function(){
+      card.innerHTML = head + '<div class="ns-note" style="text-align:center;">⚠️ Could not load the pending list.<br>If it keeps failing, re-paste the new <b>firestore.rules</b> in the Firebase console — this screen needs the updated rules (admin list permission).</div>';
+    });
+  }
+
   function nsRenderAuth(){
     var card = document.getElementById("nsAuthCard");
     if(!nsFb.ready){
@@ -4254,7 +4334,12 @@ post.files.forEach(function(f){
         '<div class="ns-kv"><span>Phone</span><b>' + esc(nsUser.phone || "") + "</b></div>" +
         '<div class="ns-kv"><span>\uD83D\uDCD6 Notes read</span><b>' + reads + "</b></div>" +
         (st ? "" : '<div class="ns-note">\u23F3 Your account is waiting for approval. You can read all notes meanwhile \u2014 reactions unlock once approved.</div>') +
+        (nsUser.role === "admin"
+          ? '<button class="btn btn-ghost btn-block" id="nsAdminBtn" style="margin-top:12px;border:1px solid var(--brand);color:var(--brand);font-weight:800;">⏳ Pending approvals</button>'
+          : "") +
         '<button class="btn btn-ghost btn-block" id="nsSignOutBtn" style="margin-top:12px;">Sign out</button>';
+      var abtn = document.getElementById("nsAdminBtn");
+      if(abtn) abtn.addEventListener("click", function(){ nsOpenAdmin(); });
       document.getElementById("nsSignOutBtn").addEventListener("click", function(){
         try{ if(nsFb.signOutFb) nsFb.signOutFb(); }catch(e){}
         nsUser = null; nsMyReact = {};
@@ -4395,6 +4480,7 @@ post.files.forEach(function(f){
   document.getElementById("nsUserBtn").addEventListener("click", function(){ nsOpenAuth(); });
   document.getElementById("nsAuthOverlay").addEventListener("click", function(e){ if(e.target === this) nsCloseAuth(); });
   document.getElementById("nsWhoOverlay").addEventListener("click", function(e){ if(e.target === this) nsCloseWho(); });
+  document.getElementById("nsAdminOverlay").addEventListener("click", function(e){ if(e.target === this) nsCloseAdmin(); });
 
   nsFbInit();
 
@@ -4419,7 +4505,7 @@ post.files.forEach(function(f){
      meaning instead: close the open screen first -> return to Home ->
      only then leave the app. */
   function nsOpenOverlayId(){
-    var ids = ["nsWhoOverlay", "nsAuthOverlay", "viewerOverlay", "pyqOverlay", "semOverlay"];
+    var ids = ["nsAdminOverlay", "nsWhoOverlay", "nsAuthOverlay", "viewerOverlay", "pyqOverlay", "semOverlay"];
     for(var i = 0; i < ids.length; i++){
       var el = document.getElementById(ids[i]);
       if(el && el.classList.contains("open")) return ids[i];
@@ -4428,6 +4514,7 @@ post.files.forEach(function(f){
   }
   function nsHandleBack(){
     var ov = nsOpenOverlayId();
+    if(ov === "nsAdminOverlay"){ nsCloseAdmin(); return true; }
     if(ov === "nsWhoOverlay"){ nsCloseWho(); return true; }
     if(ov === "nsAuthOverlay"){ nsCloseAuth(); return true; }
     if(ov === "viewerOverlay"){ closeViewer(); return true; }

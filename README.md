@@ -88,14 +88,14 @@ It is built for classroom workflows: the teacher uploads, every student receives
 
 <table>
 <tr>
-<td align="center"><img src="screenshots/screen1.jpg" width="220"><br><sub>Semester onboarding</sub></td>
-<td align="center"><img src="screenshots/screen2.jpg" width="220"><br><sub>Home — stories & feed</sub></td>
-<td align="center"><img src="screenshots/screen3.jpg" width="220"><br><sub>PYQ's sheet</sub></td>
+<td align="center"><img src="screenshots/screen1.png" width="220"><br><sub>Semester onboarding</sub></td>
+<td align="center"><img src="screenshots/screen2.png" width="220"><br><sub>Home — stories & feed</sub></td>
+<td align="center"><img src="screenshots/screen3.png" width="220"><br><sub>PYQ's sheet</sub></td>
 </tr>
 <tr>
-<td align="center"><img src="screenshots/screen4.jpg" width="220"><br><sub>Embedded PDF viewer</sub></td>
-<td align="center"><img src="screenshots/screen5.jpg" width="220"><br><sub>Files by subject</sub></td>
-<td align="center"><img src="screenshots/screen6.jpg" width="220"><br><sub>Profile & help</sub></td>
+<td align="center"><img src="screenshots/screen4.png" width="220"><br><sub>Embedded PDF viewer</sub></td>
+<td align="center"><img src="screenshots/screen5.png" width="220"><br><sub>Files by subject</sub></td>
+<td align="center"><img src="screenshots/screen6.png" width="220"><br><sub>Profile & help</sub></td>
 </tr>
 </table>
 

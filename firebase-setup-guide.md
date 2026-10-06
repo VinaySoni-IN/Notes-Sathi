@@ -82,12 +82,20 @@ const firebaseConfig = {
 2. In Firebase Console → **Authentication → Users**: your account appears —
    copy the long **UID** next to it.
 3. Put that UID into `ADMIN_UID` in **firestore.rules** → **Publish** again.
-4. Now only you can approve students.
+4. In **Firestore → users → [your uid]**: set `status` to `approved` **and
+   add field `role` = `admin`** → Save. Only you can approve students — and
+   the in-app **⏳ Pending approvals** screen unlocks in your profile.
 
 ## Step 7 — Approving students (your daily 30-second job)
 
+**Easiest — inside the app:** 👤 → **⏳ Pending approvals** → every student's
+**name, phone & e-mail** is listed → **✅ Approve** or ❌ reject (tap twice).
+
+**Console alternative:**
+
 1. Firebase Console → **Firestore Database → users** — every signup appears
-   as a document: `{ name, email, phone, status: "pending" }`.
+   as a document: `{ name, email, phone, status: "pending" }` (click a doc
+   to see the name & phone; the Table tab can add them as columns).
 2. To approve: open the student's document → edit `status` →
    change `pending` → `approved` → Save. Done — their reactions unlock
    instantly on their next open.
